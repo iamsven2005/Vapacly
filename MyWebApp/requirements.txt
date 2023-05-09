@@ -1,3 +1,4 @@
 flask_mysqldb
 flask
 flask_bcrypt
+cryptography

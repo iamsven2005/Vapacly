@@ -21,11 +21,13 @@ def login():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username,password))
         account = cursor.fetchone()
-        if account:
+        user_hashpwd = account['password']
+        if account and bcrypt.check_password_hash( user_hashpwd, password) :
+
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            return 'Logged in successfully!'
+            return redirect(url_for('home'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('index.html',msg='')
@@ -41,7 +43,7 @@ def register():
         email = request.form['email']
         hashpwd = bcrypt.generate_password_hash(password)
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, password, email,))
+        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, email,))
         mysql.connection.commit()
         msg = 'You have successfully registered!'
 
