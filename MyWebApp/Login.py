@@ -3,6 +3,8 @@ from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 from flask_bcrypt import Bcrypt
+import cryptography 
+from cryptography.fernet import Fernet
 bcrypt = Bcrypt()
 app = Flask(__name__)
 app.secret_key = 'your secret key'
@@ -19,7 +21,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE username = %s AND password = %s', (username,password))
+        cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
         account = cursor.fetchone()
         user_hashpwd = account['password']
         if account and bcrypt.check_password_hash( user_hashpwd, password) :
@@ -27,7 +29,14 @@ def login():
             session['loggedin'] = True
             session['id'] = account['id']
             session['username'] = account['username']
-            return redirect(url_for('home'))
+            encrypted_email = account['email'].encode()
+            file = open('symmetric.key', 'rb')
+            key = file.read()
+            file.close()
+            f = Fernet(key)
+            decrypted_email = f.decrypt(encrypted_email)
+            
+            return redirect(url_for('profile'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('index.html',msg='')
@@ -41,9 +50,15 @@ def register():
         username = request.form['username']
         password = request.form['password']
         email = request.form['email']
+        email = email.encode()
         hashpwd = bcrypt.generate_password_hash(password)
+        key = Fernet.generate_key()
+        with open("symmetric.key", "wb") as fo:
+            fo.write(key)
+        f = Fernet(key)
+        encrypted_email = f.encrypt(email)
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, email,))
+        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
         mysql.connection.commit()
         msg = 'You have successfully registered!'
 
@@ -63,6 +78,14 @@ def profile():
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
         account = cursor.fetchone()
+        encrypted_email = account['email'].encode()
+        file = open('symmetric.key', 'rb')
+        key = file.read()
+        file.close()
+        f = Fernet(key)
+        decrypted_email = f.decrypt(encrypted_email)
+        print(decrypted_email)
+        account['email'] = decrypted_email.decode()
         return render_template('profile.html', account=account)
     return redirect(url_for('login'))
 
