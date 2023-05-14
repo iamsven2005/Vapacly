@@ -1,0 +1,903 @@
+System Security Features
+
+Individual Report On Securing Websites/Webapps
+
+System security refers to the measures taken to protect computer systems and networks from 
+unauthorized access, theft, damage or disruption. Secure web applications are important for 
+end-users as they ensure that their sensitive information such as personal data, financial 
+information, and passwords are kept confidential and protected from cyber-attacks. Without 
+secure web applications, end-users are vulnerable to hacking, identity theft, and other 
+cybercrimes that can have serious consequences. Therefore, it is important to prioritize system 
+security and implement robust security measures to protect both the system and end-users. 
+With that I will be sharing the system security features of three different websites and what they 
+do to secure their end-users:
+
+Whatsapp /Deepnotes /Wikipedia
+
+WhatsApp
+
+WhatsApp is a messaging app that allows users to communicate with each other via text, voice, 
+and video calls, as well as sharing photos, videos, documents, and location information. It 
+operates by using the internet to send and receive messages, making it a cost-effective way to 
+
+
+stay in touch with friends and family around the world. Users can create groups to chat with 
+multiple people at once, and the app employs end-to-end encryption to ensure the privacy and 
+security of user's messages.
+
+1.Message Encryption:
+
+WhatsApp uses end-to-end encryption for all messages, which means that only the sender and 
+recipient can read the messages, and nobody else, not even WhatsApp themselves, can access 
+the content of the messages. This is done by using a unique encryption key for each 
+conversation.
+
+Pros:
+
+Improved privacy and security of user's messages
+Protection against eavesdropping and unauthorized access to messages
+Offers end-to-end encryption, meaning only the sender and recipient can access the 
+messages
+Provides peace of mind for users who value their privacy and security
+
+
+Cons:
+
+Encryption can make it difficult for law enforcement agencies to access messages for legal 
+investigations
+
+
+
+Encrypted messages may be used for illegal activities such as terrorism or other criminal 
+activities
+Users may lose access to their messages if they lose their device or forget their password, as 
+the messages cannot be recovered by WhatsApp
+
+
+2.Two-step verification:
+
+WhatsApp's two-step verification is an optional security feature that provides an extra layer of 
+protection for your account. It requires you to enter a six-digit PIN when registering your phone 
+number with WhatsApp, making it harder for someone else to activate your account without 
+your knowledge.
+
+
+This feature benefits end-users by greatly reducing the risk of unauthorized access to their 
+WhatsApp account. It adds an additional layer of security, making it much harder for hackers to 
+access user data, including messages, photos, and videos.
+
+Additionally, two-step verification helps users in case they lose their phone or SIM card. Without 
+the six-digit PIN, no one can activate their account on a new device, preventing unauthorized 
+access to their information.
+
+Overall, WhatsApp's two-step verification is a simple yet effective way to keep your account and 
+personal information secure. It is highly recommended that all users enable this feature to 
+protect their privacy and security.
+
+Pros:
+
+Increased Security: Two-step verification adds an extra layer of security to your WhatsApp 
+account, making it more difficult for unauthorized individuals to access your account.
+Easy Setup: The setup process for two-step verification is quick and easy, and can be done 
+within the app.
+Notification: Users receive a notification when someone tries to activate their WhatsApp 
+account on a new device.
+
+
+Cons:
+
+Recovery: If you forget your two-step verification PIN and didn't set up an email address for 
+recovery, you may lose access to your account permanently.
+Additional Step: The extra step of entering a PIN each time you log in can be seen as an 
+inconvenience for some users.
+False Sense of Security: Two-step verification can give users a false sense of security, leading 
+them to be less cautious with their personal information.
+
+
+3.Disappearing messages:
+
+
+WhatsApp's disappearing messages feature allows users to send messages that disappear after 
+a set period of time. This feature is particularly useful for users who value their privacy and want 
+to ensure that their messages are not stored indefinitely. Disappearing messages can also help 
+to reduce clutter in chat threads, making it easier to find important information. Additionally, 
+this feature can be helpful for people who are concerned about their messages being accessed 
+by unauthorized individuals. Overall, WhatsApp's disappearing messages feature offers a simple 
+and effective way for users to communicate more securely and privately.
+
+Pros:
+
+Privacy: Disappearing messages provide an added layer of privacy by automatically deleting 
+messages after a set period of time, ensuring that sensitive or personal information does 
+not remain on a user's device or in the cloud.
+Storage: Disappearing messages can help users save storage space on their devices by 
+automatically removing old messages, photos, and videos.
+Convenience: Users can use disappearing messages to avoid clutter in their chat history and 
+easily manage their conversations.
+
+
+Cons:
+
+Loss of information: Disappearing messages can lead to a loss of important information that 
+was not backed up or saved elsewhere.
+Miscommunication: Users may mistakenly assume that important information will be 
+retained, leading to miscommunication or misunderstandings.
+Limited time frame: The short time frame of disappearing messages may not be sufficient 
+for some users who need to refer to past conversations for work or personal reasons.
+
+
+
+4.Block and report:
+
+WhatsApp uses the block and report feature to help users feel safer and more secure on the 
+platform. When a user blocks another user, they will no longer receive messages, calls, or status 
+updates from that person. Additionally, the blocked user will not be able to see the user's profile 
+picture, status updates, or last seen status.
+
+If a user feels that another user is violating WhatsApp's terms of service or community 
+guidelines, they can report them by going to the chat, tapping on the user's name, and selecting 
+"Report". This will alert WhatsApp's dedicated team, who will review the report and take 
+appropriate action if necessary. This will deter malicious actors and make it harder for points of 
+
+
+attack due to vigilance of the community. Additionally the ability to have admin set the 
+interaction ability of the group setting prevent access of attackers of priviledge.
+
+By using the block and report feature, WhatsApp is able to maintain a safer and more secure 
+environment for their users. Users are empowered to control who they interact with, and the 
+reporting system ensures that any violations are quickly addressed.
+
+Pros:
+
+Block and report features provide a way for users to protect themselves from unwanted or 
+abusive messages.
+Blocking a user prevents them from sending messages or calling the user on WhatsApp.
+Reporting a user to WhatsApp can result in their account being banned if they are found to 
+be violating WhatsApp's terms of service.
+
+
+Cons:
+
+Overuse of the block feature can lead to a user missing important messages from someone 
+they may have blocked.
+The report feature can be used maliciously by users who want to get someone else's 
+account banned for no real reason.
+Reporting a user does not guarantee that their account will be banned, and the process can 
+take some time to resolve.
+
+
+5.Encrypted backups:
+
+
+WhatsApp uses end-to-end encryption to secure users' messages and calls. When users back up 
+their chats to the cloud, the backups are also encrypted using a unique key that only the user 
+has access to. This ensures that even if someone gains access to the backup, they won't be able 
+to read its contents without the key. This provides an extra layer of security and privacy for 
+users, while also making it easier to restore their chats if they switch to a new device.
+
+Pros:
+
+Encrypted backups provide an added layer of security to protect sensitive WhatsApp data 
+from potential hackers or unauthorized access.
+End users can easily recover their WhatsApp data in case of a device loss or damage.
+Encrypted backups offer end-to-end encryption, which ensures that only the user can access 
+their chat history, even if stored on a cloud server.
+Encrypted backups can be scheduled to occur automatically, which is convenient for users 
+who want to ensure they always have an up-to-date backup.
+
+
+Cons:
+
+Encrypted backups can take up significant space on a user's device or cloud storage.
+If a user forgets their encryption key, they will not be able to access their encrypted backup, 
+which could result in permanent data loss.
+Encrypted backups can be slower to restore than unencrypted backups, which can be 
+frustrating for users who need to recover their data quickly.
+Encrypted backups are only available for WhatsApp users on iOS and Android, leaving out 
+users of other mobile platforms.
+
+
+6.Last seen and online:
+
+
+WhatsApp integrates the "last seen" and "online" features to enhance the browsing experience 
+for their users. This feature allows users to have more control over their privacy and security by 
+choosing who they want to share their online status with. Additionally, it provides a more 
+seamless and secure communication experience by letting users know when their contacts are 
+available to chat. However, users can also choose to disable these features if they prefer not to 
+share their online status with others.
+
+Pro:
+
+Can provide users with an idea of when their contacts are available to chat
+Can help users avoid spam or unwanted messages by only accepting messages from 
+contacts who are recently active
+Can give users a sense of security by knowing that their contacts are active and potentially 
+able to respond in case of an emergency
+
+
+Cons:
+
+Can give a false sense of security as users may assume that their contacts are always 
+available to respond when in reality they may not be
+Can lead to privacy concerns as users may not want others to know when they are online or 
+when they were last seen
+Can cause anxiety or pressure for users to respond immediately, which may not always be 
+possible or desirable.
+
+
+
+7.Login limiting:
+
+WhatsApp prevents brute force attacks by using rate limiting and account lockout policies. After 
+a certain number of failed login attempts, the user's account is locked out for a period of time. 
+
+Rate limiting is a technique used to control the rate at which requests are made to a server or 
+API. It helps prevent excessive usage of resources and can also protect against malicious attacks. 
+The server or API sets limits on the number of requests that can be made within a certain period 
+of time, and if those limits are exceeded, additional requests may be blocked or throttled.
+
+WhatsApp's account lockout policies are designed to prevent unauthorized access to users' 
+accounts. If you enter the wrong verification code too many times, WhatsApp will temporarily 
+lock your account. Additionally, WhatsApp may lock your account if it detects suspicious activity 
+or if you violate the app's terms of service. If your account is locked, you will need to wait for a 
+specific period of time before attempting to log in again. The duration of the lockout period will 
+depend on the specific circumstances of your account.
+
+Pros:
+
+Rate limiting can prevent automated attacks and limit the impact of brute force attacks, 
+protecting users' accounts from unauthorized access.
+
+
+
+Account lockout policies can prevent unauthorized access and protect user data from being 
+compromised.
+
+
+Cons:
+
+Rate limiting can potentially cause inconvenience to users who are trying to access their 
+account from different locations or devices.
+Account lockout policies can potentially lock out users who have forgotten their login 
+credentials or are experiencing technical issues, causing frustration and inconvenience.
+
+
+8.Patching:
+
+
+WhatsApp implements various security measures to protect its users from exception attacks. 
+One way it does this is by regularly releasing updates that address known vulnerabilities and 
+bugs. If an exception does occur, WhatsApp has a dedicated security team that investigates and 
+responds to security incidents. This includes route-back linking check so that at any one point 
+there is only one link that is accessible by the end user preventing any routing related attacks. 
+This means that using a centralized error strategy (forward error to a particular page) to 
+promote consistency will not be needed.
+
+Pros:
+
+Improved security: Patches often address security vulnerabilities, making the app less 
+susceptible to hacking and data breaches.
+Better performance: Patches can also improve app performance by fixing bugs, reducing 
+crashes, and increasing overall stability.
+Access to new features: Some patches may add new features or improve existing ones, 
+enhancing the user experience.
+
+
+Cons:
+
+Delayed updates: Depending on the device and operating system, users may have to wait 
+for their device manufacturer or carrier to release the patch, which can take some time.
+Compatibility issues: Patches may not be compatible with all devices or operating systems, 
+which can cause problems for some users.
+Potential for new bugs: While patches aim to fix existing bugs, they may introduce new ones 
+if not thoroughly tested.
+
+
+9.Device Verification:
+
+
+Mobile device malware is one of the biggest threats to people’s privacy and security today 
+because it can take advantage of your phone without your permission and use your WhatsApp 
+to send unwanted messages. To help prevent this, we have added checks to help authenticate 
+your account - with no action needed from you - and better protect you if your device is 
+compromised. This lets you continue using WhatsApp uninterrupted.
+
+WhatsApp uses several cryptographic keys to ensure that communications across the app are 
+end-to-end encrypted. One of these is the authentication key, which allows a WhatsApp client to 
+connect to the WhatsApp server to re-establish a trusted connection. This authentication key 
+allows people to use WhatsApp without having to enter a password, PIN, SMS code, or other 
+credential every time they turn on the app.
+
+This mechanism is secure because the authentication key cannot be intercepted by any third 
+party including WhatsApp. If a device is infected with malware, however, the authentication key 
+can be stolen.
+
+Device Verification introduces three new parameters: 
+
+-A security-token that’s stored on the users` device.
+
+-A nonce that is used to identify if a client is connecting to retrieve a message from WhatsApp.
+
+-An authentication-challenge that is used to asynchronously ping the users` device. 
+
+10.Key Transparency:
+
+Auditable Key Directory (AKD) enables anyone to verify audit proofs of the directory’s 
+correctness and underpins key transparency deployment. AKD is a new cryptographic security 
+feature to automatically verify a secure connection without the need for security code 
+verification feature available under a user’s contact info. The server (WhatsApp) maintains an 
+append-only AKD of public keys mapped to user accounts. A third-party audit record, wherein 
+any change in the server directory is recorded in a publicly available, privacy-preserving audit 
+record for anyone to verify. The AKD will enable WhatsApp clients to automatically validate that 
+a user’s encryption key is genuine and enables anyone to verify audit proofs of the directory’s 
+correctness. In effect, this confirms that the same public keys a user uses to contact a recipient 
+are the same ones that everybody else also uses to communicate with the recipient. 
+
+
+11.Certificate:
+
+WhatsApp uses HTTPS and SSL to encrypt all communication between its servers and users' 
+devices, ensuring that data is protected from interception or tampering. QUIC is a newer 
+transport protocol that improves speed and security by reducing latency and encrypting traffic 
+by default. X25519 is a key exchange algorithm that enables secure communication between 
+devices, while AES_128_GCM is a symmetric encryption algorithm that provides strong 
+encryption for messages sent via WhatsApp. Together, these technologies help ensure that 
+WhatsApp provides a secure and reliable messaging service for its users.
+
+12.Server Hardening:
+
+
+WhatsApp employs a variety of security measures to harden their servers, including end-to-end 
+encryption, two-factor authentication, access controls, and monitoring for suspicious activity. 
+They also conduct regular security audits and implement patches and updates as needed to 
+address any potential vulnerabilities.
+
+WhatsApp uses a microservices infrastructure. This allows for better scalability, flexibility, and 
+fault tolerance. Microservices also make it easier to update and add new features to the 
+application without disrupting the entire system. Using microservices in web development can 
+lead to better security because it allows for a more granular approach to security measures. 
+Each microservice can have its own security measures and access controls, making it easier to 
+isolate and contain security threats. Additionally, microservices can be updated and patched 
+individually, reducing the risk of a single vulnerability affecting the entire system.
+
+WhatsApp uses various monitoring tools and algorithms to detect anomalies in their network. 
+When an anomaly is detected, they take measures to isolate the issue and prevent it from 
+
+
+affecting users. These measures may include rerouting traffic, deploying additional servers, or 
+contacting the relevant service providers for assistance. WhatsApp also has a team of experts 
+who work around the clock to monitor the network and respond to issues as quickly as possible.
+
+WhatsApp ensures that their service is always up by using a combination of measures such as 
+server redundancy, load balancing, and continuous monitoring of their systems. WhatsApp 
+creates a fallback on dependency by using multiple servers to handle user requests. If one 
+server fails, the system automatically switches to a backup server to ensure uninterrupted 
+service. Additionally, the app is designed to prioritize essential functions, such as sending 
+messages, over non-essential features during periods of high traffic or issues. 
+
+WhatsApp uses a continuous integration and continuous delivery (CI/CD) approach to ensure 
+security stays up to date on the latest security threats. This involves a combination of automated 
+and manual testing, code analysis, and security scanning to identify vulnerabilities and ensure 
+security patches are quickly deployed to users. 
+
+WhatsApp protects against SQL injection attacks by using prepared statements and 
+parameterized queries to sanitize user input. This means that any user input is treated as a 
+parameter instead of being directly included in the SQL statement, which eliminates the risk of 
+malicious SQL code being injected. Additionally, WhatsApp employs other security measures 
+such as input validation and access controls to further mitigate the risk of SQL injection attacks.
+
+13.Device Tracking and Checking:
+
+
+WhatsApp only allows one tab open at any one time to ensure the security of users' accounts. If 
+multiple tabs were allowed, it would be easier for someone to gain unauthorized access to the 
+account. Additionally, WhatsApp notifies users when a new device is connected to their account 
+to alert them of any potential security breaches. This allows users to take action to protect their 
+account if they believe it has been compromised. Say if someone was to steal your device, you 
+can delete that link, delete your account, reset auth and even report the incident in the settings. 
+Overall, these measures help to ensure the safety and privacy of WhatsApp users.
+
+14.No Password:
+
+WhatsApp uses phone numbers for verification purposes instead of passwords because it 
+simplifies the process for users who may not remember their passwords. Additionally, using 
+phone numbers allows WhatsApp to verify the user's identity through a code sent via SMS or 
+phone call, which is considered a more secure method of verification. This means that any 
+password or brute forcing attacks will not be effective against Whatsapp. Say even if your token 
+or cookie has been stolen, there will be no point of attack due to the single callback system of 
+only replying once. Everything else is hashed using keys and certs.
+
+15.URL Protection:
+
+WhatsApp has implemented several security measures to prevent users from clicking on 
+malicious phishing links. These measures include link scanning and detection of suspicious links, 
+
+
+providing in-app warnings and notifications to users, and blocking suspicious links from being 
+shared. Additionally, WhatsApp encourages users to be cautious and vigilant when clicking on 
+links, and to report any suspicious activity to the company. By encoding their url to be interacted 
+with their API, this ensures that the first point of contact for url will be immediately be detected 
+by an IDS and reported, then being redirected to a banned page.
+
+Deepnotes (https://deepnotes.app/)
+
+An open source, END-TO-END ENCRYPTED visual note-taking tool with deep page navigation. Allows for 
+collaboration with your team or work simultaneously from multiple devices. Password-protect your 
+groups for an extra level of protection. Double-click to create a note and see the possibilities. Move, 
+resize, expand, collapse, link, colorize. Use containers to create note hierarchies.
+
+1.Encryption libraries
+
+
+DeepNotes uses the Sodium library for most cryptographic operations, argon2-browser on the client 
+side for key derivations, and CryptoJS on the server-side for creating blind indexes.
+
+-About Sodium(https://libsodium.gitbook.io/doc/)
+
+Sodium is a modern, easy-to-use software library for encryption, decryption, signatures, password 
+hashing, and more. It is a portable, cross-compilable, installable, and packageable fork of NaCl, with a 
+compatible but extended API to improve usability even further. Its goal is to provide all of the core 
+operations needed to build higher-level cryptographic tools. Sodium is cross-platform and cross-
+language. It runs on many compilers and operating systems, including Windows (with MinGW or Visual 
+Studio, x86 and x86_64), iOS, and Android. JavaScript and WebAssembly versions are also available and 
+fully supported. Furthermore, bindings for all common programming languages are available and well-
+supported.
+
+-About argon2-browser (https://www.npmjs.com/package/argon2-browser)
+
+Argon2-browser is a JavaScript library that provides a secure way to hash passwords in web 
+applications. It uses the Argon2 algorithm, which is currently considered the most secure 
+password hashing algorithm available. By using Argon2-browser, web developers can help to 
+make their applications more secure against password attacks, such as brute-force and 
+dictionary attacks.
+
+-About CryptoJS (https://www.npmjs.com/package/crypto-js )
+
+CryptoJS is a JavaScript library that provides cryptographic functionality to web applications. It 
+supports a wide range of encryption algorithms and methods, making it a popular choice for 
+securing data in web applications. By using CryptoJS, web applications can provide a secure 
+environment for their users by encrypting sensitive data before sending it over the network, 
+preventing unauthorized access and ensuring data privacy.
+
+2.Encryption algorithms
+
+
+Symmetric encryption is done through XChaCha20-Poly1305, and asymmetric encryption is done 
+through X25519-XSalsa20-Poly1305. Password hashing and key derivations are done using Argon2id.
+
+XChaCha20-Poly1305 is a type of authenticated encryption algorithm that provides 
+confidentiality, integrity, and authenticity of data. It is based on the ChaCha20 stream cipher and 
+the Poly1305 authenticator. In implementation, XChaCha20-Poly1305 generates a random nonce 
+for each message and encrypts the message using the ChaCha20 stream cipher. The Poly1305 
+authenticator is then used to generate a tag that is attached to the encrypted message. This tag 
+is used to verify the authenticity of the message during decryption. XChaCha20-Poly1305 is 
+commonly used in modern cryptographic protocols, such as TLS 1.3 and the Signal messaging 
+app, due to its security, speed, and versatility.
+
+X25519-XSalsa20-Poly1305 is a cryptographic protocol that provides secure communication over 
+the internet. It is an authenticated encryption algorithm that uses the X25519 key exchange, 
+XSalsa20 stream cipher, and Poly1305 message authentication code. This protocol is 
+implemented in various libraries and frameworks, such as libsodium, NaCl, and OpenSSL, which 
+provide APIs for developers to use in their applications. The implementation typically involves 
+generating a public and private key pair, exchanging public keys securely, generating a shared 
+secret, and using it to encrypt and authenticate the communication.
+
+3.Padding variable-length data
+
+
+Deepnotes apply 8-byte block padding to variable-length data such as group names, page titles 
+and user aliases using the ISO/IEC 7816-4 padding algorithm. This means that the length of the 
+padded plaintext is always a multiple of 8 bytes. This is done to reduce the risk of leaking 
+information about the plaintext through the ciphertext length. Padding is applied before 
+encryption and removed after decryption.
+
+ISO/IEC 7816-4 is a standard for smart communication. It defines a method for padding data to 
+make it a fixed length. The padding algorithm adds bytes to the end of the data until it reaches 
+the desired length. The added bytes have a value that indicates how many bytes were added. 
+The implementation of the algorithm varies depending on the programming language and 
+platform being used.
+
+4.Peppering
+
+Deepnotes add an extra layer of security on the server-side by encrypting user data with keys 
+stored only in environment variables. This is done so that an attacker who gains access to the 
+database doesn't have direct access to valuable data. They do this to the following user data: 
+email, password hash, two factor authentication secret, and recovery codes. In order to keep 
+emails searchable in the database, they create a blind index of the emails using HMAC-SHA256, 
+again keeping the secret stored only in an environment variable.
+
+HMAC-SHA256 is a type of keyed hash function that uses the SHA-256 hash algorithm along with 
+a secret key to provide message authentication. It is commonly used in applications that require 
+secure communication, such as online banking and e-commerce. To implement HMAC-SHA256, 
+you first generate a secret key that is known only to the sender and receiver. Then, you use the 
+SHA-256 algorithm to generate a hash of the message being sent. Finally, you use the secret key 
+to "sign" the hash by generating another hash using both the secret key and the original hash as 
+inputs. This signed hash is then sent along with the original message and can be used by the 
+recipient to verify the authenticity of the message.
+
+5.Key rotation
+
+
+They rotate group encryption keys on every group member removal. Page encryption keys are 
+rotated on the first user interaction with the page after 7 days have passed since the last page 
+key rotation. Keyrings is used in order to facilitate realtime key rotation. A keyring is a list of 
+keys, where the first key is the current key, and the rest are previous keys. On a key rotation, 
+they generate a new key that is added to the beginning of the keyring. At this moment, the 
+maximum number of keys in a keyring is set to 3.
+
+Encryption in DeepNotes starts with the user's master key, which is derived from the user's 
+password, using their email as salt. This master key encrypts the user's private key and 
+symmetric key, which are stored encrypted in DeepNotes.
+
+Each group member receives a group key and an internal key, which are encrypted 
+asymmetrically using the users' public and private keys. The group key is public in public groups, 
+and private in private groups, while the internal key is private in both public and private groups. 
+The internal key exists to keep the group's private key and group member names secret, even in 
+public groups.
+
+Each group has a content key, which is encrypted symmetrically using the group key. This key is 
+used to encrypt all page-related data in the group. In password-protected groups this key is 
+wrapped with a key derived from the given password.
+
+Lastly, each page and page snapshot have their own encryption key.
+
+6.Password protected groups
+
+
+DeepNotes uses Yjs for realtime collaboration. Each page is represented by a Yjs document. 
+Document updates are encrypted using the page's encryption key before being sent to the 
+server. Each page update is encrypted with a new random nonce. The server then broadcasts 
+the encrypted updates to all connected group members and saves them in the database. Group 
+password protection is done by wrapping the group content key with another key derived from 
+the group password. We call this wrapper key the group password key.
+
+In order to derive the group password key, they use a process similar to login authentication. 
+The Argon2id key derivation algorithm encrypts using the group ID as salt, with the following 
+settings: 8 iterations, 32 MB memory, 1 thread, and 96 bytes output length. The output is broken 
+into two parts, the first 32 bytes are used as the group password key, and the remaining 64 
+bytes are used as the password hash. The password hash is sent to the server to verify on that 
+the password is correct.
+
+A group is made public by exposing the group key publicly. This reveals the group name and 
+content to the public, but not the group members' identities. When a public group is made 
+private, all group keys are immediately rotated, and all page keys are set for rotation in the next 
+page activity.
+
+
+7.Registering a user
+
+
+In order to register a user, the master key is first derived and login hash from the password, 
+using the email as salt. A new key pair is generated and a symmetric key, and encrypt the private 
+key and symmetric key with the master key. The login hash, public key and encrypted keys are 
+then sent to the server.
+
+On the server, 2 iterations of Argon2id is executed on the login hash, using a random salt, to 
+derive a server key and a rehashed login hash. The server key is used to reencrypt the encrypted 
+keys received from the client. The email, salt, rehashed login hash, and reencrypted keys are 
+then stored in the database.
+
+8.Authenticating a user
+
+
+For user authentication we repeat the same process as in user registration, but instead of 
+storing those values, we use them to verify the user's identity and decrypt the user's private key 
+and symmetric key.
+
+Having verified the user, we then perform a session start operation, in which we generate a 
+session ID, a session key and a refresh code. We store the user's private key and symmetric key 
+encrypted with the session key in local storage. We also generate an access token and a refresh 
+token, and store them in secure cookies.
+
+9.Refreshing a session
+
+To refresh a session, we extract the refresh code from the refresh token, and use it to find the 
+session in the database. If the session isn't found through the refresh code, we invalidate the 
+session by using the session ID stored in the refresh token. This is how DeepNotes prevents 
+refresh token reuse.
+
+If the session is found, we generate new session values and tokens for the user and reencrypt 
+the user's keys.
+
+
+We add a group member by encrypting the group key and internal key asymmetrically using the 
+new member's public key. We then send the encrypted keys to the server, which stores them in 
+the database.
+
+We remove a group member by deleting their encrypted keys from the database. Then we 
+rotate the group keys and set the page keys for rotation in the next page activity.
+
+10.Login
+
+
+The advantage of using an email as a username for login is that it is unique to each individual 
+user, reducing the likelihood of username duplication. Additionally, email addresses are often 
+easier to remember than unique usernames, making the login process more convenient for 
+users. Finally, emails can be used to verify user accounts and reset passwords, increasing the 
+security of the login system. Here are some features used in the login process
+
+• Password complexity
+
+• Form validation
+
+• Security questions
+
+• Anti-bot (captcha) vs 2FA
+
+• Account creation
+
+– Password protection /w hash + salt (repeat password)
+
+• Account verification
+
+– E.g via email or SMS etc
+
+On the spot encryption and checks by authenticating tokens with server.
+
+Wikipedia
+
+
+Wikipedia is a valuable resource for daily life as it provides free and easily accessible information 
+on a wide range of topics. It is a platform where millions of users contribute their knowledge and 
+expertise to create a comprehensive database of information. Therefore, it is important to 
+secure Wikipedia for end-users to ensure that the information provided is accurate, reliable, and 
+up-to-date. Additionally, securing Wikipedia also protects the privacy and security of its users, 
+preventing any unauthorized access or malicious activity on the platform.
+
+1.Password Strength
+
+To register for Wikipedia, your password must be at least 8 characters long and include at least 
+one uppercase letter, lowercase letter, number, and symbol. It is recommended to use a strong 
+and unique password to protect your account.
+
+Pros of having a strong password requirement for Wikipedia's login process would include 
+increased security and reduced risk of unauthorized access.
+
+Cons could include user frustration at having to remember a more complex password, and the 
+possibility of users resorting to writing down their password, which could then compromise 
+security.
+
+2.Password Hash + Salt
+
+Wikipedia uses a method called "bcrypt" to hash user passwords, which is a one-way hashing 
+function that makes it difficult for hackers to retrieve passwords even if they gain access to the 
+database. Additionally, Wikipedia has implemented additional security measures such as limiting 
+access to the database, requiring strong and unique passwords, and regularly monitoring and 
+updating their security protocols to ensure user information remains secure.
+
+The main advantage of using password hashing for Wikipedia login is that it adds an extra layer 
+of security to user accounts. This ensures that even if an attacker gains access to the database of 
+user passwords, they won't be able to easily decipher the actual passwords. However, one 
+potential disadvantage of password hashing is that it can make it more difficult for users to reset 
+their passwords if they forget them. Additionally, implementing password hashing requires 
+additional resources and may increase the complexity of the login process. Overall, the benefits 
+of password hashing typically outweigh the drawbacks, making it a recommended security 
+practice.
+
+Wikipedia uses a secure hashing algorithm to store passwords, which means that the actual 
+password is not stored in their database. Instead, a unique code is generated from the password 
+and stored. When a user logs in, the password they enter is hashed and compared to the stored 
+
+
+code. If they match, the user is granted access. This method helps to protect users' passwords 
+from being compromised in the event of a data breach.
+
+3.Password Confirm
+
+Wikipedia uses a confirm password field during account registration to ensure that the user has 
+entered their chosen password correctly. This helps to prevent typos and other errors that could 
+result in the user being locked out of their account. Confirming the password also adds an extra 
+layer of security by making it more difficult for unauthorized users to gain access to the account. 
+
+Pros:
+
+Adding a password confirmation field during registration can help to prevent users from 
+mistyping their password and being locked out of their account.
+It can also help to reduce the number of support requests related to forgotten passwords.
+By ensuring that users have chosen a strong and secure password, it can help to improve 
+the overall security of the platform.
+
+
+Cons:
+
+Adding an additional step to the registration process can be seen as a barrier to entry, and 
+may discourage some users from signing up.
+Users who struggle to remember their password may find it frustrating to have to enter it 
+twice during registration.
+Password confirmation fields can also be a source of confusion for some users, who may 
+not understand why they are being asked to enter their password twice.
+
+
+4. Email Notification
+
+Wikipedia may request your email for security purposes, such as enabling two-factor 
+authentication, allowing you to receive password reset instructions, or notifying you of potential 
+security breaches. Providing an email can help keep your account secure and prevent 
+unauthorized access.
+
+Wikipedia does not use your email for any commercial or marketing purposes. However, they 
+may use your email for the following reasons:
+
+To send you notifications about changes to articles that you have edited or are interested in.
+To confirm your email address when you sign up for an account.
+To reset your password if you forget it.
+To communicate with you about issues related to your account or contributions.
+
+
+Wikipedia takes your privacy seriously and does not share your email address with third parties 
+without your consent.
+
+5. Captcha
+
+
+CAPTCHA stands for "Completely Automated Public Turing test to tell Computers and Humans 
+Apart." It is a security feature that helps to protect websites from automated spam and abuse by 
+requiring users to verify that they are human. CAPTCHAs typically involve solving a visual puzzle 
+or answering a simple question that only a human would be able to answer correctly. This helps 
+to prevent bots and other automated tools from accessing and exploiting the website's 
+resources. By implementing CAPTCHAs, websites can more effectively protect themselves 
+against malicious activity and ensure that their content and services are only being accessed by 
+real users.
+
+Wikipedia implements CAPTCHA as a security measure to prevent automated programs or bots 
+from spamming or vandalizing their pages. CAPTCHA requires users to prove that they are 
+human by completing a task that is difficult for automated programs to complete, such as 
+identifying distorted letters or numbers. This helps ensure the integrity of the content on 
+Wikipedia and maintain the site's reliability.
+
+6. Keep me logged in (1 year)
+
+Keeping a user logged in for only a year on Wikipedia helps to ensure the safety and security of 
+their account. It also encourages users to regularly review and update their personal 
+
+
+information, which can lead to a more streamlined and user-friendly experience. Additionally, it 
+helps to prevent unauthorized access to user accounts and enhances overall account security.
+
+Pros:
+
+Improved security: By having a user logged in for only 1 year, you reduce the risk of 
+unauthorized access to their account.
+Encourages account activity: Knowing that their account will expire in a year can motivate 
+users to use it more frequently, which can be beneficial for businesses or organizations.
+Data management: Having an expiration date on user accounts can help with data 
+management, as it encourages users to regularly update their information or delete their 
+account if they no longer need it.
+
+
+Cons:
+
+Inconvenience: For users who don't log in frequently, having their account expire after only 
+a year can be inconvenient and frustrating.
+Loss of data: If a user forgets to renew their account, they may lose all of their data and 
+information associated with that account.
+Missed opportunities: If a user's account expires before they have a chance to take 
+advantage of certain features or benefits, they may miss out on those opportunities.
+
+
+7. 2FA
+
+Wikipedia uses two-factor authentication (2FA) as an additional layer of security to protect user 
+accounts from unauthorized access. By requiring a verification code in addition to a password, 
+2FA makes it much more difficult for hackers to gain access to an account. This helps to protect 
+sensitive information and prevent unauthorized edits to Wikipedia pages.
+
+Pros:
+
+Two-factor authentication (2FA) adds an additional layer of security to Wikipedia, making it 
+harder for unauthorized users to access user accounts.
+2FA can help prevent account hijacking, phishing, and other types of online attacks.
+
+
+
+Using 2FA can help protect sensitive information and prevent unauthorized edits to 
+Wikipedia pages.
+
+
+Cons:
+
+Some users may find 2FA to be an inconvenience or a barrier to logging in.
+2FA may not be foolproof and can still be bypassed by determined hackers.
+Implementing 2FA can be costly and time-consuming for Wikipedia administrators.
+
+
+8. Rate Limiting
+
+Rate limiting is a technique used to control the amount of traffic sent or received by a server 
+within a specific time frame. Wikipedia uses rate limiting to prevent bots or individuals from 
+overwhelming their servers with too many requests at once, which can cause the website to slow 
+down or crash. This helps ensure that Wikipedia remains accessible and available to all users. 
+Wikipedia implements rate limiting by setting limits on the number of edits or requests that a 
+user can make within a specified time period. This helps prevent spamming or overloading the 
+system. Additionally, Wikipedia uses various security measures such as CAPTCHAs and two-
+factor authentication to protect user accounts from unauthorized access and keep the platform 
+secure.
+
+Pros:
+
+Helps prevent abuse and vandalism on the site
+Enables fair access to the site for all users
+Helps ensure site stability and reliability
+Encourages responsible use of the site
+
+
+Cons:
+
+May limit legitimate users from accessing the site if they exceed the limit
+May create frustration for users who are unable to access the site when they need
+Can be difficult to implement and fine-tune to balance site security and access.
+
+
+
+9. HTTPS encryption
+
+HTTPS encryption is a secure way of transferring data between a web browser and a website. It 
+ensures that the data exchanged between the two is encrypted, making it difficult for anyone to 
+intercept or read the data. This is achieved through the use of SSL/TLS protocols, which 
+establishes a secure connection between the browser and the website. Wikipedia uses HTTPS 
+encryption to ensure that communication between your web browser and their server is secure 
+and private. This helps to protect your personal information and prevent unauthorized access to 
+your browsing activity.
+
+Pros:
+
+Cookies can be used to maintain a user's authentication status, which can help prevent 
+unauthorized access to sensitive information.
+Cookies can be used to personalize a user's experience on a website, such as remembering 
+their preferences or displaying relevant content.
+Cookies can be used for session management to help prevent cross-site scripting (XSS) 
+attacks.
+
+
+Cons:
+
+Cookies can be vulnerable to attacks such as cross-site request forgery (CSRF) and cross-site 
+scripting (XSS).
+
+
+
+Cookies can be used to track a user's browsing behavior, which may be a privacy concern 
+for some individuals.
+Cookies can be disabled by users, which may result in a degraded experience on a website.
+
+
+10. Data Sanitation
+
+Data sanitation is the process of cleaning and validating user input to prevent malicious attacks 
+such as SQL injections and cross-site scripting. By sanitizing data, a website can ensure that user 
+input is safe and does not contain harmful code that can compromise the security of the website 
+and its users. This is important for maintaining the confidentiality, integrity, and availability of 
+sensitive information. 
+
+Wikipedia implements data sanitation through a variety of methods such as automated filters, 
+user moderation, and community guidelines. These measures help ensure that inappropriate or 
+misleading content is removed or corrected, and that the information on Wikipedia is accurate 
+and reliable.
+
+Pros:
+
+Data sanitation helps ensure that the information on Wikipedia is accurate and reliable.
+It can prevent the spread of misinformation and false information on the site.
+The process of data sanitation can help identify and correct errors and inconsistencies in the 
+content.
+It promotes transparency and accountability, as editors must justify their changes and 
+provide sources for their information.
+
+
+Cons:
+
+Data sanitation can be time-consuming and labor-intensive, as editors must review and 
+verify each piece of content.
+There is a risk of censorship or bias creeping into the process, as editors may have their own 
+agendas or perspectives that influence their decisions.
+
+
+
+Some editors may be overly zealous in their efforts to sanitize the content, leading to an 
+overly rigid and inflexible editorial process.
+The process of data sanitation can be intimidating to new or inexperienced editors, who 
+may feel discouraged from contributing to the site.
+
+
+

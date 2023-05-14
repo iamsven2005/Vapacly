@@ -5,6 +5,15 @@ import re
 from flask_bcrypt import Bcrypt
 import cryptography 
 from cryptography.fernet import Fernet
+
+#csrf
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
+class CountrySearch(FlaskForm):
+    country_name = StringField('country_name')
+    
+#end csrf
 bcrypt = Bcrypt()
 app = Flask(__name__)
 app.secret_key = 'your secret key'

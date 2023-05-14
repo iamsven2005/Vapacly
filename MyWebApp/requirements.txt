@@ -2,3 +2,5 @@ flask_mysqldb
 flask
 flask_bcrypt
 cryptography
+flask_wtf
+wtforms

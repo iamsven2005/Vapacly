@@ -5,6 +5,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Pacifico Regular'), local('Pacifico-Regular'),
+      url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
+        format('woff2');
+    font-display: swap;
+  }
 body {
     background-color: #435165;
     margin: 0;
@@ -27,14 +36,14 @@ body {
     padding: 0 15px;
 }
 .login .links a, .register .links a {
-    color: #adb2ba;
+    color: #5b6574;
     text-decoration: none;
     display: inline-flex;
     padding: 0 10px 10px 10px;
     font-weight: bold;
 }
 .login .links a:hover, .register .links a:hover {
-    color: #9da3ac;
+    color: black;
 }
 .login .links a.active, .register .links a.active {
     border-bottom: 3px solid #3274d6;
@@ -104,14 +113,14 @@ body {
 .navtop div a {
     padding: 0 20px;
     text-decoration: none;
-    color: #c1c4c8;
+    color: #adadad;
     font-weight: bold;
 }
 .navtop div a i {
     padding: 2px 8px 0 0;
 }
 .navtop div a:hover {
-    color: #eaebed;
+    color: #ffffff;
 }
 body.loggedin {
     background-color: #f3f4f7;
