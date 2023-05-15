@@ -10,9 +10,8 @@ from cryptography.fernet import Fernet
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
-class CountrySearch(FlaskForm):
-    country_name = StringField('country_name')
-    
+class csrfform(FlaskForm):
+    country_name = StringField('country_name')   
 #end csrf
 bcrypt = Bcrypt()
 app = Flask(__name__)
@@ -26,6 +25,10 @@ mysql = MySQL(app)
 @app.route('/', methods=['GET', 'POST']) 
 def login():
     msg = ''
+    
+    #csrf
+    form = csrfform()
+    
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
@@ -48,12 +51,15 @@ def login():
             return redirect(url_for('profile'))
         else:
             msg = 'Incorrect username/password!'
-    return render_template('index.html',msg='')
+    return render_template('index.html',msg='', form=form)
  
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    #csrf
+    form = csrfform()
+    
     msg = ''
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
@@ -73,7 +79,7 @@ def register():
 
     elif request.method == 'POST':
         msg = 'Please fill out the form!'
-    return render_template('register.html', msg=msg)
+    return render_template('register.html', msg=msg, form=form)
 
 @app.route('/home')
 def home():
@@ -103,6 +109,12 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
+    return redirect(url_for('login'))
+
+@app.route('/ip')
+def ip():
+    if 'loggedin' in session:
+        return render_template('test.html', username=session['username'])
     return redirect(url_for('login'))
 
 if __name__ == '__main__': 

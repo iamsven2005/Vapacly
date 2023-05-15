@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+  <html lang="en-US">
+    <head>
+      <meta charset="utf-8" />
+      <meta content="width=device-width,initial-scale=1.0" name="viewport">
+      <meta content="Register Page" property="og:description">
+      <meta content="Vapacly" name="description">
+      <title>Location</title>
+  <link rel="icon" href="locate.png" type="image/png">
+  <style>
+* {
+  background:black;
+  color:red;
+}
+
+iframe {
+  height:325px;
+  width:750px;
+}
+  </style></head>
+
+
+<body onload="getLocation()" data-new-gr-c-s-check-loaded="14.1108.0" data-gr-ext-installed="">
+<p style="color:red;">🔒 IP Address: <label id="username">138.199.21.200</label> Network: <span id="isp">AS212238 Datacamp Limited</span></p>
+
+<iframe id="demo" src="https://maps.google.com/?q=1.3794357,103.8496764&amp;output=svembed"></iframe>
+
+<p>Coordinates: <label id="lats">1.3794357,103.8496764</label>
+</p><div id="addy">Loading...</div><p></p>
+<!--<div id='isp'>ISP</div>-->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> 
+</script> 
+
+<script> 
+ 
+$.getJSON("https://api.ipify.org?format=json", 
+                function(data) { 
+
+  // Setting text of element P with id gfg 
+
+  let userName =(data.ip);
+  document.getElementById('username').innerHTML = userName;
+}) 
+
+</script> 
+
+<script>
+$.getJSON("https://ipinfo.io/json", 
+                function(data) { 
+
+  // Setting text of element P with id gfg 
+
+  let ISP =(data.org);
+  document.getElementById('isp').innerHTML = ISP;
+}) 
+</script>
+
+
+
+
+
+<script>
+
+var x = document.getElementById("demo");
+
+function getLocation() {
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(showPosition);
+} else { 
+  x.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
+
+var options = {
+maximumAge: 0
+};
+
+function showPosition(position) {
+var latlon = position.coords.latitude + "," + position.coords.longitude;
+    
+var img_url = "https://maps.google.com/?q="+latlon+"&output=svembed"
+
+document.getElementById("demo").src = img_url;
+document.getElementById('lats').innerHTML = latlon;
+
+var lat=position.coords.latitude;
+var lon=position.coords.longitude;
+var st='ca';
+var url='https://geoservices.tamu.edu/Services/ReverseGeocoding/WebService/v04_01/HTTP/default.aspx?lat='+lat+'&lon='+lon+'&state='+st+'&apikey=0a0265df4b684937b6ad1cfc9159aa40&format=json&version=4.10';
+
+    $.get(url, function(data, status){
+      var oba = JSON.parse(data);
+      var obj= oba["StreetAddresses"];
+  //alert(obj[0]['StreetAddress']);
+  //setTimeout('alert("Howdy!");', 2000);
+
+    document.getElementById('addy').innerHTML = "Address: "+obj[0]['StreetAddress']+" ZIP: "+obj[0]['Zip']+" | Parcel No: "+obj[0]['APN'];
+  });
+  
+
+}
+
+</script>
+
+<br><script type="text/javascript" src="//counter.websiteout.net/js/9/0/0/0"></script></body></html>

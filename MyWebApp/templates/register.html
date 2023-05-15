@@ -26,6 +26,7 @@
         >
       </div>
       <form action="{{ url_for('register') }}" method="post" autocomplete="off">
+        {{form.csrf_token}}
         <label for="username">
           <i class="fas fa-user"></i>
         </label>
