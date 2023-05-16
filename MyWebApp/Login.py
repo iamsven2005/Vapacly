@@ -116,6 +116,11 @@ def ip():
     if 'loggedin' in session:
         return render_template('test.html', username=session['username'])
     return redirect(url_for('login'))
+@app.route('/2fa')
+def fa():
+    if 'loggedin' in session:
+        return render_template('pipe.html', username=session['username'])
+    return redirect(url_for('login'))
 
 if __name__ == '__main__': 
     app.run()
