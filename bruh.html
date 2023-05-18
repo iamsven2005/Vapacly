@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Encoding and Auto-Escaping Form</title>
+    <script>
+      function encodeAndDisplay() {
+        var inputVal = document.getElementById("input").value;
+        var encodedVal = encodeURI(inputVal);
+        alert("Encoded input: " + encodedVal);
+        var decodedVal = decodeURI(encodedVal);
+        var list = document.getElementById("list");
+        list.innerHTML = "<li>" + decodedVal + "</li>";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Encoding and Auto-Escaping Form</h1>
+    <form>
+      <label for="input">Input:</label
+      ><textarea id="input" name="input"></textarea><br /><button
+        type="button"
+        onclick="encodeAndDisplay()"
+      >
+        Submit
+      </button>
+    </form>
+    <h2>Decoded Output:</h2>
+    <ul id="list"></ul>
+  </body>
+</html>

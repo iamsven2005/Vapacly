@@ -4,3 +4,4 @@ flask_bcrypt
 cryptography
 flask_wtf
 wtforms
+db-sqlite3

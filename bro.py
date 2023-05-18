@@ -104,6 +104,7 @@ def addnew():
     dict = {'ISBN (PK)': PK, 'Title': Title, 'Category': Category, 'Publisher': Publisher, 'Year_Published': Year}
     records.append(dict.copy())
     print("book has been added")
+    
 
 while True:
     displaymenu()
@@ -129,3 +130,4 @@ while True:
         break
     else:
         print("Please enter a valid value")
+        

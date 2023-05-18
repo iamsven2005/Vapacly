@@ -69,12 +69,12 @@ function checkFingerDirection(handLandmarks)
   else if (thumbPos.y < hehePos.x )
   {
       // Exibe "other" por 1 segundos
-      document.getElementById("finger-direction").textContent = "other";
+      document.getElementById("finger-direction").textContent = "password";
       setTimeout(() => {
-          document.getElementById("finger-direction").textContent = ""
+          document.getElementById("finger-direction").textContent = "";
           window.location = "https://www.youtube.com";
       }, 2000);
-      return "other";
+      return "password";
       
   }
   else
