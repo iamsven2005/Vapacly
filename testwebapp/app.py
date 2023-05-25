@@ -46,5 +46,5 @@ def participants():
 	return render_template("participants.html", data=data)
 
 
-if __name__ == '__main__':
-	app.run(debug=False)
+if __name__ == "__main__":
+    app.run()
