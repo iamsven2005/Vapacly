@@ -30,6 +30,19 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '5002nevsmai!'
 app.config['MYSQL_DB'] = 'pythonlogin'
 
+#CREATE DATABASE IF NOT EXISTS `pythonlogin` DEFAULT CHARACTER SET utf8 COLLATE
+#utf8_general_ci;
+#USE `pythonlogin`;
+#CREATE TABLE IF NOT EXISTS `accounts` (
+#`id` int(11) NOT NULL AUTO_INCREMENT,
+#`username` varchar(50) NOT NULL,
+#`password` varchar(255) NOT NULL,
+#`email` varchar(100) NOT NULL,
+#PRIMARY KEY (`id`)
+#) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+#INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES (1, 'test', 'test', 'test@test.com');
+
+
 mysql = MySQL(app)
 @app.route('/', methods=['GET', 'POST']) 
 def loginn():
@@ -109,6 +122,41 @@ def register():
         msg = 'Please fill out the form!'
     return render_template('register.html', msg=msg, form=form)
 
+@app.route('/callback', methods=['GET', 'POST'])
+def callback():
+    flow.fetch_token(authorization_response=request.url)
+
+
+    credentials = flow.credentials
+    request_session = requests.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
+
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials._id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
+
+    session["google_id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
+    session["email"] = id_info.get("email") + ""
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
+        username = session["name"]
+        password = session["password"]
+        email = session["email"]
+        email = email.encode()
+        hashpwd = bcrypt.generate_password_hash(password)
+        key = Fernet.generate_key()
+        with open("symmetric.key", "wb") as fo:
+            fo.write(key)
+        f = Fernet(key)
+        encrypted_email = f.encrypt(email)
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
+        mysql.connection.commit()
+        msg = 'You have successfully registered!'
+    return redirect("/protected_area")
 @app.route('/home')
 def home():
     if 'loggedin' in session:
@@ -150,26 +198,7 @@ def fa():
         return render_template('pipe.html', username=session['username'])
     return redirect(url_for('login'))
 
-@app.route("/callback")
-def callback():
-    flow.fetch_token(authorization_response=request.url)
 
-
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
-
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID
-    )
-
-    session["google_id"] = id_info.get("sub")
-    session["name"] = id_info.get("name")
-    session["email"] = id_info.get("email")
-    return redirect("/protected_area")
 
 @app.route("/login")
 def login():
@@ -181,6 +210,6 @@ def login():
 @app.route("/protected_area")
 @login_is_required
 def protected_area():
-    return f"Hello {session['name']}{session['email']}! <br/> <a href='/logout'><button>Logout</button></a>"
+    return f"Hello {session['name']}{session['email']}{session['email']}! <br/> <a href='/logout'><button>Logout</button></a>"
 if __name__ == '__main__': 
-    app.run(port="80", debug=True)
+    app.run(port="80", debug=True, ssl_context="adhoc")

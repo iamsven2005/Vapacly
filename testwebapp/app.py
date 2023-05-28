@@ -13,7 +13,7 @@ def index():
 connect = sqlite3.connect('database.db')
 connect.execute(
 	'CREATE TABLE IF NOT EXISTS PARTICIPANTS (name TEXT, \
-	email TEXT, city TEXT, country TEXT, phone TEXT)')
+	email TEXT, city TEXT, country TEXT, phone TEXT, phoneadd TEXT)')
 
 
 @app.route('/join', methods=['GET', 'POST'])
@@ -24,12 +24,13 @@ def join():
 		city = request.form['city']
 		country = request.form['country']
 		phone = request.form['phone']
+		phoneadd = request.form['phone'] + "phone"
 
 		with sqlite3.connect("database.db") as users:
 			cursor = users.cursor()
 			cursor.execute("INSERT INTO PARTICIPANTS \
-			(name,email,city,country,phone) VALUES (?,?,?,?,?)",
-						(name, email, city, country, phone))
+			(name,email,city,country,phone,phoneadd) VALUES (?,?,?,?,?,?)",
+						(name, email, city, country, phone, phoneadd))
 			users.commit()
 		return render_template("index.html")
 	else:
