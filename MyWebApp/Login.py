@@ -114,8 +114,16 @@ def register():
             fo.write(key)
         f = Fernet(key)
         encrypted_email = f.encrypt(email)
+        
+        
+        demail = str(email , 'UTF-8')
+        description = "register" + username + password + demail
+        
+        
+        
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
+        cursor.execute('INSERT INTO backup VALUES (NULL, %s)', (description,))
         mysql.connection.commit()
         msg = 'You have successfully registered!'
         return redirect(url_for('loginn'))
