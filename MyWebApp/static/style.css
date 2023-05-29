@@ -5,18 +5,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-@font-face {
-    font-family: 'Pacifico';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Pacifico Regular'), local('Pacifico-Regular'),
-      url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
-        format('woff2');
-    font-display: swap;
-  }
+
 body {
     background-color: #435165;
     margin: 0;
+    display:flex;
+    flex-flow:column
 }
 .login, .register {
     width: 400px;
@@ -51,7 +45,7 @@ body {
 }
 .login form, .register form {
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: wrap;
     justify-content: center;
     padding-top: 20px;
 }
@@ -95,7 +89,7 @@ body {
 .navtop div {
     display: flex;
     margin: 0 auto;
-    width: 1000px;
+    width: 100%;
     height: 100%;
 }
 .navtop div h1, .navtop div a {
@@ -126,7 +120,7 @@ body.loggedin {
     background-color: #f3f4f7;
 }
 .content {
-    width: 1000px;
+    width: 80%;
     margin: 0 auto;
 }
 .content h2 {
@@ -153,4 +147,22 @@ body.loggedin {
 .content > div p {
   padding: 5px;
   margin: 0 0 10px 0;
+}
+.login-btn {
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rgb(170, 170, 170);
+    border-radius: 15px;
+}
+.btn-text {
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(85, 85, 85);
 }

@@ -5,3 +5,7 @@ cryptography
 flask_wtf
 wtforms
 db-sqlite3
+flask_recaptcha
+google.auth.transport.requests
+google_auth_oauthlib.flow
+google.oauth2

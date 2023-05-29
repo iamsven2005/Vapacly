@@ -14,11 +14,11 @@ import re
 from flask_bcrypt import Bcrypt
 import cryptography 
 from cryptography.fernet import Fernet
-
 #csrf
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
+
 class csrfform(FlaskForm):
     country_name = StringField('country_name')   
 #end csrf
@@ -41,6 +41,7 @@ app.config['MYSQL_DB'] = 'pythonlogin'
 #PRIMARY KEY (`id`)
 #) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 #INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES (1, 'test', 'test', 'test@test.com');
+#this is for Outh: https://github.com/code-specialist/flask_google_login
 
 
 mysql = MySQL(app)
@@ -73,9 +74,9 @@ def loginn():
             return redirect(url_for('profile'))
         else:
             msg = 'Incorrect username/password!'
-    return render_template('index.html',msg='', form=form)
+    return render_template('index.html',msg=msg, form=form)
  
-os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "2"
 
 GOOGLE_CLIENT_ID = "981934456193-1oa6nc28h5g4fqme71poim0mmisa65ih.apps.googleusercontent.com"
 client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret_981934456193-1oa6nc28h5g4fqme71poim0mmisa65ih.apps.googleusercontent.com.json")
@@ -117,46 +118,12 @@ def register():
         cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
         mysql.connection.commit()
         msg = 'You have successfully registered!'
-
+        return redirect(url_for('loginn'))
     elif request.method == 'POST':
         msg = 'Please fill out the form!'
     return render_template('register.html', msg=msg, form=form)
 
-@app.route('/callback', methods=['GET', 'POST'])
-def callback():
-    flow.fetch_token(authorization_response=request.url)
 
-
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
-
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID
-    )
-
-    session["google_id"] = id_info.get("sub")
-    session["name"] = id_info.get("name")
-    session["email"] = id_info.get("email") + ""
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
-        username = session["name"]
-        password = session["password"]
-        email = session["email"]
-        email = email.encode()
-        hashpwd = bcrypt.generate_password_hash(password)
-        key = Fernet.generate_key()
-        with open("symmetric.key", "wb") as fo:
-            fo.write(key)
-        f = Fernet(key)
-        encrypted_email = f.encrypt(email)
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
-        mysql.connection.commit()
-        msg = 'You have successfully registered!'
-    return redirect("/protected_area")
 @app.route('/home')
 def home():
     if 'loggedin' in session:
@@ -185,7 +152,9 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('loginn'))
+
+#the cool shit
 
 @app.route('/ip')
 def ip():
@@ -198,18 +167,61 @@ def fa():
         return render_template('pipe.html', username=session['username'])
     return redirect(url_for('login'))
 
-
+#oauth
 
 @app.route("/login")
 def login():
+    
     authorization_url, state = flow.authorization_url()
     session["state"] = state
+
     return redirect(authorization_url)
 
+@app.route('/callback', methods=['GET', 'POST'])
+def callback():
+    flow.fetch_token(authorization_response=request.url)
+
+
+    credentials = flow.credentials
+    request_session = requests.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
+
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials._id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
+
+
+    session["google_id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
+    username = id_info.get("name")
+    email = id_info.get("email")
+    session["email"] = id_info.get("email")
+    password = id_info.get("email") + "phone"
+    session["password"] = password
+    email = email.encode()
+    hashpwd = bcrypt.generate_password_hash(password)
+    key = Fernet.generate_key()
+    with open("symmetric.key", "wb") as fo:
+        fo.write(key)
+    f = Fernet(key)
+    encrypted_email = f.encrypt(email)
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
+    mysql.connection.commit()
+    msg = 'You have successfully registered!'
+
+    return redirect("/protected_area")
 
 @app.route("/protected_area")
 @login_is_required
 def protected_area():
-    return f"Hello {session['name']}{session['email']}{session['email']}! <br/> <a href='/logout'><button>Logout</button></a>"
+    return f"Hello {session['name']} this is your email <h1>{session['email']}</h1><br>password<h1>{session['password']}</h1>! <br/> <a href='/logout'><button>Logout</button></a>"
+
+#run
+
 if __name__ == '__main__': 
-    app.run(port="80", debug=True, ssl_context="adhoc")
+    #app.run(port="80", debug=True, ssl_context="adhoc")
+    app.run(port="80", debug=True)

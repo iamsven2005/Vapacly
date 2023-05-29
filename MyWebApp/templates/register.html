@@ -3,10 +3,14 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width,initial-scale=1.0" name="viewport">
-    <meta content="Register Page" property="og:description">
-    <meta content="Vapacly" name="description">
-    <title>Register</title>
+    <!--mobile-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta content="Login Page" property="og:description" />
+    <meta content="Vapacly" name="description" />
+    <title>Login</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -15,8 +19,275 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     />
+    
+    <!--make things work-->
+    <link
+      rel="stylesheet"
+      href="https://hideandseek.work/wp-includes/css/dist/block-library/style.min.css?ver=5.6.11"
+    />
+    <!--make things out side the drawer-->
+
+    <link
+      rel="stylesheet"
+      href="https://hideandseek.work/wp-content/plugins/wp-accessibility-helper/assets/css/wp-accessibility-helper.min.css?ver=0.5.9.4"
+    />
+    <!--this make shit go big and misaligned-->
+    <link
+      rel="stylesheet"
+      href="https://hideandseek.work/wp-content/themes/twentytwenty/style.css?ver=1.5"
+    />
+
+    <!--this is to click for drawer efffect-->
+
+    <script src="https://hideandseek.work/wp-includes/js/jquery/jquery.min.js?ver=3.5.1"></script>
+
+    <!--body stuff-->
   </head>
+  <body
+    class="accessibility-location-right (set your direction here)"
+    data--device-mode="mobile"
+    data-new-gr-c-s-check-loaded="14.1110.0"
+    data-gr-ext-installed=""
+  >
+    <!--inside the drawer-->
+    <nav class="wah-skiplinks-menu"></nav>
+    <div
+      id="wp_access_helper_container"
+      class="accessability_container dark_theme"
+    >
+      <button
+        type="button"
+        class="wahout aicon_link"
+        accesskey="z"
+        aria-label="Accessibility Helper sidebar"
+        title="Accessibility Helper sidebar"
+        role="link"
+      >
+        <img
+          src="https://tse4.mm.bing.net/th?id=OIP.lyhgiCfqeYtJ9wnsJBxflgHaHa&pid=Api&P=0&h=180"
+          alt="Accessibility"
+          class="aicon_image"
+        />
+      </button>
+
+      <div id="access_container" aria-hidden="false">
+        <button
+          tabindex="-1"
+          type="button"
+          class="close_container wahout"
+          accesskey="x"
+          aria-label="Close"
+          title="Close"
+          role="link"
+        >
+          Close
+        </button>
+
+        <div class="access_container_inner">
+          <div class="a_module wah_font_resize">
+            <div class="a_module_title">Font Resize</div>
+
+            <div class="a_module_exe font_resizer">
+              <button
+                tabindex="-1"
+                type="button"
+                class="wah-action-button smaller wahout"
+                title="smaller font size"
+                aria-label="smaller font size"
+                role="link"
+              >
+                A-
+              </button>
+
+              <button
+                tabindex="-1"
+                type="button"
+                class="wah-action-button larger wahout"
+                title="larger font size"
+                aria-label="larger font size"
+                role="link"
+              >
+                A+
+              </button>
+            </div>
+          </div>
+          <div class="a_module wah_keyboard_navigation">
+            <div class="a_module_exe">
+              <button
+                tabindex="-1"
+                type="button"
+                class="wah-action-button wahout wah-call-keyboard-navigation"
+                aria-label="Keyboard navigation"
+                title="Keyboard navigation"
+                role="link"
+              >
+                Keyboard navigation
+              </button>
+            </div>
+          </div>
+          <div class="a_module wah_contrast_trigger">
+            <div class="a_module_title">Contrast</div>
+
+            <div class="a_module_exe">
+              <button
+                tabindex="-1"
+                type="button"
+                id="contrast_trigger"
+                class="contrast_trigger wah-action-button wahout wah-call-contrast-trigger"
+                title="Contrast"
+                role="link"
+              >
+                Choose color
+              </button>
+
+              <div class="color_selector" aria-hidden="true">
+                <button
+                  type="button"
+                  class="convar black wahout"
+                  data-bgcolor="#000"
+                  data-color="#FFF"
+                  title="black"
+                  role="link"
+                >
+                  black
+                </button>
+
+                <button
+                  type="button"
+                  class="convar white wahout"
+                  data-bgcolor="#FFF"
+                  data-color="#000"
+                  title="white"
+                  role="link"
+                >
+                  white
+                </button>
+
+                <button
+                  type="button"
+                  class="convar green wahout"
+                  data-bgcolor="#00FF21"
+                  data-color="#000"
+                  title="green"
+                  role="link"
+                >
+                  green
+                </button>
+
+                <button
+                  type="button"
+                  class="convar blue wahout"
+                  data-bgcolor="#0FF"
+                  data-color="#000"
+                  title="blue"
+                  role="link"
+                >
+                  blue
+                </button>
+
+                <button
+                  type="button"
+                  class="convar red wahout"
+                  data-bgcolor="#F00"
+                  data-color="#000"
+                  title="red"
+                  role="link"
+                >
+                  red
+                </button>
+
+                <button
+                  type="button"
+                  class="convar orange wahout"
+                  data-bgcolor="#FF6A00"
+                  data-color="#000"
+                  title="orange"
+                  role="link"
+                >
+                  orange
+                </button>
+
+                <button
+                  type="button"
+                  class="convar yellow wahout"
+                  data-bgcolor="#FFD800"
+                  data-color="#000"
+                  title="yellow"
+                  role="link"
+                >
+                  yellow
+                </button>
+
+                <button
+                  type="button"
+                  class="convar navi wahout"
+                  data-bgcolor="#B200FF"
+                  data-color="#000"
+                  title="navi"
+                  role="link"
+                >
+                  navi
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="a_module wah_greyscale">
+            <div class="a_module_exe">
+              <button
+                tabindex="-1"
+                type="button"
+                id="greyscale"
+                class="greyscale wah-action-button wahout wah-call-greyscale"
+                aria-label="Images Greyscale"
+                title="Images Greyscale"
+                role="link"
+              >
+                Images Greyscale
+              </button>
+            </div>
+          </div>
+          <div class="a_module wah_invert">
+            <div class="a_module_exe">
+              <button
+                tabindex="-1"
+                type="button"
+                class="wah-action-button wahout wah-call-invert"
+                aria-label="Invert Colors"
+                title="Invert Colors"
+                role="link"
+              >
+                Invert Colors
+              </button>
+            </div>
+          </div>
+          <div class="a_module wah_clear_cookies">
+            <div class="a_module_exe">
+              <button
+                tabindex="-1"
+                type="button"
+                class="wah-action-button wahout wah-call-clear-cookies"
+                aria-label="Clear cookies"
+                title="Clear cookies"
+                role="link"
+              >
+                Clear cookies
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            title="Close sidebar"
+            class="wah-skip close-wah-sidebar"
+            role="link"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   <body>
+    
     <div class="register">
       <h1>Register</h1>
       <div class="links">
@@ -37,16 +308,6 @@
           id="username"
           required
         />
-        <label for="password">
-          <i class="fas fa-lock"></i>
-        </label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          id="password"
-          required
-        />
         <label for="email">
           <i class="fas fa-envelope"></i>
         </label>
@@ -57,30 +318,25 @@
           id="email"
           required
         />
+        <label for="password">
+          <i class="fas fa-lock"></i>
+        </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          id="password"
+          required
+        />
+        <center><h6>View password<input type="checkbox" onclick="myFunction()"></h6><br>
+          <p>Password must have:<br> - At least 8 characters<br>- At least 1 uppercase letter<br> - At least 1 lowercase letter<br> - At least 1 digit<br> - At least 1 special character</p>
+        <h1 id="strength-indicator"></h1>
+      </center><br>
         <div class="msg">{{ msg }}</div>
         <input type="submit" value="Register" />
-      </form>
-      <style>
-        .login-btn {
-            justify-content: center;
-            flex-direction: row;
-            display: flex;
-            background-color: rgb(255, 255, 255);
-            justify-content: center;
-            align-items: center;
-            width: 220px;
-            padding: 10px;
-            box-shadow: 3px 3px 3px rgb(170, 170, 170);
-            border-radius: 15px;
-        }
-        .btn-text {
-            justify-content: center;
-            padding: 10px;
-            font-family: 'Poppins', sans-serif;
-            color: rgb(85, 85, 85);
-        }</style>
+      </form><br>
         <div align="center">
-            <a href="/register" class="login-btn" style="text-decoration:none;">
+            <a href="/login" class="login-btn" style="text-decoration:none;">
                 <img id="google" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
             alt="Google"
             style="width:50px;height:50px;">
@@ -89,6 +345,460 @@
             </div>
             </a> 
         </div>
+        
     </div>
   </body>
+  <script>
+    (function (b) {
+      if (typeof define === "function" && define.amd) {
+        define(b);
+      } else {
+        if (typeof exports === "object") {
+          module.exports = b();
+        } else {
+          var a = window.Cookies;
+          var c = (window.Cookies = b());
+          c.noConflict = function () {
+            window.Cookies = a;
+            return c;
+          };
+        }
+      }
+    })(function () {
+      function b() {
+        var f = 0;
+        var c = {};
+        console.log(f)
+        for (; f < arguments.length; f++) {
+          var d = arguments[f];
+          for (var e in d) {
+            c[e] = d[e];
+          }
+        }
+        return c;
+      }
+      function a(d) {
+        function c(o, n, k) {
+          var r;
+          if (typeof document === "undefined") {
+            return;
+          }
+          if (arguments.length > 1) {
+            k = b({ path: "/" }, c.defaults, k);
+            if (typeof k.expires === "number") {
+              var h = new Date();
+              h.setMilliseconds(h.getMilliseconds() + k.expires * 86400000);
+              k.expires = h;
+            }
+            try {
+              r = JSON.stringify(n);
+              if (/^[\{\[]/.test(r)) {
+                n = r;
+              }
+            } catch (m) {}
+            if (!d.write) {
+              n = encodeURIComponent(String(n)).replace(
+                /%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,
+                decodeURIComponent
+              );
+            } else {
+              n = d.write(n, o);
+            }
+            o = encodeURIComponent(String(o));
+            o = o.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+            o = o.replace(/[\(\)]/g, escape);
+            return (document.cookie = [
+              o,
+              "=",
+              n,
+              k.expires && "; expires=" + k.expires.toUTCString(),
+              k.path && "; path=" + k.path,
+              k.domain && "; domain=" + k.domain,
+              k.secure ? "; secure" : "",
+            ].join(""));
+          }
+          if (!o) {
+            r = {};
+          }
+          var q = document.cookie ? document.cookie.split("; ") : [];
+          var p = /(%[0-9A-Z]{2})+/g;
+          var l = 0;
+          for (; l < q.length; l++) {
+            var j = q[l].split("=");
+            var f = j[0].replace(p, decodeURIComponent);
+            var g = j.slice(1).join("=");
+            if (g.charAt(0) === '"') {
+              g = g.slice(1, -1);
+            }
+            try {
+              g = d.read
+                ? d.read(g, f)
+                : d(g, f) || g.replace(p, decodeURIComponent);
+              if (this.json) {
+                try {
+                  g = JSON.parse(g);
+                } catch (m) {}
+              }
+              if (o === f) {
+                r = g;
+                break;
+              }
+              if (!o) {
+                r[f] = g;
+              }
+            } catch (m) {}
+          }
+          return r;
+        }
+        c.set = c;
+        c.get = function (e) {
+          return c(e);
+        };
+        c.getJSON = function () {
+          return c.apply({ json: true }, [].slice.call(arguments));
+        };
+        c.defaults = {};
+        c.remove = function (f, e) {
+          c(f, "", b(e, { expires: -1 }));
+        };
+        c.withConverter = a;
+        return c;
+      }
+      return a(function () {});
+    });
+    jQuery(window).on("load", function () {
+      $body_link = jQuery("body a, body button");
+      jQuery("a.aicon_link").fadeIn(350);
+      setTimeout(function () {
+        if (typeof removeLinkTitles != "undefined" && removeLinkTitles == 1) {
+          $body_link.each(function () {
+            if (jQuery(this).attr("title")) {
+              jQuery(this).attr("title", "");
+              jQuery(this).removeAttr("title");
+            }
+          });
+        }
+      }, 500);
+      if (typeof roleLink != "undefined" && roleLink == 1) {
+        setTimeout(function () {
+          $body_link.each(function () {
+            var a = jQuery(this);
+            if (
+              typeof Foundation != "undefined" &&
+              typeof Foundation.version != "undefined" &&
+              Foundation.version
+            ) {
+              if (a.attr("role") != "tab") {
+                a.attr("role", "link");
+              }
+            } else {
+              a.attr("role", "link");
+            }
+          });
+        }, 500);
+      }
+      check_wah_free_credits();
+    });
+    jQuery(document).ready(function () {
+      var b = jQuery("body");
+      var c = 1;
+      var d = 100;
+      jQuery("#wp_access_helper_container").prependTo("body");
+      jQuery(".wah-skiplinks-menu").prependTo("body");
+      jQuery(".greyscale").click(function () {
+        jQuery("img").each(function () {
+          jQuery(this).toggleClass("active_greyscale");
+        });
+      });
+      jQuery(".aicon_link").click(function (e) {
+        e.preventDefault();
+        jQuery(".accessability_container").addClass("active");
+        jQuery("#access_container button").removeAttr("tabindex");
+        jQuery("#access_container").attr("aria-hidden", "false");
+      });
+      jQuery(".close_container, .close-wah-sidebar").click(function (e) {
+        e.preventDefault();
+        jQuery(".accessability_container").removeClass("active");
+        jQuery("#access_container button").attr("tabindex", "-1");
+        jQuery("#access_container").attr("aria-hidden", "true");
+      });
+      if (jQuery("body").hasClass("wah_fstype_rem")) {
+        jQuery(".smaller").click(function (e) {
+          e.preventDefault();
+          var f = parseInt(jQuery("html").css("font-size"));
+          if (f > 12) {
+            f = f - 1 + "px";
+            jQuery("html").css({ "font-size": f });
+          }
+        });
+        jQuery(".larger").click(function (e) {
+          e.preventDefault();
+          var f = parseInt(jQuery("html").css("font-size"));
+          if (f < 24) {
+            f = f + 1 + "px";
+            jQuery("html").css({ "font-size": f });
+          }
+        });
+      } else {
+        if (jQuery("body").hasClass("wah_fstype_zoom")) {
+          jQuery(".larger").click(function () {
+            var e;
+            if (b.hasClass("gecko")) {
+              e = 0.05;
+              c += e;
+              b.css("MozTransform", "scale(" + c + "," + c + ")");
+              b.css("transform-origin", "50% 50%");
+            } else {
+              e = 5;
+              d += e;
+              b.css("zoom", " " + d + "%");
+            }
+          });
+          jQuery(".smaller").click(function () {
+            var e;
+            if (b.hasClass("gecko")) {
+              e = 0.05;
+              c -= e;
+              b.css("MozTransform", "scale(" + c + "," + c + ")");
+              b.css("transform-origin", "50% 50%");
+            } else {
+              e = 5;
+              d -= e;
+              b.css("zoom", " " + d + "%");
+            }
+          });
+        } else {
+          var a = jQuery("a,p,span,h1,h2,h3,h4,h5,h6");
+          a.each(function () {
+            jQuery(this).attr(
+              "data-wahfont",
+              parseInt(jQuery(this).css("font-size"))
+            );
+          });
+          wah_font_resizer();
+        }
+      }
+      jQuery(".wah-call-remove-styles").click(function (e) {
+        e.preventDefault();
+        jQuery("link:not(#wpah-front-styles-css)").each(function (f, g) {
+          if (jQuery(this).attr("disabled")) {
+            jQuery(this).removeAttr("disabled");
+          } else {
+            jQuery(this).attr("disabled", "disabled");
+          }
+        });
+      });
+      jQuery(".wah-call-underline-links").click(function (e) {
+        e.preventDefault();
+        b.toggleClass("is_underline");
+      });
+      jQuery("#contrast_trigger").click(function (e) {
+        e.preventDefault();
+        jQuery(".color_selector").toggleClass("is_visible");
+        jQuery(".color_selector").attr("aria-hidden", "false");
+      });
+      jQuery(".convar").click(function (e) {
+        e.preventDefault();
+        var g = jQuery(this).data("bgcolor");
+        var f = jQuery(this).data("color");
+        jQuery("body :not(.wahcolor), body").css({
+          "background-color": g,
+          color: f,
+        });
+        setContrastCookie(g, f);
+        jQuery(".color_selector").removeClass("is_visible");
+        jQuery(".color_selector").attr("aria-hidden", "true");
+      });
+      if (
+        typeof headerElementSelector != "undefined" &&
+        headerElementSelector
+      ) {
+        b.find(headerElementSelector).attr("role", "banner");
+      }
+      if (
+        typeof sidebarElementSelector != "undefined" &&
+        sidebarElementSelector
+      ) {
+        b.find(sidebarElementSelector).attr("role", "complementary");
+      }
+      if (
+        typeof footerElementSelector != "undefined" &&
+        footerElementSelector
+      ) {
+        b.find(footerElementSelector).attr("role", "contentinfo");
+      }
+      if (typeof mainElementSelector != "undefined" && mainElementSelector) {
+        b.find(mainElementSelector).attr("role", "main");
+      }
+      if (typeof navElementSelector != "undefined" && navElementSelector) {
+        b.find(navElementSelector).attr("role", "navigation");
+      }
+      if (
+        typeof Cookies.get("wahFontColor") != "undefined" &&
+        typeof Cookies.get("wahBgColor") != "undefined"
+      ) {
+        jQuery("body :not(.wahcolor), body").css({
+          "background-color": Cookies.get("wahBgColor"),
+          color: Cookies.get("wahFontColor"),
+        });
+      }
+      if (
+        typeof wah_lights_off_selector != "undefined" &&
+        wah_lights_off_selector
+      ) {
+        jQuery(".wah-lights-off").click(function (f) {
+          f.preventDefault();
+          if (!jQuery("body").hasClass("wah-lights-off")) {
+            jQuery("body").append('<div class="wah-dark-overlay"></div>');
+            jQuery("body").addClass("wah-lights-off");
+            jQuery(wah_lights_off_selector).addClass("wah-lights-selector");
+          } else {
+            jQuery("body .wah-dark-overlay").remove();
+            jQuery("body").removeClass("wah-lights-off");
+            jQuery(wah_lights_off_selector).removeClass("wah-lights-selector");
+          }
+        });
+      }
+      jQuery(".wah-call-clear-cookies").click(function (e) {
+        e.preventDefault();
+        removeAllCookies();
+      });
+      jQuery(".wah-call-highlight-links").click(function (e) {
+        e.preventDefault();
+        b.toggleClass("highlight_links_on");
+      });
+      jQuery(".wah-call-invert").click(function (e) {
+        e.preventDefault();
+        b.toggleClass("invert_mode_on");
+      });
+      jQuery(".wah-call-remove-animations").click(function (e) {
+        e.preventDefault();
+        b.toggleClass("remove_animations");
+      });
+      jQuery(".wah-action-button").click(function () {
+        jQuery(this).toggleClass("active_button");
+      });
+      jQuery(".readable_fonts .wah-action-button").click(function (e) {
+        b.toggleClass("arial_font_on");
+      });
+      jQuery(".wah-call-keyboard-navigation").click(function () {
+        b.toggleClass("wah_keyboard_access");
+      });
+      if (typeof wah_target_src != "undefined") {
+        wah_target_element = jQuery("body").find(
+          "img[src='" + wah_target_src + "']"
+        );
+        wah_target_element.addClass("wah_scanner_element");
+      }
+      if (typeof wah_target_link != "undefined") {
+        wah_target_element = jQuery('a[href="' + wah_target_link + '"]');
+        wah_target_element.addClass("wah_scanner_link");
+      }
+    });
+    function check_wah_free_credits() {
+      var e = jQuery(".wah-free-credits");
+      var a = jQuery(".wah-free-credits-inner");
+      var c = jQuery(".wah-free-credits-inner > a");
+      var b = [e, a, c];
+      var d = [];
+      setTimeout(function () {
+        jQuery.each(b, function (f, g) {
+          if (g.is(":hidden")) {
+            d.push({ is_hidden: g });
+          }
+          if (!g.length) {
+            d.push({ not_exists: g });
+          }
+          if (g.css("visibility") === "hidden") {
+            d.push({ visibility_hidden: g });
+          }
+          if (g.css("opacity") === "0") {
+            d.push({ opacity0: g });
+          }
+        });
+      }, 10000);
+    }
+    function setContrastCookie(b, a) {
+      Cookies.set("wahFontColor", a, { expires: 14 });
+      Cookies.set("wahBgColor", b, { expires: 14 });
+    }
+    function removeAllCookies() {
+      Cookies.remove("wahFontColor");
+      Cookies.remove("wahBgColor");
+      location.reload();
+    }
+    function wah_font_resizer() {
+      var a = jQuery("a,p,span,h1,h2,h3,h4,h5,h6");
+      jQuery(".font_resizer .larger").click(function (b) {
+        b.preventDefault();
+        a.each(function () {
+          var c = parseInt(jQuery(this).css("font-size"));
+          jQuery(this).css("font-size", parseInt(c + 1) + "px");
+        });
+      });
+      jQuery(".font_resizer .smaller").click(function (b) {
+        b.preventDefault();
+        a.each(function () {
+          var c = parseInt(jQuery(this).css("font-size"));
+          if (c > 12) {
+            jQuery(this).css("font-size", parseInt(c - 1) + "px");
+          }
+        });
+      });
+      jQuery(".wah-font-reset").click(function (b) {
+        b.preventDefault();
+        a.each(function () {
+          var c = parseInt(jQuery(this).css("font-size"));
+          jQuery(this).css(
+            "font-size",
+            parseInt(jQuery(this).data("wahfont")) + "px"
+          );
+        });
+      });
+    }
+  </script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+  // Check the strength of the password when the user types something.
+  $("#password").on("keyup", function() {
+    // Get the password value.
+    var password = $(this).val();
+
+    // Create a regular expression to check for the following:
+    // - At least 8 characters
+    // - At least 1 uppercase letter
+    // - At least 1 lowercase letter
+    // - At least 1 digit
+    // - At least 1 special character
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+
+    // Check if the password matches the regular expression.
+    if (regex.test(password)) {
+      // The password is strong.
+      $("#strength-indicator").text("Strong");
+      $("#strength-indicator").css("color", "green");
+    } else if (password.length >= 6) {
+      // The password is moderate.
+      $("#strength-indicator").text("Moderate");
+      $("#strength-indicator").css("color", "blue");
+    } else {
+      // The password is weak.
+      $("#strength-indicator").text("Weak");
+      $("#strength-indicator").css("color", "red");
+    }
+  });
+});
+</script>
 </html>
