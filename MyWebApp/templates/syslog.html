@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Flask and SQLite </title>
+	</head>
+	<style>
+		table, th, td {
+		border:1px solid black;
+		}
+		</style>
+	<body>
+		<table style="width:100%">
+			<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>City</th>
+			<th>Country</th>
+			<th>Phone Number</th>
+			</tr>
+			{%for syslog in account%}
+			<tr>
+				<td>{{syslog.syslogid}}</td>
+				<td>{{syslog.time}}</td>
+				<td>{{syslog.description}}</td>
+				<td>{{syslog.username}}</td>
+				</tr>
+			{%endfor%}
+		</table>		
+	</body>
+</html>

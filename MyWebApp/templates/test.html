@@ -18,13 +18,21 @@
         height: 325px;
         width: 750px;
       }
+      #scroll-down{
+        position: sticky;
+        top:30px;
+        z-index:1
+      }
     </style>
   </head>
+  <button id="scroll-down">Scroll Down</button>
   <body
     onload="getLocation()"
     data-new-gr-c-s-check-loaded="14.1108.0"
     data-gr-ext-installed=""
   >
+  
+
     <p style="color: red">
       IP Address: <label id="username">138.199.21.200</label> Network:
       <span id="isp">AS212238 Datacamp Limited</span>
@@ -36,7 +44,37 @@
     ></iframe>
 
     <p>Coordinates: <label id="lats">1.3794357,103.8496764</label></p>
-    <p></p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+    <p>grtgrtgtgeretgwerwtgertgrtegwertgw</p>
+
+
     <!--<div id='isp'>ISP</div>-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -128,6 +166,18 @@ encoder
             document.getElementById("decoded").innerHTML +=
               "<li>" + "" + decoded + "</li>";
           }
+
+          document.getElementById("scroll-down").addEventListener("mousedown", function() {
+            var scrollTop = document.documentElement.scrollTop;
+            
+              scrollTop += 10;
+              document.documentElement.scrollTop = scrollTop;
+
+          });
+          
+          
+
+          
         </script>
 
         <form>
@@ -195,7 +245,7 @@ this is for webcam
 
             <!--Output com sinais-->
               <div class="row">       
-                  <canvas class="output_canvas" style="display: flex; justify-content: center; align-items: center;"></canvas>
+                  <canvas class="output_canvas" style="position: sticky; display: flex; justify-content: center; align-items: center;"></canvas>
                   <div class="caption">Hand facing <span id="finger-direction"></span></div>
               </div>
             <!--Fim - Output com sinais-->
@@ -260,7 +310,9 @@ function checkFingerDirection(handLandmarks)
       document.getElementById("finger-direction").textContent = "password";
       setTimeout(() => {
           document.getElementById("finger-direction").textContent = "";
-          window.location = "https://www.youtube.com";
+            var scrollTop = document.documentElement.scrollTop;
+            scrollTop += 10;
+              document.documentElement.scrollTop = scrollTop;
       }, 2000);
       return "password";
       

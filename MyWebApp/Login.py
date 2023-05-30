@@ -18,7 +18,7 @@ from cryptography.fernet import Fernet
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
-
+from datetime import datetime
 class csrfform(FlaskForm):
     country_name = StringField('country_name')   
 #end csrf
@@ -118,12 +118,14 @@ def register():
         
         demail = str(email , 'UTF-8')
         description = "register" + username + password + demail
-        
+        now = datetime.now()
+        time = now.strftime("%Y-%m-%d %H:%M:%S")
         
         
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
-        cursor.execute('INSERT INTO backup VALUES (NULL, %s)', (description,))
+        cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
+
         mysql.connection.commit()
         msg = 'You have successfully registered!'
         return redirect(url_for('loginn'))
@@ -134,6 +136,19 @@ def register():
 
 @app.route('/home')
 def home():
+#syslog
+
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
+    account = cursor.fetchone()
+    now = datetime.now()
+    time = now.strftime("%Y-%m-%d %H:%M:%S")
+    description = "home"
+    username = account['username']
+    cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
+    mysql.connection.commit()    
+    
+    
     if 'loggedin' in session:
         return render_template('home.html', username=session['username'])
     return redirect(url_for('login'))
@@ -152,11 +167,30 @@ def profile():
         decrypted_email = f.decrypt(encrypted_email)
         print(decrypted_email)
         account['email'] = decrypted_email.decode()
+        
+        #syslog
+        now = datetime.now()
+        time = now.strftime("%Y-%m-%d %H:%M:%S")
+        description = "profile"
+        username = account['username']
+        cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
+        mysql.connection.commit()
         return render_template('profile.html', account=account)
     return redirect(url_for('login'))
 
 @app.route('/logout')
 def logout():
+    #syslog
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
+    account = cursor.fetchone()
+    now = datetime.now()
+    time = now.strftime("%Y-%m-%d %H:%M:%S")
+    description = "logout"
+    username = account['username']
+    cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
+    mysql.connection.commit()
+     
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
@@ -227,6 +261,17 @@ def callback():
 @login_is_required
 def protected_area():
     return f"Hello {session['name']} this is your email <h1>{session['email']}</h1><br>password<h1>{session['password']}</h1>! <br/> <a href='/logout'><button>Logout</button></a>"
+
+
+@app.route('/syslog')
+def syslog():
+#syslog
+
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM backup')
+    account = cursor.fetchall()
+    mysql.connection.commit()    
+    return render_template("syslog.html", account = account)
 
 #run
 
