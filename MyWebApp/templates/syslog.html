@@ -1,30 +1,34 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Flask and SQLite </title>
-	</head>
-	<style>
-		table, th, td {
-		border:1px solid black;
-		}
-		</style>
-	<body>
-		<table style="width:100%">
-			<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>City</th>
-			<th>Country</th>
-			<th>Phone Number</th>
+
+<script>document.addEventListener('contextmenu', event => event.preventDefault());</script>
+</head>
+<body onload="pass();">
+	<table id="syslog" style="display:none;">
+		<tr>
+		<th>Name</th>
+		<th>Email</th>
+		<th>City</th>
+		<th>Country</th>
+		<th>Phone Number</th>
+		</tr>
+		{%for syslog in account%}
+		<tr>
+			<td>{{syslog.syslogid}}</td>
+			<td>{{syslog.time}}</td>
+			<td>{{syslog.description}}</td>
+			<td>{{syslog.username}}</td>
 			</tr>
-			{%for syslog in account%}
-			<tr>
-				<td>{{syslog.syslogid}}</td>
-				<td>{{syslog.time}}</td>
-				<td>{{syslog.description}}</td>
-				<td>{{syslog.username}}</td>
-				</tr>
-			{%endfor%}
-		</table>		
-	</body>
-</html>
+		{%endfor%}
+	</table>		
+</body>
+
+<script>
+  const p=''
+function pass(){
+	while (p != 'password'){var p=prompt('Enter password');}
+	var a = document.getElementById('syslog'); 
+	a.style = "width:100%;"
+
+
+}
+</script>
+

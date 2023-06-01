@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Flask and SQLite </title>
+	</head>
+	<style>
+		table, th, td {
+		border:1px solid black;
+		}
+		</style>
+	<body>
+		<table style="width:100%">
+			<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>City</th>
+			<th>Country</th>
+			<th>Phone Number</th>
+			</tr>
+			{%for device_info in data%}
+			<tr>
+				<td>{{device_info[0]}}</td>
+				<td>{{device_info[1]}}</td>
+				<td>{{device_info[2]}}</td>
+				<td>{{device_info[3]}}</td>
+				<td>{{device_info[4]}}</td>
+				<td>{{device_info[5]}}</td>
+				</tr>
+			{%endfor%}
+		</table>		
+	</body>
+</html>

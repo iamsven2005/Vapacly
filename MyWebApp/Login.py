@@ -109,9 +109,12 @@ def register():
         email = request.form['email']
         email = email.encode()
         hashpwd = bcrypt.generate_password_hash(password)
-        key = Fernet.generate_key()
-        with open("symmetric.key", "wb") as fo:
-            fo.write(key)
+        #key = Fernet.generate_key()
+        #with open("symmetric.key", "wb") as fo:
+        #    fo.write(key)
+        file = open('symmetric.key', 'rb')
+        key = file.read()
+        file.close()
         f = Fernet(key)
         encrypted_email = f.encrypt(email)
         
