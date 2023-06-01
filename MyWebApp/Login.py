@@ -211,6 +211,11 @@ def fa():
     if 'loggedin' in session:
         return render_template('pipe.html', username=session['username'])
     return redirect(url_for('login'))
+@app.route('/bcrypt')
+def bc():
+    if 'loggedin' in session:
+        return render_template('bcrypt.html', username=session['username'])
+    return redirect(url_for('login'))
 
 #oauth
 
