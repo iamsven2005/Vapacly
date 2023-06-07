@@ -108,13 +108,14 @@ def register():
         password = request.form['password']
         email = request.form['email']
         email = email.encode()
+        credit = 100
         hashpwd = bcrypt.generate_password_hash(password)
-        #key = Fernet.generate_key()
-        #with open("symmetric.key", "wb") as fo:
-        #    fo.write(key)
-        file = open('symmetric.key', 'rb')
-        key = file.read()
-        file.close()
+        key = Fernet.generate_key()
+        with open("symmetric.key", "wb") as fo:
+            fo.write(key)
+        #file = open('symmetric.key', 'rb')
+        #key = file.read()
+        #file.close()
         f = Fernet(key)
         encrypted_email = f.encrypt(email)
         
@@ -126,7 +127,7 @@ def register():
         
         
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
+        cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s)', (username, hashpwd, encrypted_email,credit))
         cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
 
         mysql.connection.commit()
@@ -176,6 +177,7 @@ def profile():
         time = now.strftime("%Y-%m-%d %H:%M:%S")
         description = "profile"
         username = account['username']
+        credit = account['credit']
         cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
         mysql.connection.commit()
         return render_template('profile.html', account=account)
