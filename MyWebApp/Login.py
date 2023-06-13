@@ -149,15 +149,16 @@ def home():
     time = now.strftime("%Y-%m-%d %H:%M:%S")
     description = "home"
     username = account['username']
+    credit = account['credit']
     cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
     mysql.connection.commit()    
     
     
     if 'loggedin' in session:
-        return render_template('home.html', username=session['username'])
+        return render_template('home.html', username=session['username'], account= account)
     return redirect(url_for('login'))
 
-@app.route('/profile')
+@app.route('/profile', methods=['POST', 'GET'])
 def profile():
     if 'loggedin' in session:
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -170,14 +171,21 @@ def profile():
         f = Fernet(key)
         decrypted_email = f.decrypt(encrypted_email)
         print(decrypted_email)
+        credit = account['credit']
         account['email'] = decrypted_email.decode()
-        
+
+
+        if request.method == "POST":
+            x = "add"
+            cursor.execute('UPDATE pythonlogin.accounts SET credit = credit + 1 WHERE id = %s', (session['id'],) )
+        else:
+            x = "profile"
         #syslog
         now = datetime.now()
         time = now.strftime("%Y-%m-%d %H:%M:%S")
-        description = "profile"
+        description = x
         username = account['username']
-        credit = account['credit']
+
         cursor.execute('INSERT INTO backup VALUES (NULL, %s, %s, %s)', (time, description, username,))
         mysql.connection.commit()
         return render_template('profile.html', account=account)
