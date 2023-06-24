@@ -1,0 +1,2036 @@
+<html lang="en"><head>
+    <title>DDOS Protection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body onload="pass();">
+    <style>
+      @font-face {
+        font-family: "arial";
+        }
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      strong {
+        font-weight: bold;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      *:focus {
+        outline: 0;
+      }
+      input,
+      select,
+      textarea {
+        border: 0;
+        box-shadow: 0;
+      }
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        line-height: 1;
+        background: #1a1e23;
+        font-family: roboto, helvetica, sans-serif, arial, verdana, tahoma;
+        font-size: 16px;
+        color: #fff;
+      }
+      .container {
+        width: 100%;
+        margin: 0 auto;
+        min-height: 100%;
+        position: relative;
+        max-height: 100vh;
+        overflow: hidden;
+      }
+
+      .container > .left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50vw;
+        height: 100vh;
+        background-color: #713c86;
+      }
+
+      .container > .left > .cont {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        transform: translateY(-50%);
+      }
+
+      .networkLogo {
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+        text-decoration: none;
+      }
+
+      .networkLogo > .square {
+        display: inline-block;
+        vertical-align: middle;
+        width: 60px;
+        height: 60px;
+        background-size: 55px auto;
+        background-position: center center;
+        background-repeat: no-repeat;
+        margin-right: 0px;
+        
+      }
+
+      .networkLogo > .text {
+        text-align: left;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 30px;
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .networkLogo > .text > .sm {
+        font-size: 18px;
+      }
+
+      .container > .left > .cont > .tagline {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .container > .left > .cont > .since {
+        font-style: italic;
+      }
+
+      .container > .left > .cont > .serviceLogo {
+        display: block;
+        text-decoration: none;
+        margin-bottom: 15px;
+      }
+
+      .container > .left > .cont > .serviceLogo > .square {
+        display: inline-block;
+        vertical-align: middle;
+        width: 80px;
+        height: 80px;
+        background-color: #9b59b6;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        margin-right: 10px;
+        
+      }
+
+      .container > .left > .cont > .serviceLogo > .text {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 62px;
+        color: #fff;
+        font-weight: 700;
+      }
+      .container > .inner {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        text-align: center;
+        transform: translateY(-50%);
+        width: 50vw;
+      }
+      .container > .inner .input-box {
+        margin-bottom: 20px;
+      }
+      .container > .inner > .date {
+        display: block;
+        text-align: center;
+        font-size: 42px;
+      }
+      .container > .inner > .date > .day {
+        color: #9b59b6;
+        font-weight: 700;
+      }
+      .signed {
+        display: block;
+        width: 400px;
+        height: 150px;
+        margin-top: 20px;
+        margin: 20px auto 0 auto;
+      }
+      .signed > textarea {
+        margin: 0 auto;
+        width: 400px;
+        height: 150px;
+        min-width: 400px;
+        max-width: 400px;
+        display: block;
+        padding: 15px;
+        background: #fff;
+        border: 1px solid #9b59b6;
+        min-height: 150px;
+        max-height: 150px;
+      }
+      p {
+        margin: 0 auto 20px auto;
+        max-width: 300px;
+      }
+      form.ddos_form .captcha-input {
+        margin: 0 auto 20px auto;
+        display: block;
+        width: 300px;
+        font-size: 0;
+      }
+      form.ddos_form .captcha-input input {
+        display: inline-block;
+        vertical-align: top;
+        height: 50px;
+        width: calc(100% - 150px);
+        outline: 0;
+        border: none;
+        font-size: 16px;
+        color: #000;
+        padding: 0 15px;
+        line-height: 50px;
+      }
+      form.ddos_form .captcha-input img {
+        display: inline-block;
+        vertical-align: top;
+      }
+      form.ddos_form button {
+        border-radius: 3px;
+        display: block;
+        width: 300px;
+        margin: 0 auto;
+        background: #9b59b6;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        outline: 0;
+        border: none;
+      }
+      .captchav2 {
+        text-align: center;
+        width: 100%;
+      }
+      .image {
+        width: 20px;
+        height: 20px;
+        transform-origin: center;
+        transform: scale(6);
+        transition: all 0.2s ease-in;
+        border-radius: 50%;
+        border: 1px solid #9b59b6;
+        margin: auto;
+        margin-bottom: 70px;
+        margin-top: 70px;
+      }
+      input {
+        text-align: center;
+        text-transform: uppercase;
+        background: #1a1e23;
+        border: 2px solid #fff;
+        color: #9b59b6;
+        font-size: 28px;
+        line-height: 36px;
+        margin: 1px;
+        width: 40px;
+        height: 40px;
+        border-radius: 3px;
+      }
+      input:focus,
+      input:active {
+        border-color: #9b59b6;
+      }
+      .expire {
+        display: inline-block;
+        vertical-align: top;
+        width: 100px;
+        height: 50px;
+        position: relative;
+        animation: timer-warning 1s 1;
+        animation-fill-mode: forwards;
+        animation-delay: 50s;
+        margin-bottom: 6px;
+        border-radius: 3px;
+      }
+      .expire > .timer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        overflow: hidden;
+      }
+      .expire > .timer > .time-part-wrapper {
+        display: inline-block;
+        vertical-align: top;
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+      }
+      .expire > .timer > .time-part-wrapper:first-child:after {
+        content: ":";
+        display: inline-block;
+        vertical-align: top;
+        width: 15px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 22px;
+      }
+      .expire > .timer > .time-part-wrapper > .time-part {
+        display: inline-block;
+        vertical-align: top;
+        width: 15px;
+        position: relative;
+        animation: timer-expire;
+        animation-fill-mode: forwards;
+        animation-delay: 60s;
+      }
+      .expire > .timer > .time-part-wrapper > .time-part > .digit-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        text-align: center;
+      }
+      .expire
+        > .timer
+        > .time-part-wrapper
+        > .time-part
+        > .digit-wrapper
+        > .digit {
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        font-size: 22px;
+      }
+      .expire
+        > .timer
+        > .time-part-wrapper
+        > .time-part.seconds.tens
+        > .digit-wrapper {
+        top: -50px;
+        animation: timer-seconds-tens 50s 1;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+      }
+      .expire
+        > .timer
+        > .time-part-wrapper
+        > .time-part.seconds.ones
+        > .digit-wrapper {
+        animation: timer-seconds-ones 10s 6;
+      }
+      .expire
+        > .timer
+        > .time-part-wrapper
+        > .time-part.hundredths.tens
+        > .digit-wrapper {
+        animation: timer-seconds-ones 1s 60;
+      }
+      .expire
+        > .timer
+        > .time-part-wrapper
+        > .time-part.hundredths.ones
+        > .digit-wrapper {
+        animation: timer-seconds-ones 500ms 120;
+      }
+      .slide-left-ani {
+        opacity: 0;
+        transform: translateX(20px);
+        animation: slide-left-ani;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+      }
+      .slide-right-ani {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slide-right-ani;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out;
+        animation-duration: 1s;
+        animation-delay: 0.5s;
+      }
+      @keyframes slide-left-ani {
+        0% {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slide-right-ani {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @-webkit-keyframes timer-seconds-tens {
+        0% {
+          top: -50px;
+        }
+        19% {
+          top: -50px;
+        }
+        20% {
+          top: -100px;
+        }
+        39% {
+          top: -100px;
+        }
+        40% {
+          top: -150px;
+        }
+        59% {
+          top: -150px;
+        }
+        60% {
+          top: -200px;
+        }
+        79% {
+          top: -200px;
+        }
+        80% {
+          top: -250px;
+        }
+        99% {
+          top: -250px;
+        }
+        100% {
+          top: -300px;
+        }
+      }
+      @-webkit-keyframes timer-seconds-ones {
+        0% {
+          top: 0;
+        }
+        9% {
+          top: 0;
+        }
+        10% {
+          top: -50px;
+        }
+        19% {
+          top: -50px;
+        }
+        20% {
+          top: -100px;
+        }
+        29% {
+          top: -100px;
+        }
+        30% {
+          top: -150px;
+        }
+        39% {
+          top: -150px;
+        }
+        40% {
+          top: -200px;
+        }
+        49% {
+          top: -200px;
+        }
+        50% {
+          top: -250px;
+        }
+        59% {
+          top: -250px;
+        }
+        60% {
+          top: -300px;
+        }
+        69% {
+          top: -300px;
+        }
+        70% {
+          top: -350px;
+        }
+        79% {
+          top: -350px;
+        }
+        80% {
+          top: -400px;
+        }
+        89% {
+          top: -400px;
+        }
+        90% {
+          top: -450px;
+        }
+        99% {
+          top: -450px;
+        }
+        100% {
+          top: -500px;
+        }
+      }
+      @-webkit-keyframes timer-expire {
+        from {
+          color: #000;
+        }
+        to {
+          color: #e7643c;
+        }
+      }
+      @-webkit-keyframes button-expired {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-webkit-keyframes button-before {
+        from {
+          visibility: visible;
+        }
+        to {
+          visibility: hidden;
+        }
+      }
+      .center {
+        text-align: center;
+      }
+      form.ddos_form button.before {
+        animation: button-before;
+        animation-fill-mode: forwards;
+        animation-delay: 60s;
+      }
+      form.ddos_form button.expired {
+        visibility: hidden;
+        background: #e74c3c;
+        animation: button-expired;
+        animation-fill-mode: forwards;
+        animation-delay: 60s;
+        margin-top: -40px;
+      }
+      @media (max-width: 750px) {
+        .container > .left {
+          position: relative;
+          display: block;
+          width: 100%;
+          padding: 25px 10px;
+          height: auto;
+        }
+        .container > .left > .cont {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: auto;
+          margin: 0 auto;
+          transform: translateY(0);
+        }
+        .container > .left > .networkLogo {
+          position: relative;
+          margin: 0 auto 20px auto;
+          display: block;
+          width: 100%;
+          text-align: center;
+          height: auto;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+        .container > .inner {
+          padding: 25px 10px 25px 10px;
+          position: relative;
+          display: block;
+          width: 100%;
+          transform: translateY(0);
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+        }
+        .container {
+          width: 100%;
+          height: auto;
+          overflow-y: auto;
+          position: relative;
+          display: block;
+        }
+        .container > .left > .cont > .tagline {
+          font-size: 22px;
+        }
+        .container > .left > .cont > .serviceLogo > .text {
+          font-size: 42px;
+        }
+        .container > .left > .cont > .serviceLogo > .square {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      input[name="c1"]:focus ~ .image {
+        background-position: calc(
+            0px + 0.07px + 0.03px + 0.16px + 0.01px + 0.15px + 0.22px + 0.05px +
+              0.17px + 0.27px + 0.14px + 0.05px + 0.09px + 0.21px + 0.26px +
+              0.26px + 0.27px + 0.05px + 0.32px + 0.26px + 0.31px + 0.28px +
+              0.18px + 0.22px + 0.25px + 0.05px + 0.28px + 0.33px + 0.05px +
+              0.2px + 0.08px + 0.02px + 0.17px + 0.19px + 0.14px + 0.14px +
+              0.19px + 0.04px + 0.05px + 0.12px + 0.13px + 0.05px + 0.1px +
+              0.08px + 0.2px + 0.23px + 0.28px + 0px + 0.01px + 0.33px + 0.16px +
+              0.09px + 0.19px + 0.1px + 0.29px + 0.17px + 0.09px + 0.23px +
+              0.18px + 0.12px + 0.21px + 0.27px + 0.24px + 0.08px + 0.22px +
+              0.03px + 0.24px + 0.28px + 0.12px + 0.03px + 0.21px + 0.24px +
+              0.07px + 0.08px + 0.04px + 0.18px + 0.33px + 0.18px + 0.1px +
+              0.11px + 0.07px + 0.18px + 0.32px + 0.01px + 0.14px + 0.07px +
+              0.23px + 0.31px + 0.3px + 0.14px + 0.28px + 0.21px + 0.2px +
+              0.29px + 0.22px + 0.21px + 0.18px + 0.06px + 0.16px + 0.2px +
+              0.23px + 0.33px + 0.02px + 0.03px + 0.1px + 0.31px + 0.08px +
+              0.29px + 0.17px + 0.11px + 0.04px + 0.31px + 0.06px + 0.26px +
+              0.13px + 0.08px + 0.09px + 0.04px + 0.17px + 0.02px + 0.04px +
+              0.21px + 0.29px + 0.15px + 0.09px + 0.25px + 0.04px + 0.29px +
+              0.07px + 0.04px + 0.33px + 0.22px + 0.15px + 0.21px + 0.21px +
+              0.3px + 0px + 0.11px + 0.2px + 0.31px + 0.18px + 0.01px + 0.08px +
+              0.01px + 0.3px + 0.24px + 0.18px + 0.11px + 0.07px + 0.09px +
+              0.26px + 0.02px + 0.1px + 0.32px + 0.02px + 0.26px + 0.16px +
+              0.05px + 0.03px + 0.23px + 0.2px + 0.06px + 0.11px + 0.05px +
+              0.17px + 0.28px + 0.1px + 0.03px + 0.2px + 0.33px + 0.1px + 0.04px +
+              0.13px + 0.28px + 0.18px + 0.24px + 0.05px + 0.22px + 0.16px +
+              0.08px + 0.18px + 0px + 0.04px + 0.15px + 0.29px + 0.1px + 0.07px +
+              0.32px + 0.27px + 0.32px + 0.1px + 0.25px + 0.01px + 0.13px +
+              0.23px + 0.11px + 0.15px + 0.19px + 0.02px + 0.25px + 0.32px +
+              0.33px + 0.21px + 0.3px + 0.32px + 0.27px + 0.01px + 0.22px +
+              0.08px + 0.2px + 0.26px + 0.13px + 0.32px + 0.12px + 0.03px +
+              0.29px + 0.22px + 0.28px + 0.16px + 0.07px + 0.28px + 0.13px +
+              0.08px + 0.21px + 0.29px + 0.28px + 0.08px + 0.32px + 0.07px +
+              0.2px + 0.25px + 0.16px + 0.25px + 0.14px + 0.2px + 0.1px + 0.22px +
+              0.29px + 0.16px + 0.04px + 0.24px + 0.04px + 0.24px + 0.06px +
+              0.23px + 0.26px + 0.18px + 0.21px + 0.25px + 0.18px + 0.28px +
+              0.03px + 0.33px + 0.18px + 0.22px + 0.02px + 0.01px + 0.18px +
+              0.04px + 0.04px + 0.02px + 0.21px + 0.06px + 0.29px + 0.03px +
+              0.11px + 0.09px + 0.06px + 0.29px + 0.33px + 0.31px + 0.07px +
+              0.21px + 0.16px + 0.17px + 0.06px + 0.15px + 0.02px + 0.28px +
+              0.04px + 0.22px + 0.09px + 0.03px + 0.25px + 0.05px + 0.18px +
+              0.09px + 0.24px + 0.06px + 0.25px + 0.25px + 0.09px + 0.15px +
+              0.22px + 0.12px + 0.15px + 0.26px + 0.17px + 0.09px + 0.08px +
+              0.2px + 0.19px + 0.26px + 0.05px + 0.2px + 0.27px + 0.22px + 0.1px +
+              0.07px + 0.06px + 0.03px + 0.19px + 0.22px + 0.1px + 0.15px +
+              0.12px + 0.23px + 0.04px + 0.15px + 0.24px + 0.13px + 0.33px +
+              0.02px + 0.17px + 0.08px + 0.25px + 0.03px + 0.03px + 0.16px +
+              0.15px + 0.31px + 0.02px + 0.33px + 0.06px + 0.32px + 0.23px +
+              0.3px + 0.23px + 0.22px + 0.23px + 0.23px + 0.32px + 0.23px +
+              0.21px + 0.2px + 0px + 0.05px + 0.31px + 0.06px + 0px + 0.12px +
+              0.1px + 0.02px + 0.28px + 0.31px + 0.25px + 0.18px + 0.28px +
+              0.17px + 0.07px + 0.3px + 0.25px + 0.33px + 0.31px + 0.18px +
+              0.19px + 0.03px + 0.31px + 0.29px + 0.31px + 0.05px + 0.04px +
+              0.09px + 0.07px + 0.24px + 0.12px + 0.25px + 0.18px + 0.22px +
+              0.13px + 0.1px + 0.02px + 0.27px + 0.06px + 0.03px + 0.23px +
+              0.15px + 0.2px + 0.15px + 0.2px + 0.23px + 0.07px + 0.17px +
+              0.28px + 0.03px + 0.08px + 0.01px + 0.07px + 0.19px + 0.06px +
+              0.06px + 0.25px + 0.07px + 0.07px + 0.1px + 0.11px + 0.05px +
+              0.26px + 0.1px + 0.01px + 0.31px + 0.01px + 0.23px + 0.13px +
+              0.15px + 0.26px + 0.11px + 0.09px + 0px + 0.02px + 0.08px + 0.3px +
+              0.26px + 0.04px + 0.06px + 0.1px + 0.32px + 0.19px + 0.07px +
+              0.08px + 0.26px + 0.19px + 0.12px + 0.25px + 0.05px + 0.29px +
+              0.23px + 0.21px + 0.02px + 0.33px + 0.01px + 0.22px + 0.23px +
+              0.08px + 0.01px + 0.21px + 0.02px + 0.03px + 0.01px + 0.13px +
+              0.01px + 0.32px + 0.25px + 0.19px + 0.24px + 0.11px + 0.26px +
+              0.32px + 0.1px + 0.11px + 0.12px + 0.1px + 0.17px + 0.24px +
+              0.14px + 0.02px + 0.28px + 0.25px + 0px + 0.04px + 0.32px + 0.18px +
+              0.17px + 0.01px + 0.19px + 0.11px + 0.31px + 0.3px + 0.24px +
+              0.28px + 0.01px + 0.17px + 0.27px + 0.05px + 0.29px + 0.24px +
+              0.31px + 0.2px + 0px + 0.26px + 0.28px + 0.02px + 0.08px + 0.28px +
+              0.17px + 0.21px + 0.28px + 0.26px + 0.06px + 0.3px + 0.27px +
+              0.15px + 0.29px + 0.26px + 0.32px + 0.3px + 0.04px + 0.21px +
+              0.16px + 0.13px + 0.14px + 0.09px + 0.19px + 0.26px + 0.18px +
+              0.33px + 0.11px + 0.21px + 0.03px + 0.28px + 0.31px + 0.21px +
+              0.23px + 0.18px + 0.21px + 0.04px + 0.26px + 0.05px + 0.31px +
+              0.13px + 0.25px + 0.09px + 0.31px + 0.19px + 0.17px + 0.01px +
+              0.17px + 0.19px + 0.25px + 0.24px + 0.14px + 0.03px + 0.15px +
+              0.09px + 0.02px + 0.23px + 0.04px + 0.27px + 0.18px + 0.25px +
+              0.17px + 0.24px + 0.29px + 0.19px + 0.11px + 0.25px + 0.3px +
+              0.04px + 0.31px + 0.17px + 0.18px + 0.11px + 0.09px + 0.07px +
+              0.04px + 0.32px + 0.13px + 0.07px + 0.16px + 0.21px + 0.02px +
+              0.1px + 0.2px + 0.04px + 0.33px + 0.3px + 0.11px + 0.25px + 0.13px +
+              0.17px + 0.19px + 0.01px + 0.04px + 0.15px + 0.27px + 0.13px +
+              0.17px + 0.29px + 0.17px + 0.06px + 0.04px + 0.2px + 0.23px +
+              0.21px + 0.09px + 0.06px + 0.2px + 0.2px + 0.29px + 0.11px +
+              0.22px + 0.28px + 0.08px + 0.08px + 0.32px + 0.32px + 0.3px +
+              0.08px + 0.19px + 0.24px + 0.09px + 0.2px + 0.17px + 0.16px +
+              0.11px + 0.14px + 0.05px + 0.13px + 0.22px + 0.03px + 0.19px +
+              0.18px + 0.07px + 0.21px + 0px + 0.16px + 0.25px + 0.03px + 0.3px +
+              0.21px + 0.15px + 0.02px + 0.09px + 0.09px + 0.04px + 0.21px +
+              0.03px + 0.05px + 0.29px + 0.16px + 0.02px + 0.02px + 0.06px +
+              0.17px + 0.2px + 0.18px + 0.14px + 0.31px + 0.08px + 0.08px +
+              0.03px + 0.32px + 0.27px + 0.18px + 0.19px + 0.21px + 0.16px +
+              0.19px + 0.18px + 0.31px + 0.1px + 0.13px + 0.12px + 0.04px +
+              0.16px + 0.21px + 0.05px + 0.29px + 0.04px + 0.2px + 0.31px +
+              0.31px + 0.23px + 0.09px + 0.31px + 0.3px + 0.12px + 0.05px +
+              0.22px + 0.03px + 0.22px + 0.13px + 0.26px + 0.17px + 0px + 0.18px +
+              0.29px + 0.25px + 0.11px + 0.11px + 0.29px + 0.31px + 0.2px +
+              0.15px + 0.03px + 0.13px + 0.32px + 0.25px + 0.23px + 0.08px +
+              0.25px + 0.08px + 0.14px + 0.23px + 0.12px + 0.09px + 0.07px +
+              0.02px + 0.13px + 0.32px + 0.17px + 0.32px + 0.02px + 0.12px +
+              0.31px + 0.26px + 0.17px + 0.07px + 0.17px + 0.1px + 0.21px +
+              0.13px + 0.13px + 0.12px + 0.28px + 0.14px + 0.07px + 0.19px +
+              0.03px + 0.15px + 0.06px + 0.11px + 0.03px + 0.27px + 0.18px +
+              0.02px + 0.1px + 0.17px + 0.06px + 0.22px + 0.2px + 0.28px +
+              0.17px + 0.11px + 0.09px + 0.21px + 0.04px + 0.25px + 0.12px +
+              0.17px + 0.13px + 0.1px + 0.29px + 0.22px + 0.03px + 0.11px +
+              0.06px + 0.16px + 0.25px + 0.19px + 0.11px + 0.27px + 0.07px +
+              0.25px + 0.11px + 0.17px + 0.05px + 0.19px + 0.22px + 0.21px +
+              0.18px + 0.07px + 0.2px + 0.17px + 0.31px + 0.02px + 0.28px +
+              0.12px + 0.01px + 0.25px + 0.1px + 0.07px + 0.24px + 0.23px +
+              0.14px + 0.1px + 0.27px + 0.32px + 0.23px + 0.3px + 0.13px +
+              0.13px + 0.3px + 0.2px + 0.02px + 0.18px + 0.13px + 0px + 0.2px +
+              0.16px + 0.13px + 0.18px + 0.32px + 0.2px + 0.18px + 0.17px +
+              0.02px + 0.27px + 0.12px + 0.21px + 0.17px + 0.2px + 0.01px +
+              0.26px + 0.13px + 0.11px + 0.21px + 0.3px + 0.15px + 0.11px +
+              0.04px + 0.16px + 0.18px + 0.07px + 0.3px + 0.02px + 0.33px +
+              0.2px + 0.26px + 0.17px + 0.16px + 0.22px + 0.3px + 0px + 0.23px +
+              0.17px + 0.22px + 0.29px + 0.24px + 0.25px + 0.19px + 0.27px +
+              0.22px + 0.15px + 0.12px + 0.29px + 0.14px + 0.01px + 0.03px +
+              0.02px + 0.05px
+          )
+          calc(
+            0px + 0.08px + 0.03px + 0.18px + 0.11px + 0.27px + 0.11px + 0.31px +
+              0.16px + 0.27px + 0.04px + 0.23px + 0.11px + 0.15px + 0.01px +
+              0.02px + 0.09px + 0.16px + 0.33px + 0.12px + 0.12px + 0.21px +
+              0.01px + 0.12px + 0.19px + 0.16px + 0.12px + 0.01px + 0.09px +
+              0.09px + 0.26px + 0.28px + 0.04px + 0.09px + 0.06px + 0.11px +
+              0.18px + 0.16px + 0.32px + 0.05px + 0.21px + 0.31px + 0.14px +
+              0.03px + 0.27px + 0.03px + 0.04px + 0.24px + 0px + 0.16px + 0.2px +
+              0.02px + 0.25px + 0.29px + 0.31px + 0.1px + 0.12px + 0.12px +
+              0.02px + 0.09px + 0.14px + 0.16px + 0.1px + 0.22px + 0.08px +
+              0.26px + 0.24px + 0.28px + 0.06px + 0.27px + 0.08px + 0.22px +
+              0.27px + 0.01px + 0.05px + 0.01px + 0.05px + 0.18px + 0.25px +
+              0.07px + 0.17px + 0.06px + 0.19px + 0.25px + 0.13px + 0.32px +
+              0.31px + 0.25px + 0.19px + 0.12px + 0.28px + 0.26px + 0.16px +
+              0.2px + 0.27px + 0.32px + 0.3px + 0.08px + 0.16px + 0.12px +
+              0.09px + 0.25px + 0.05px + 0.01px + 0.33px + 0.22px + 0.06px +
+              0.27px + 0.23px + 0.07px + 0.14px + 0.14px + 0.12px + 0.06px +
+              0.15px + 0.32px + 0.08px + 0.24px + 0.15px + 0.18px + 0.22px +
+              0.14px + 0.11px + 0.02px + 0.21px + 0.16px + 0.27px + 0.13px +
+              0.16px + 0.22px + 0.2px + 0.07px + 0.33px + 0.14px + 0.11px +
+              0.08px + 0.31px + 0.03px + 0.13px + 0.13px + 0.23px + 0.17px +
+              0.15px + 0.14px + 0.13px + 0.02px + 0.14px + 0.24px + 0.03px +
+              0.1px + 0.11px + 0.17px + 0.1px + 0.09px + 0.24px + 0.27px +
+              0.14px + 0.07px + 0.27px + 0.25px + 0.07px + 0.28px + 0.13px +
+              0.11px + 0.04px + 0.04px + 0.06px + 0.28px + 0.18px + 0.21px +
+              0.24px + 0.19px + 0.26px + 0.27px + 0.13px + 0.23px + 0.29px +
+              0.18px + 0.1px + 0.09px + 0.05px + 0.31px + 0.32px + 0.02px +
+              0.03px + 0.02px + 0.03px + 0.04px + 0.27px + 0.32px + 0.32px +
+              0.07px + 0.18px + 0.32px + 0.25px + 0.03px + 0.33px + 0.23px +
+              0.24px + 0.33px + 0.13px + 0.2px + 0.08px + 0.23px + 0.1px +
+              0.11px + 0.31px + 0.13px + 0.33px + 0.04px + 0.05px + 0.13px +
+              0.33px + 0.07px + 0.2px + 0.3px + 0.33px + 0.29px + 0.32px + 0.2px +
+              0.01px + 0.33px + 0.14px + 0.24px + 0.29px + 0.05px + 0.12px +
+              0.01px + 0.2px + 0.17px + 0.11px + 0.28px + 0.13px + 0.21px +
+              0.17px + 0.13px + 0px + 0.16px + 0.19px + 0.33px + 0.04px + 0.06px +
+              0.27px + 0.25px + 0.05px + 0.11px + 0.28px + 0.31px + 0.09px +
+              0.23px + 0.12px + 0.25px + 0.18px + 0.2px + 0.11px + 0.06px +
+              0.27px + 0.03px + 0.14px + 0.17px + 0.13px + 0.02px + 0.13px +
+              0.18px + 0.05px + 0.25px + 0.23px + 0.08px + 0.03px + 0.06px +
+              0.28px + 0.03px + 0.18px + 0.33px + 0.27px + 0.1px + 0.11px +
+              0.3px + 0.14px + 0.11px + 0.25px + 0.32px + 0.15px + 0.29px +
+              0.1px + 0.28px + 0.18px + 0.31px + 0.06px + 0.17px + 0.17px +
+              0.28px + 0.27px + 0.06px + 0.23px + 0.08px + 0.07px + 0.04px +
+              0.29px + 0.04px + 0.24px + 0.25px + 0.33px + 0.04px + 0.11px +
+              0.02px + 0.08px + 0.15px + 0.32px + 0.23px + 0.2px + 0.3px +
+              0.05px + 0.28px + 0.06px + 0.23px + 0.13px + 0.05px + 0.25px +
+              0.29px + 0.31px + 0.24px + 0.04px + 0.03px + 0.18px + 0.24px +
+              0.31px + 0.06px + 0.14px + 0.26px + 0.04px + 0.23px + 0.27px +
+              0.02px + 0.02px + 0.03px + 0.06px + 0.05px + 0.06px + 0.01px +
+              0.31px + 0.24px + 0.12px + 0.21px + 0.03px + 0.27px + 0.04px +
+              0.19px + 0.25px + 0.23px + 0.13px + 0.13px + 0.08px + 0.05px +
+              0.18px + 0.11px + 0.1px + 0.32px + 0.16px + 0.11px + 0.32px + 0px +
+              0.01px + 0.33px + 0.26px + 0.07px + 0.21px + 0.01px + 0.28px +
+              0.03px + 0.14px + 0.26px + 0.17px + 0.28px + 0.17px + 0.1px +
+              0.13px + 0.13px + 0.12px + 0.23px + 0.07px + 0.09px + 0.24px +
+              0.23px + 0.02px + 0.2px + 0.13px + 0.06px + 0.21px + 0.02px +
+              0.29px + 0px + 0.08px + 0.13px + 0.14px + 0.07px + 0.02px + 0.01px +
+              0.11px + 0.25px + 0.15px + 0.31px + 0.25px + 0.32px + 0.14px +
+              0.22px + 0.33px + 0.28px + 0.1px + 0.22px + 0.07px + 0.07px +
+              0.02px + 0.1px + 0px + 0.3px + 0.25px + 0.06px + 0.31px + 0.22px +
+              0.33px + 0.21px + 0.25px + 0.29px + 0.32px + 0.22px + 0.14px +
+              0.13px + 0.05px + 0.24px + 0.01px + 0.01px + 0.18px + 0.3px +
+              0.11px + 0.21px + 0.09px + 0.15px + 0.25px + 0.23px + 0.19px +
+              0.2px + 0.19px + 0.29px + 0.3px + 0.2px + 0.04px + 0.29px + 0.13px +
+              0.09px + 0.16px + 0.19px + 0.05px + 0.24px + 0.09px + 0.29px +
+              0.3px + 0.23px + 0.11px + 0.17px + 0.09px + 0.2px + 0.16px +
+              0.05px + 0.12px + 0.29px + 0.24px + 0.08px + 0.2px + 0.19px +
+              0.01px + 0.04px + 0.03px + 0.06px + 0.33px + 0.05px + 0.1px +
+              0.02px + 0.24px + 0.02px + 0.27px + 0.24px + 0.05px + 0.12px +
+              0.29px + 0.29px + 0.02px + 0.1px + 0.19px + 0.11px + 0.2px +
+              0.22px + 0.08px + 0.17px + 0.15px + 0.27px + 0.26px + 0.28px +
+              0.1px + 0.16px + 0.13px + 0.16px + 0.09px + 0.16px + 0.11px +
+              0.16px + 0.28px + 0.28px + 0.32px + 0.14px + 0.26px + 0.32px +
+              0.14px + 0.1px + 0.29px + 0.03px + 0.14px + 0.15px + 0.08px +
+              0.05px + 0.04px + 0.1px + 0.06px + 0.32px + 0.01px + 0.29px +
+              0.31px + 0.19px + 0.15px + 0.02px + 0.23px + 0.23px + 0.16px +
+              0.23px + 0.25px + 0.32px + 0.31px + 0.07px + 0.09px + 0.29px +
+              0.03px + 0.16px + 0.32px + 0.27px + 0.15px + 0.06px + 0.02px +
+              0.15px + 0.05px + 0.06px + 0.18px + 0.12px + 0.22px + 0.1px +
+              0.17px + 0.33px + 0.32px + 0.07px + 0.18px + 0.1px + 0.14px +
+              0.25px + 0.28px + 0.17px + 0.23px + 0.25px + 0.25px + 0.06px +
+              0.18px + 0.07px + 0.19px + 0px + 0.11px + 0.23px + 0.26px + 0.3px +
+              0.29px + 0.04px + 0.15px + 0.11px + 0.15px + 0.02px + 0.13px +
+              0.28px + 0.09px + 0.14px + 0.33px + 0.25px + 0.08px + 0.25px +
+              0.14px
+          );
+        transform: rotate(
+            calc(
+              0deg - 0.89deg - 0.58deg - 0.14deg - 1.66deg - 0.46deg - 1.05deg -
+                1.35deg - 1.18deg - 0.34deg - 0.27deg - 0.76deg - 1.65deg -
+                0.65deg - 0.95deg - 0.51deg - 1.24deg - 1.4deg - 0.58deg -
+                0.44deg - 0.31deg - 1.92deg - 0.83deg - 0.5deg - 1.18deg -
+                1.86deg - 0.41deg - 1.78deg - 0.28deg - 1.49deg - 0.13deg -
+                0.24deg - 0.08deg - 1.93deg - 0.27deg - 1.5deg - 0.89deg -
+                0.89deg - 0.15deg - 0.06deg - 0.92deg - 1.35deg - 1.87deg -
+                0.19deg - 0.42deg - 1.84deg - 0.08deg - 0.91deg - 0deg - 1.68deg -
+                0.17deg - 0.96deg - 0.23deg
+            )
+          )
+          scale(6) !important;
+      }
+      input[name="c2"]:focus ~ .image {
+        background-position: calc(
+            0px + 0.1px + 0.01px + 0.28px + 0.19px + 0.25px + 0.27px + 0.24px +
+              0.28px + 0.18px + 0.26px + 0.1px + 0.14px + 0.2px + 0.24px +
+              0.13px + 0.3px + 0.24px + 0.21px + 0.06px + 0.06px + 0.11px +
+              0.15px + 0.17px + 0.03px + 0.22px + 0.2px + 0.05px + 0.1px + 0.2px +
+              0.31px + 0.27px + 0.16px + 0.28px + 0.31px + 0px + 0.19px + 0.18px +
+              0.05px + 0.29px + 0.19px + 0.2px + 0.31px + 0.03px + 0.24px +
+              0.03px + 0.2px + 0.19px + 0.21px + 0.1px + 0.26px + 0.26px +
+              0.12px + 0.1px + 0.22px + 0.12px + 0.28px + 0.32px + 0.06px +
+              0.04px + 0.16px + 0.09px + 0.28px + 0.29px + 0.04px + 0.1px +
+              0.18px + 0.26px + 0.09px + 0.02px + 0.2px + 0.19px + 0.12px +
+              0.16px + 0.31px + 0.28px + 0.09px + 0px + 0.04px + 0.29px + 0.08px +
+              0.21px + 0.12px + 0.06px + 0.12px + 0.25px + 0.28px + 0.18px +
+              0.26px + 0.01px + 0.17px + 0.01px + 0.29px + 0.25px + 0.02px +
+              0.3px + 0.03px + 0.3px + 0.29px + 0.02px + 0.15px + 0.07px +
+              0.09px + 0.13px + 0.13px + 0.32px + 0.15px + 0.21px + 0.09px +
+              0.01px + 0px + 0.07px + 0.04px + 0.21px + 0.25px + 0px + 0.07px +
+              0.28px + 0.02px + 0.1px + 0.23px + 0.06px + 0.17px + 0.02px +
+              0.13px + 0.23px + 0.08px + 0.13px + 0.17px + 0.17px + 0.18px +
+              0.12px + 0.28px + 0.14px + 0.27px + 0.06px + 0.06px + 0.07px +
+              0.19px + 0.18px + 0.11px + 0.2px + 0.13px + 0.26px + 0.08px +
+              0.28px + 0.19px + 0.23px + 0.27px + 0.05px + 0.13px + 0.11px +
+              0.05px + 0.32px + 0.13px + 0.05px + 0.06px + 0.15px + 0.2px +
+              0.09px + 0.23px + 0.02px + 0.1px + 0.3px + 0.19px + 0.2px + 0.04px +
+              0.02px + 0.07px + 0.07px + 0.29px + 0.26px + 0.33px + 0.33px +
+              0.1px + 0.08px + 0.14px + 0.05px + 0.05px + 0.11px + 0.23px +
+              0.17px + 0.04px + 0.27px + 0.24px + 0.24px + 0.09px + 0.32px +
+              0.26px + 0.01px + 0.02px + 0.31px + 0.25px + 0.18px + 0.07px +
+              0.05px + 0.25px + 0.15px + 0.33px + 0.27px + 0.02px + 0.19px +
+              0.24px + 0.17px + 0.04px + 0.33px + 0.19px + 0.02px + 0.21px +
+              0.16px + 0.3px + 0.2px + 0.19px + 0.04px + 0.2px + 0.02px + 0.32px +
+              0.26px + 0.16px + 0.14px + 0.21px + 0.26px + 0.32px + 0.01px +
+              0.13px + 0.24px + 0.28px + 0.07px + 0.22px + 0.32px + 0.09px +
+              0.01px + 0.13px + 0.33px + 0.29px + 0.12px + 0.3px + 0.16px +
+              0.19px + 0.14px + 0.18px + 0.28px + 0.31px + 0.31px + 0.21px +
+              0.32px + 0.13px + 0.26px + 0.1px + 0.29px + 0.16px + 0.31px +
+              0.03px + 0.01px + 0.12px + 0.02px + 0.2px + 0.06px + 0.23px +
+              0.3px + 0.32px + 0.3px + 0.08px + 0.03px + 0.26px + 0.01px +
+              0.09px + 0.26px + 0.06px + 0.16px + 0.21px + 0.31px + 0.21px +
+              0.01px + 0.05px + 0.23px + 0.11px + 0.11px + 0.16px + 0.31px +
+              0.31px + 0.01px + 0.1px + 0.1px + 0.07px + 0.17px + 0.16px +
+              0.17px + 0.32px + 0.13px + 0.31px + 0.24px + 0.3px + 0.24px +
+              0.01px + 0.22px + 0.04px + 0.27px + 0.13px + 0.33px + 0.14px +
+              0.2px + 0.3px + 0.29px + 0.05px + 0.01px + 0.06px + 0.14px +
+              0.06px + 0.23px + 0.29px + 0.11px + 0.05px + 0.25px + 0.06px +
+              0.15px + 0.1px + 0.03px + 0px + 0.06px + 0.14px + 0.11px + 0.19px +
+              0.26px + 0.19px + 0.25px + 0.25px + 0.17px + 0px + 0.17px + 0.22px +
+              0.09px + 0.31px + 0.08px + 0.26px + 0.31px + 0.15px + 0.01px +
+              0.24px + 0.14px + 0.27px + 0.18px + 0.04px + 0.08px + 0.25px +
+              0.28px + 0.02px + 0.22px + 0.01px + 0.13px + 0.24px + 0.09px +
+              0.24px + 0.13px + 0.15px + 0.32px + 0.08px + 0.12px + 0.11px +
+              0.07px + 0.11px + 0.05px + 0.32px + 0.29px + 0.1px + 0.17px +
+              0.31px + 0.05px + 0.28px + 0.22px + 0.22px + 0.22px + 0.17px +
+              0.02px + 0.24px + 0.15px + 0.22px + 0.27px + 0.32px + 0.21px +
+              0.14px + 0.25px + 0.15px + 0.28px + 0.2px + 0.16px + 0.25px +
+              0.2px + 0.2px + 0.18px + 0.16px + 0.12px + 0.08px + 0.27px +
+              0.17px + 0.06px + 0.32px + 0.1px + 0.19px + 0.2px + 0.18px +
+              0.15px + 0.05px + 0.02px + 0.26px + 0.16px + 0.08px + 0.02px +
+              0.19px + 0.32px + 0.25px + 0.14px + 0.23px + 0.13px + 0.22px +
+              0.17px + 0.23px + 0.12px + 0.33px + 0.07px + 0.31px + 0.24px +
+              0.13px + 0.28px + 0.2px + 0.25px + 0.32px + 0.18px + 0.27px +
+              0.19px + 0.05px + 0.05px + 0.03px + 0.28px + 0.01px + 0.24px +
+              0.32px + 0.3px + 0.16px + 0.08px + 0.07px + 0.16px + 0.19px +
+              0.09px + 0.25px + 0.05px + 0.17px + 0.16px + 0.29px + 0.11px +
+              0.19px + 0.12px + 0.33px + 0.21px + 0.01px + 0.1px + 0.14px +
+              0.1px + 0.15px + 0.19px + 0.03px + 0.2px + 0.31px + 0.3px + 0.25px +
+              0.2px + 0.21px + 0.06px + 0.25px + 0.01px + 0.14px + 0.02px +
+              0.1px + 0.01px + 0.16px + 0.22px + 0.33px + 0.12px + 0.09px +
+              0.27px + 0.02px + 0.18px + 0.03px + 0.14px + 0.05px + 0.06px +
+              0.26px + 0.33px + 0.04px + 0.05px + 0.06px + 0.25px + 0.08px +
+              0.07px + 0.28px + 0.18px + 0.33px + 0.24px + 0.23px + 0.08px +
+              0.03px + 0.1px + 0.26px + 0.28px + 0.08px + 0.04px + 0.13px +
+              0.3px + 0.03px + 0.29px + 0.23px + 0.31px + 0.17px + 0.17px +
+              0.22px + 0.09px + 0.33px + 0.23px + 0.01px + 0.24px + 0.29px +
+              0.09px + 0.18px + 0.04px + 0.24px + 0.28px + 0.1px + 0.04px + 0px +
+              0.32px + 0.33px + 0.04px + 0.23px + 0.01px + 0.27px + 0.12px +
+              0.26px + 0.26px + 0.27px + 0.05px + 0.18px + 0.17px + 0.16px +
+              0.31px + 0.22px + 0.16px + 0.14px + 0.24px + 0.06px + 0.03px +
+              0.09px + 0.12px + 0.28px + 0.02px + 0.03px + 0.3px + 0.11px +
+              0.12px + 0.22px + 0.33px + 0.15px + 0.23px + 0.29px + 0.19px +
+              0.03px + 0.32px + 0.17px + 0.03px + 0.22px + 0.08px + 0.26px +
+              0.33px + 0.21px + 0.05px + 0.02px + 0.1px + 0.07px + 0.07px +
+              0.28px + 0.13px + 0.14px + 0.21px + 0.33px + 0.26px + 0.23px +
+              0.02px + 0.13px + 0.18px + 0.33px + 0.22px + 0.13px + 0px + 0.29px +
+              0.15px + 0.05px + 0.32px + 0.26px + 0.14px + 0.23px + 0.11px +
+              0.07px + 0.01px + 0.08px + 0.25px + 0.25px + 0.17px + 0.02px +
+              0.14px + 0.08px + 0.27px + 0.16px + 0px + 0.31px + 0.24px + 0.18px +
+              0.1px + 0.08px + 0.16px + 0.31px + 0.12px + 0.19px + 0.24px +
+              0.03px + 0.29px + 0.25px + 0.2px + 0.01px + 0.2px + 0.19px +
+              0.05px + 0.05px + 0.13px + 0.29px + 0.33px + 0.17px + 0.28px +
+              0.24px + 0.05px + 0.2px + 0.17px + 0.08px + 0.31px + 0.3px +
+              0.11px + 0.32px + 0.29px + 0.29px + 0.12px + 0.27px + 0.07px +
+              0.1px + 0.31px + 0.31px + 0.07px + 0.2px + 0.27px + 0.27px + 0.1px +
+              0px + 0.3px + 0.13px + 0.1px + 0.15px + 0.32px + 0.29px + 0.33px +
+              0.28px + 0.21px + 0.3px + 0.02px + 0.01px + 0.32px + 0.2px +
+              0.07px + 0.23px + 0.23px + 0.18px + 0.12px + 0.18px + 0.18px +
+              0.25px + 0.3px + 0.09px + 0px + 0.05px + 0.08px + 0px + 0.18px +
+              0.25px + 0.32px + 0.26px + 0px + 0.21px + 0.16px + 0px + 0.09px +
+              0.23px + 0.15px + 0.2px + 0.3px + 0.24px + 0.05px + 0.09px +
+              0.27px + 0.28px + 0.09px
+          )
+          calc(
+            0px + 0.19px + 0.23px + 0.02px + 0.29px + 0.32px + 0.1px + 0.16px +
+              0.12px + 0.02px + 0.12px + 0.19px + 0.02px + 0.1px + 0.06px +
+              0.22px + 0.13px + 0.02px + 0.27px + 0.17px + 0.05px + 0.07px +
+              0.11px + 0.31px + 0.29px + 0.14px + 0.1px + 0.28px + 0.27px +
+              0.06px + 0.16px + 0.12px + 0.07px + 0.05px + 0.05px + 0.09px +
+              0.05px + 0.32px + 0.02px + 0.06px + 0.13px + 0.13px + 0.29px +
+              0.3px + 0.24px + 0.03px + 0.06px + 0.08px + 0.23px + 0.26px +
+              0.13px + 0.06px + 0.15px + 0.09px + 0.33px + 0.14px + 0.29px +
+              0.09px + 0.2px + 0.2px + 0.27px + 0.14px + 0.32px + 0.1px + 0.21px +
+              0.27px + 0.29px + 0.17px + 0.25px + 0.05px + 0.31px + 0.24px +
+              0.1px + 0.11px + 0.14px + 0.11px + 0.13px + 0.21px + 0.3px +
+              0.23px + 0.22px + 0.12px + 0.15px + 0.29px + 0.28px + 0.04px +
+              0.02px + 0.21px + 0.33px + 0.03px + 0.05px + 0.08px + 0.23px +
+              0.24px + 0.02px + 0.23px + 0.31px + 0.19px + 0.22px + 0.27px +
+              0.2px + 0.07px + 0.21px + 0.33px + 0.27px + 0.14px + 0.2px +
+              0.17px + 0.27px + 0.01px + 0.17px + 0.13px + 0.07px + 0.27px +
+              0.08px + 0.16px + 0.24px + 0.28px + 0.22px + 0.21px + 0.3px +
+              0.21px + 0.2px + 0.14px + 0.28px + 0.24px + 0.19px + 0.07px +
+              0.33px + 0.16px + 0.29px + 0.03px + 0.25px + 0.32px + 0.26px +
+              0.28px + 0.08px + 0.22px + 0.06px + 0.11px + 0.05px + 0.15px +
+              0.19px + 0.12px + 0.1px + 0.11px + 0.27px + 0.28px + 0.23px +
+              0.1px + 0.06px + 0.15px + 0.01px + 0.19px + 0.17px + 0.08px +
+              0.13px + 0.33px + 0.07px + 0.21px + 0.13px + 0.26px + 0px + 0.31px +
+              0.04px + 0.33px + 0.11px + 0.29px + 0.28px + 0.26px + 0.27px +
+              0.03px + 0.32px + 0.08px + 0.19px + 0.01px + 0.3px + 0.28px +
+              0.13px + 0.11px + 0.28px + 0.09px + 0.21px + 0.17px + 0.25px +
+              0.19px + 0.18px + 0.01px + 0.03px + 0.07px + 0.23px + 0.27px +
+              0.09px + 0.19px + 0.22px + 0.19px + 0.18px + 0.18px + 0.18px +
+              0.09px + 0.27px + 0.06px + 0.2px + 0.27px + 0.31px + 0.31px +
+              0.27px + 0.31px + 0.14px + 0.19px + 0.02px + 0.33px + 0.03px +
+              0.16px + 0.01px + 0.29px + 0.09px + 0.02px + 0.11px + 0.26px +
+              0.32px + 0.2px + 0.33px + 0.23px + 0.02px + 0.17px + 0.04px +
+              0.2px + 0.28px + 0.24px + 0.03px + 0.22px + 0.26px + 0.18px +
+              0.1px + 0.26px + 0.2px + 0.13px + 0.23px + 0.33px + 0.18px +
+              0.14px + 0.03px + 0.13px + 0.26px + 0.14px + 0.12px + 0.29px +
+              0.26px + 0.22px + 0.23px + 0.29px + 0.3px + 0.26px + 0.05px +
+              0.14px + 0.08px + 0.28px + 0.03px + 0.12px + 0.19px + 0.08px +
+              0.05px + 0.27px + 0.14px + 0.02px + 0.12px + 0.05px + 0px + 0.26px +
+              0.26px + 0.24px + 0.27px + 0.13px + 0.01px + 0.14px + 0.25px +
+              0.25px + 0.06px + 0.17px + 0.19px + 0.1px + 0.02px + 0.03px +
+              0.28px + 0.14px + 0.03px + 0.07px + 0.09px + 0.12px + 0.12px +
+              0.27px + 0.29px + 0.31px + 0.13px + 0.2px + 0.29px + 0.03px +
+              0.05px + 0.17px + 0.32px + 0.32px + 0.27px + 0.02px + 0.11px +
+              0.22px + 0.24px + 0.06px + 0.19px + 0.24px + 0.07px + 0.01px +
+              0.15px + 0.25px + 0.14px + 0.08px + 0.05px + 0.01px + 0.13px +
+              0.17px + 0.23px + 0.03px + 0.16px + 0.32px + 0.29px + 0.05px +
+              0.19px + 0.29px + 0.25px + 0.32px + 0.32px + 0.29px + 0.29px +
+              0.05px + 0.02px + 0.03px + 0.23px + 0.12px + 0.16px + 0.16px +
+              0.09px + 0.18px + 0.27px + 0.04px + 0.17px + 0.24px + 0.02px +
+              0.04px + 0.16px + 0.02px + 0.1px + 0.06px + 0.23px + 0.3px +
+              0.11px + 0.32px + 0.13px + 0.19px + 0.31px + 0.12px + 0.24px +
+              0.05px + 0.32px + 0.12px + 0.22px + 0.3px + 0.07px + 0.06px +
+              0.02px + 0.07px + 0.33px + 0.04px + 0.02px + 0.12px + 0.1px +
+              0.04px + 0.32px + 0.31px + 0.21px + 0.28px + 0.28px + 0.16px +
+              0.09px + 0.2px + 0.17px + 0.03px + 0.12px + 0px + 0.05px + 0.18px +
+              0.29px + 0.29px + 0.01px + 0.02px + 0.06px + 0.26px + 0.18px +
+              0.19px + 0.2px + 0.19px + 0.14px + 0.19px + 0.04px + 0.09px +
+              0.1px + 0.03px + 0.15px + 0.05px + 0.17px + 0.02px + 0.24px +
+              0.17px + 0.08px + 0.16px + 0.22px + 0.03px + 0.04px + 0.31px +
+              0.24px + 0.1px + 0.01px + 0.07px + 0.14px + 0.1px + 0.12px +
+              0.23px + 0.17px + 0.22px + 0.33px + 0.05px + 0.25px + 0.18px +
+              0.31px + 0.02px + 0.05px + 0.18px + 0.1px + 0.07px + 0.22px +
+              0.09px + 0.19px + 0.27px + 0.32px + 0.07px + 0.15px + 0.11px +
+              0.16px + 0.03px + 0.17px + 0.13px + 0.09px + 0.03px + 0.25px +
+              0.27px + 0.2px + 0.09px + 0.14px + 0.16px + 0.15px + 0.05px +
+              0.22px + 0.28px + 0.03px + 0.2px + 0.24px + 0.31px + 0.06px +
+              0.15px + 0.08px + 0.31px + 0.03px + 0.23px + 0.15px + 0.33px +
+              0.13px + 0.07px + 0.2px + 0.25px + 0.01px + 0.12px + 0.27px +
+              0.08px + 0.24px + 0.32px + 0.31px + 0.08px + 0.11px + 0.12px +
+              0.2px + 0.06px + 0.19px + 0.07px + 0.04px + 0.25px + 0.08px + 0px +
+              0.19px + 0.09px + 0.13px + 0.02px + 0.33px + 0.1px + 0.06px +
+              0.08px + 0.28px + 0.05px + 0.15px + 0.18px + 0.13px + 0.1px +
+              0.18px + 0.25px + 0.28px + 0.18px + 0.17px + 0.29px + 0px + 0.16px +
+              0.07px + 0.2px + 0.23px + 0.26px + 0.21px + 0.33px + 0.09px +
+              0.2px + 0.03px + 0.1px + 0.19px + 0.17px + 0.19px + 0.02px +
+              0.23px + 0.3px + 0.23px + 0.19px + 0.18px + 0.2px + 0.15px +
+              0.28px + 0.12px + 0.01px + 0.31px + 0.32px + 0.33px + 0.16px +
+              0.1px + 0.16px + 0.18px + 0.33px + 0.11px + 0.26px + 0.11px +
+              0.11px + 0.05px + 0.27px + 0.23px + 0.1px + 0.07px + 0.17px +
+              0.26px + 0.21px + 0.09px + 0.05px + 0.26px + 0.27px + 0.01px +
+              0.1px + 0.12px + 0.29px + 0.25px + 0.23px + 0.07px + 0.25px +
+              0.1px + 0.19px + 0.1px + 0.3px + 0.06px + 0.12px + 0.3px + 0.15px +
+              0.26px + 0.31px + 0.27px + 0.04px + 0.32px + 0.22px + 0.26px +
+              0.2px + 0.04px + 0.2px + 0.08px + 0.33px + 0.16px + 0.19px +
+              0.32px + 0.33px + 0.33px + 0.02px + 0.08px + 0.27px + 0.23px +
+              0.12px + 0.2px + 0.24px + 0.13px + 0.28px + 0.02px + 0.14px +
+              0.28px + 0.05px + 0.07px + 0.26px + 0.18px + 0.02px + 0.01px +
+              0.3px + 0.25px + 0.21px + 0.25px + 0.27px + 0.05px + 0.28px +
+              0.19px + 0.01px + 0.18px + 0.2px + 0.22px + 0.17px + 0.21px +
+              0.19px + 0.04px + 0.28px + 0.26px + 0.08px + 0.32px + 0.06px +
+              0.17px + 0.01px + 0.04px + 0.08px + 0.31px + 0.1px + 0.26px +
+              0.15px + 0.29px + 0.04px + 0.1px + 0.13px + 0.12px + 0.24px +
+              0.15px + 0.06px + 0.09px + 0.05px + 0.31px + 0.03px + 0.03px +
+              0.05px + 0.15px + 0.15px + 0.26px + 0.09px + 0.09px + 0.12px +
+              0.09px + 0.27px + 0.09px + 0.16px + 0.16px + 0.24px + 0.26px +
+              0.18px + 0.13px + 0.2px + 0.2px + 0.04px + 0.24px + 0.18px +
+              0.07px + 0.13px + 0.06px + 0.02px + 0.3px + 0.01px + 0.16px +
+              0.22px + 0.23px + 0.05px + 0.08px + 0.04px + 0.24px + 0.08px +
+              0.04px + 0.32px + 0.04px + 0.11px + 0px + 0.18px + 0.12px + 0.2px +
+              0.1px + 0.24px + 0.23px + 0.31px + 0.29px + 0.08px + 0.05px +
+              0.25px + 0.18px + 0.3px + 0.02px + 0.19px + 0.21px + 0.08px +
+              0.03px + 0.02px + 0.04px + 0.06px + 0.2px + 0.15px + 0.2px +
+              0.22px + 0.27px + 0.31px + 0.27px + 0.3px + 0.14px + 0.05px +
+              0.32px + 0.03px + 0.07px + 0.25px + 0.32px + 0.14px + 0.13px +
+              0.07px + 0.25px + 0.1px + 0.22px + 0.01px + 0.13px + 0.26px +
+              0.02px + 0.2px + 0.22px + 0.25px + 0.04px + 0.19px + 0.31px +
+              0.05px + 0.01px + 0.18px + 0.22px + 0.22px + 0.12px + 0.17px +
+              0.11px + 0.28px + 0.25px + 0.23px + 0.1px + 0.27px + 0.06px +
+              0.33px + 0.14px + 0.11px + 0.08px + 0.22px + 0.23px + 0.08px +
+              0.28px + 0.21px + 0.25px + 0.17px + 0.2px + 0.29px + 0.29px +
+              0.07px + 0.17px + 0.01px + 0.2px + 0.29px + 0.11px + 0.12px +
+              0.28px + 0.29px + 0.31px + 0.04px + 0.27px + 0.27px + 0.2px +
+              0.29px + 0.25px + 0.02px + 0.25px + 0.1px + 0.2px + 0.22px +
+              0.13px + 0.27px + 0.06px + 0.03px + 0.3px + 0.03px + 0.25px +
+              0.15px + 0.06px + 0.12px + 0.03px + 0.21px + 0.28px + 0.09px +
+              0.31px + 0.24px + 0.15px + 0.27px + 0.22px + 0.31px + 0.19px +
+              0.2px + 0.26px + 0.18px + 0.04px + 0.16px + 0.03px + 0.29px +
+              0.02px + 0.1px + 0.3px + 0.15px + 0.13px + 0.01px + 0.06px +
+              0.18px + 0.11px + 0.11px + 0.26px + 0.23px + 0.03px + 0.06px +
+              0.33px + 0.14px + 0.17px + 0.05px + 0.32px + 0.09px + 0.26px +
+              0.01px + 0px + 0.02px + 0.28px + 0.32px + 0.12px + 0.2px + 0.13px +
+              0.14px + 0.14px + 0.16px + 0.28px + 0.1px + 0.27px + 0.23px +
+              0.33px + 0.09px + 0.33px + 0.32px + 0.1px + 0.21px + 0.3px +
+              0.08px + 0.31px + 0.23px + 0.21px + 0.16px + 0.06px + 0.05px +
+              0.22px + 0.31px + 0.16px + 0.26px + 0.11px + 0.18px + 0.19px +
+              0.11px + 0.14px + 0.01px + 0.11px + 0.24px + 0.07px + 0.23px +
+              0.23px + 0.05px + 0.17px + 0.25px + 0.33px + 0.05px + 0.03px +
+              0.21px + 0.02px + 0.16px + 0.1px + 0.3px + 0.21px + 0.18px +
+              0.18px + 0.05px + 0.27px + 0.19px + 0.11px + 0.17px + 0.22px +
+              0.1px + 0.12px + 0.25px + 0.05px + 0.25px + 0.16px + 0.32px +
+              0.1px + 0.17px + 0.15px + 0.27px + 0.3px + 0.3px + 0.05px + 0.02px +
+              0.16px + 0.09px + 0.26px + 0.18px + 0.17px + 0.3px + 0.24px +
+              0.16px + 0.1px + 0.15px + 0.11px + 0.18px + 0.09px + 0.07px +
+              0.04px + 0.05px + 0.03px + 0.32px + 0.15px + 0.31px + 0.31px +
+              0.08px + 0.16px + 0.29px + 0.24px + 0.22px + 0.26px + 0.03px +
+              0.19px + 0.28px + 0.01px
+          );
+        transform: rotate(calc(0deg - 0.47deg - 0.19deg - 0.87deg)) scale(6) !important;
+      }
+      input[name="c3"]:focus ~ .image {
+        background-position: calc(
+            0px + 0.33px + 0.13px + 0.2px + 0.14px + 0.12px + 0.13px + 0.02px +
+              0.2px + 0.11px + 0.12px + 0.08px + 0.29px + 0.09px + 0.02px +
+              0.03px + 0.3px + 0.31px + 0.2px + 0.11px + 0.09px + 0.08px +
+              0.31px + 0.03px + 0.14px + 0.23px + 0.18px + 0.17px + 0.11px +
+              0.24px + 0.13px + 0.06px + 0.01px + 0.19px + 0.11px + 0.3px +
+              0.12px + 0.13px + 0.31px + 0.26px + 0.26px + 0.23px + 0.05px +
+              0.29px + 0.17px + 0.19px + 0.17px + 0.32px + 0px + 0.09px + 0.21px +
+              0.22px + 0.25px + 0.23px + 0.27px + 0.05px + 0.06px + 0.22px +
+              0.08px + 0.14px + 0.18px + 0.19px + 0.28px + 0.22px + 0.08px +
+              0.3px + 0.31px + 0.01px + 0.25px + 0.25px + 0.1px + 0.05px +
+              0.14px + 0.14px + 0.02px + 0.2px + 0.24px + 0.17px + 0.24px +
+              0.21px + 0.26px + 0.05px + 0.06px + 0.15px + 0px + 0.06px + 0.08px +
+              0.3px + 0.04px + 0px + 0.25px + 0.06px + 0.11px + 0.1px + 0.07px +
+              0.11px + 0.16px + 0.08px + 0.09px + 0.09px + 0.11px + 0.1px +
+              0.29px + 0.11px + 0.31px + 0.08px + 0.31px + 0.01px + 0.03px +
+              0.19px + 0.03px + 0.33px + 0.3px + 0.32px + 0.2px + 0.06px +
+              0.05px + 0.28px + 0.1px + 0.14px + 0.14px + 0.31px + 0.23px +
+              0.12px + 0.15px + 0.29px + 0.04px + 0.01px + 0.14px + 0.02px +
+              0.27px + 0.03px + 0.01px + 0.32px + 0.12px + 0.11px + 0.16px +
+              0.21px + 0.07px + 0.21px + 0.02px + 0.03px + 0.28px + 0.06px +
+              0.3px + 0.11px + 0.27px + 0.17px + 0.32px + 0.18px + 0.12px +
+              0.1px + 0.29px + 0.22px + 0.03px + 0.2px + 0.28px + 0.01px + 0.1px +
+              0.25px + 0.15px + 0.19px + 0.07px + 0.08px + 0.01px + 0.06px +
+              0.25px + 0.11px + 0.12px + 0.05px + 0.16px + 0.31px + 0.33px +
+              0.13px + 0.14px + 0.3px + 0.16px + 0.12px + 0.17px + 0.09px +
+              0.27px + 0.08px + 0.16px + 0.32px + 0.11px + 0.15px + 0.18px +
+              0.14px + 0.06px + 0.25px + 0.06px + 0.16px + 0.3px + 0.11px +
+              0.05px + 0.18px + 0.19px + 0.2px + 0.2px + 0px + 0.1px + 0.11px +
+              0.27px + 0.12px + 0.24px + 0.25px + 0.06px + 0.29px + 0.01px +
+              0.22px + 0.19px + 0.29px + 0.27px + 0.01px + 0.09px + 0.2px +
+              0.07px + 0.04px + 0.05px + 0.05px + 0.32px + 0.05px + 0.28px +
+              0.19px + 0.03px + 0.19px + 0.15px + 0.26px + 0.21px + 0.05px +
+              0.03px + 0.15px + 0.26px + 0.19px + 0.27px + 0.31px + 0.04px +
+              0.07px + 0.06px + 0.13px + 0.07px + 0.11px + 0.01px + 0.21px +
+              0.25px + 0.09px + 0.24px + 0.03px + 0.07px + 0.17px + 0.2px +
+              0.07px + 0.15px + 0.32px + 0.16px + 0.25px + 0.11px + 0.18px +
+              0.12px + 0.15px + 0.04px + 0.27px + 0.02px + 0.13px + 0.32px +
+              0.3px + 0.14px + 0.03px + 0.26px + 0.11px + 0.16px + 0.08px +
+              0.17px + 0.3px + 0.07px + 0.26px + 0.11px + 0.21px + 0.23px +
+              0.12px + 0.25px + 0.33px + 0.04px + 0.15px + 0.07px + 0.3px +
+              0.04px + 0.2px + 0.11px + 0.22px + 0.31px + 0.33px + 0.11px +
+              0.13px + 0.07px + 0.28px + 0.15px + 0.12px + 0.15px + 0.32px +
+              0.2px + 0.28px + 0.09px + 0.23px + 0.13px + 0.04px + 0.23px +
+              0.17px + 0.03px + 0.12px + 0.12px + 0.1px + 0.18px + 0.22px +
+              0.06px + 0.32px + 0.01px + 0.33px + 0.31px + 0.28px + 0.29px +
+              0.01px + 0.25px + 0.2px + 0.09px + 0.08px + 0.25px + 0.15px +
+              0.03px + 0.2px + 0.33px + 0.22px + 0.05px + 0.12px + 0.15px +
+              0.25px + 0.27px + 0.32px + 0.25px + 0.26px + 0.19px + 0.16px +
+              0.26px + 0.2px + 0.33px + 0.08px + 0.12px + 0.04px + 0.26px +
+              0.09px + 0.18px + 0.31px + 0.12px + 0.12px + 0.32px + 0.04px +
+              0.11px + 0.04px + 0.21px + 0.27px + 0.25px + 0.23px + 0.02px +
+              0.13px + 0.04px + 0.13px + 0.05px + 0.1px + 0.19px + 0.28px +
+              0.14px + 0.33px + 0.05px + 0.26px + 0.3px + 0.05px + 0.08px +
+              0.05px + 0px + 0.17px + 0.14px + 0.07px + 0.11px + 0.11px + 0.03px +
+              0.02px + 0.17px + 0.27px + 0.13px + 0.06px + 0.24px + 0.29px +
+              0.27px + 0.1px + 0.28px + 0.32px + 0.11px + 0.31px + 0.12px +
+              0.01px + 0.11px + 0.05px + 0.23px + 0.17px + 0.13px + 0.05px +
+              0.09px + 0.03px + 0.07px + 0.13px + 0.15px + 0.24px + 0.27px +
+              0.26px + 0.09px + 0.08px + 0.17px + 0.21px + 0.31px + 0.3px +
+              0.03px + 0.09px + 0.12px + 0.06px + 0.08px + 0.02px + 0.19px +
+              0.23px + 0.33px + 0.02px + 0.12px + 0.06px + 0.03px + 0.06px +
+              0.16px + 0.23px + 0.12px + 0.16px + 0.11px + 0.28px + 0.25px +
+              0.18px + 0.25px + 0.1px + 0px + 0.13px + 0.14px + 0.23px + 0.29px +
+              0.24px + 0.16px + 0.19px + 0.02px + 0.11px + 0.18px + 0.04px +
+              0.18px + 0.19px + 0.32px + 0.18px + 0.21px + 0.29px + 0.26px +
+              0.17px + 0.04px + 0.32px + 0.18px + 0.16px + 0.27px + 0.28px +
+              0.06px + 0px + 0.2px + 0.28px + 0.16px + 0.2px + 0.2px + 0.09px +
+              0.12px + 0.26px + 0.07px + 0.09px + 0.14px + 0.32px + 0.13px +
+              0.21px + 0.28px + 0.02px + 0.07px + 0.21px + 0.05px + 0.26px +
+              0.25px + 0.23px + 0.16px + 0.06px + 0.27px + 0.08px + 0.28px +
+              0.03px + 0.27px + 0.23px + 0.09px
+          )
+          calc(
+            0px + 0.2px + 0.11px + 0.18px + 0.21px + 0.23px + 0.08px + 0.14px +
+              0.18px + 0.12px + 0.18px + 0.18px + 0.16px + 0.23px + 0.18px +
+              0.04px + 0.24px + 0.05px + 0.13px + 0.25px + 0.25px + 0.04px +
+              0.15px + 0.02px + 0.31px + 0.03px + 0.23px + 0.09px + 0.06px +
+              0.28px + 0.21px + 0.27px + 0.01px + 0.2px + 0.22px + 0.28px +
+              0.26px + 0.09px + 0.12px + 0.28px + 0.23px + 0.23px + 0.02px +
+              0.13px + 0.06px + 0.06px + 0.18px + 0.25px + 0.24px + 0.17px +
+              0.2px + 0.03px + 0.07px + 0.18px + 0.25px + 0px + 0.31px + 0.05px +
+              0.23px + 0.12px + 0.1px + 0.05px + 0.23px + 0.02px + 0.17px +
+              0.1px + 0.04px + 0.07px + 0.13px + 0.16px + 0.11px + 0.18px +
+              0.3px + 0.16px + 0.26px + 0.12px + 0.02px + 0.14px + 0.32px +
+              0.22px + 0.3px + 0.11px + 0.31px + 0.11px + 0.22px + 0.03px +
+              0.25px + 0.23px + 0.12px + 0.24px + 0.16px + 0.08px + 0.18px +
+              0.26px + 0.26px + 0.3px + 0.2px + 0.25px + 0.32px + 0.15px +
+              0.04px + 0.05px + 0.07px + 0.1px + 0.08px + 0.24px + 0.3px + 0.2px +
+              0.03px + 0.31px + 0.02px + 0.26px + 0.18px + 0.12px + 0.02px +
+              0.31px + 0px + 0.18px + 0.01px + 0.14px + 0.25px + 0.08px + 0.18px +
+              0.06px + 0.15px + 0.16px + 0.24px + 0.15px + 0.32px + 0.24px +
+              0.22px + 0.02px + 0.08px + 0.14px + 0.29px + 0.24px + 0.25px +
+              0.09px + 0.25px + 0.04px + 0.18px + 0.21px + 0.11px + 0.24px +
+              0.33px + 0.09px + 0.13px + 0.21px + 0.32px + 0.06px + 0.31px +
+              0.16px + 0.07px + 0.12px + 0.02px + 0.04px + 0.17px + 0.02px +
+              0.06px + 0.11px + 0.23px + 0.25px + 0.32px + 0.06px + 0.12px +
+              0.3px + 0.18px + 0.05px + 0.04px + 0.33px + 0.33px + 0.07px +
+              0.26px + 0.29px + 0.26px + 0.32px + 0.03px + 0.31px + 0.03px +
+              0.17px + 0.26px + 0.07px + 0.22px + 0.08px + 0.19px + 0.1px +
+              0.04px + 0.3px + 0.14px + 0.17px + 0.16px + 0.19px + 0.26px +
+              0.27px + 0.08px + 0.22px + 0.06px + 0.23px + 0.23px + 0.3px +
+              0.1px + 0.01px + 0.18px + 0.26px + 0.29px + 0.02px + 0.29px +
+              0.31px + 0.29px + 0.26px + 0.07px + 0.02px + 0.19px + 0.29px +
+              0.3px + 0.25px + 0.24px + 0.14px + 0.28px + 0.21px + 0.16px +
+              0.11px + 0.3px + 0.26px + 0.1px + 0.3px + 0.16px + 0.09px + 0.25px +
+              0.31px + 0.04px + 0.05px + 0.05px + 0.23px + 0.01px + 0.13px +
+              0.15px + 0.33px + 0.06px + 0.27px + 0.19px + 0.03px + 0.3px +
+              0.23px + 0.14px + 0.02px + 0.15px + 0.17px + 0.22px + 0.17px +
+              0.06px + 0.17px + 0.07px + 0.27px + 0.19px + 0.26px + 0.26px +
+              0.29px + 0.1px + 0.03px + 0.03px + 0.23px + 0.23px + 0.16px +
+              0.13px + 0.3px + 0.19px + 0.07px + 0.09px + 0.05px + 0.13px +
+              0.27px + 0.21px + 0.04px + 0.31px + 0.16px + 0.28px + 0.08px +
+              0.1px + 0.26px + 0.27px + 0.12px + 0.22px + 0.05px + 0.04px +
+              0.17px + 0.18px + 0.33px + 0.28px + 0.14px + 0.04px + 0.04px +
+              0.04px + 0.11px + 0.06px + 0.32px + 0.1px + 0.22px + 0.05px +
+              0.04px + 0.15px + 0.26px + 0.24px + 0.21px + 0.33px + 0.22px +
+              0.14px + 0.21px + 0.2px + 0.04px + 0.16px + 0.27px + 0.13px +
+              0.25px + 0.25px + 0.1px + 0.03px + 0.16px + 0.27px + 0.28px +
+              0.15px + 0.08px + 0.02px + 0.08px + 0.18px + 0.3px + 0.22px +
+              0.13px + 0.26px + 0.17px + 0.14px + 0.32px + 0.25px + 0.25px +
+              0.22px + 0px + 0.2px + 0.28px + 0.16px + 0.08px + 0.08px + 0.03px +
+              0.06px + 0.06px + 0.1px + 0.22px + 0.29px + 0.01px + 0.22px +
+              0.14px + 0.19px + 0.15px + 0.15px + 0.22px + 0.28px + 0.25px +
+              0.29px + 0.31px + 0.22px + 0.12px + 0.19px + 0.02px + 0.3px +
+              0.11px + 0.11px + 0.22px + 0.31px + 0.02px + 0.3px + 0.14px +
+              0.32px + 0.01px + 0.21px + 0.21px + 0.2px + 0.23px + 0.1px +
+              0.09px + 0.01px + 0.11px + 0.27px + 0.18px + 0.28px + 0.19px +
+              0.31px + 0.29px + 0.02px + 0.2px + 0.12px + 0px + 0.15px + 0.25px +
+              0.02px + 0.25px + 0.17px + 0.19px + 0.18px + 0.15px + 0.3px +
+              0.23px + 0.07px + 0.07px + 0.18px + 0.31px + 0.31px + 0.19px +
+              0.18px + 0.2px + 0.09px + 0.1px + 0.1px + 0.18px + 0.03px + 0.25px +
+              0.17px + 0.19px + 0.22px + 0.06px + 0.11px + 0.04px + 0.24px +
+              0.14px + 0.15px + 0.22px + 0.2px + 0.09px + 0.12px + 0.22px +
+              0.11px + 0.04px + 0.27px + 0.29px + 0.32px + 0.08px + 0.23px +
+              0.29px + 0.31px + 0.18px + 0.01px + 0.2px + 0.16px + 0.16px +
+              0.29px + 0.05px + 0.01px + 0.17px + 0.19px + 0.13px + 0.3px +
+              0.22px + 0.3px + 0.18px + 0.19px + 0.07px + 0.1px + 0.24px +
+              0.08px + 0.23px + 0.26px + 0.33px + 0.23px + 0.07px + 0.14px +
+              0.32px + 0.02px + 0.05px + 0.31px + 0.11px + 0.17px + 0.07px +
+              0.05px + 0.33px + 0.31px + 0.15px + 0.27px + 0.23px + 0.12px +
+              0.12px + 0.19px + 0.29px + 0.1px + 0.04px + 0.14px + 0.27px +
+              0.02px + 0.05px + 0.27px + 0.07px + 0.2px + 0.17px + 0.04px +
+              0.21px + 0.22px + 0.31px + 0.05px
+          );
+        transform: rotate(
+            calc(
+              0deg - 0.05deg - 0.38deg - 0.52deg - 0.6deg - 1.74deg - 1.55deg -
+                0.72deg - 1.75deg - 0.27deg - 0.44deg - 0.12deg - 0.89deg -
+                1.5deg - 0.57deg - 0.29deg - 1.21deg - 1.93deg - 1.03deg -
+                1.65deg - 1.36deg - 1.88deg - 1.3deg - 0.13deg - 0.79deg -
+                0.56deg - 0.62deg - 1.89deg - 0.04deg - 1.38deg - 0.26deg -
+                1.55deg - 1.54deg - 1.7deg - 0.15deg - 0.69deg - 1.2deg -
+                1.33deg - 1.44deg - 1.49deg - 0.05deg - 0.99deg - 0.43deg - 1deg -
+                0.26deg - 1.02deg - 0.58deg - 1.13deg - 1.83deg - 1.67deg -
+                1.82deg - 1.6deg - 0.91deg
+            )
+          )
+          scale(6) !important;
+      }
+      input[name="c4"]:focus ~ .image {
+        background-position: calc(
+            0px + 0.18px + 0.09px + 0.05px + 0.19px + 0.19px + 0.06px + 0.04px +
+              0.16px + 0.01px + 0.08px + 0px + 0.29px + 0.06px + 0.03px + 0.03px +
+              0.16px + 0.12px + 0.12px + 0.01px + 0.12px + 0.06px + 0.1px +
+              0.33px + 0.01px + 0.26px + 0.27px + 0.3px + 0.08px + 0.17px +
+              0.18px + 0.03px + 0.09px + 0.23px + 0.04px + 0.11px + 0.06px +
+              0.25px + 0.16px + 0.09px + 0.25px + 0.16px + 0.14px + 0.17px +
+              0.24px + 0.08px + 0.14px + 0.24px + 0.2px + 0.29px + 0.01px +
+              0.07px + 0.12px + 0.12px + 0.14px + 0.17px + 0.1px + 0.15px +
+              0.01px + 0.04px + 0.03px + 0.23px + 0.24px + 0.17px + 0.05px +
+              0.15px + 0.2px + 0.23px + 0.19px + 0.21px + 0.1px + 0.19px +
+              0.09px + 0.27px + 0.27px + 0.04px + 0.14px + 0.2px + 0.03px +
+              0.22px + 0.33px + 0.15px + 0.27px + 0.07px + 0.23px + 0.14px +
+              0.01px + 0.06px + 0.14px + 0.2px + 0.01px + 0.31px + 0.26px +
+              0.05px + 0.3px + 0.24px + 0.23px + 0.2px + 0.27px + 0.24px +
+              0.04px + 0.13px + 0.05px + 0.28px + 0.23px + 0.24px + 0.27px +
+              0.12px + 0.18px + 0.25px + 0.15px + 0.11px + 0.01px + 0px + 0.14px +
+              0.25px + 0.24px + 0.3px + 0.19px + 0.2px + 0.02px + 0.09px +
+              0.19px + 0.26px + 0.29px + 0.24px + 0.3px + 0.29px + 0.21px +
+              0.14px + 0.09px + 0.27px + 0.3px + 0.02px + 0.23px + 0.17px +
+              0.29px + 0.22px + 0.17px + 0.17px + 0.19px + 0.14px + 0.29px +
+              0.2px + 0.29px + 0.02px + 0.25px + 0.27px + 0.12px + 0.02px +
+              0.24px + 0.12px + 0.31px + 0.3px + 0.09px + 0.25px + 0.22px +
+              0.03px + 0.04px + 0.26px + 0.14px + 0.33px + 0.14px + 0.04px +
+              0.14px + 0.24px + 0.33px + 0.26px + 0.14px + 0.2px + 0.16px +
+              0.06px + 0.21px + 0px + 0.25px + 0.29px + 0.33px + 0.15px + 0.12px +
+              0.23px + 0.2px + 0.3px + 0.14px + 0.32px + 0.27px + 0.3px + 0.29px +
+              0.04px + 0.25px + 0.14px + 0.29px + 0.05px + 0px + 0.24px + 0.11px +
+              0.08px + 0px + 0.32px + 0.12px + 0.24px + 0.15px + 0.04px + 0.14px +
+              0.3px + 0.07px + 0.01px + 0.31px + 0.11px + 0.31px + 0.02px +
+              0.29px + 0.19px + 0.21px + 0.08px + 0.24px + 0.18px + 0.26px +
+              0.16px + 0.32px + 0.08px + 0.25px + 0.25px + 0.16px + 0.11px +
+              0.22px + 0.14px + 0.07px + 0.33px + 0.2px + 0.09px + 0.01px +
+              0.07px + 0.13px + 0.21px + 0.29px + 0.04px + 0.15px + 0.03px +
+              0.27px + 0.28px + 0.28px + 0.23px + 0.18px + 0.09px + 0.27px +
+              0.17px + 0.15px + 0.01px + 0.29px + 0.32px + 0.16px + 0.08px +
+              0.21px + 0px + 0.22px + 0.18px + 0.19px + 0.21px + 0.25px + 0.11px +
+              0.14px + 0.11px + 0.03px + 0.24px + 0.2px + 0.29px + 0.01px +
+              0.28px + 0.19px + 0.25px + 0px + 0.25px + 0.03px + 0.01px + 0.27px +
+              0.23px + 0.3px + 0.21px + 0.33px + 0.07px + 0.13px + 0.17px +
+              0.31px + 0.01px + 0.01px + 0.32px + 0.12px + 0.02px + 0.08px +
+              0.25px + 0.13px + 0.28px + 0.24px + 0.17px + 0.15px + 0.15px +
+              0.28px + 0.2px + 0.19px + 0.33px + 0.31px + 0.12px + 0.18px +
+              0.13px + 0.15px + 0.2px + 0.06px + 0.29px + 0.05px + 0.22px +
+              0.23px + 0.1px + 0.15px + 0.16px + 0.18px + 0.16px + 0.12px +
+              0.02px + 0.02px + 0.26px + 0.12px + 0.21px + 0.32px + 0.11px +
+              0.3px + 0.19px + 0.23px + 0.09px + 0.19px + 0.02px + 0.05px +
+              0.3px + 0.3px + 0.23px + 0.33px + 0.16px + 0.05px + 0.33px + 0.2px +
+              0.3px + 0.23px + 0.23px + 0.1px + 0.27px + 0px + 0.29px + 0.02px +
+              0.05px + 0.08px + 0.11px + 0.17px + 0.19px + 0px + 0.23px + 0.31px +
+              0.33px + 0.2px + 0.06px + 0.21px + 0.14px + 0.3px + 0.22px +
+              0.04px + 0.1px + 0.31px + 0.03px + 0.15px + 0.19px + 0.04px +
+              0.23px + 0.25px + 0.06px + 0.18px + 0.1px + 0.18px + 0.28px +
+              0.11px + 0.22px + 0.09px + 0.2px + 0.33px + 0.17px + 0.19px +
+              0.23px + 0.06px + 0.05px + 0.21px + 0.3px + 0px + 0.08px + 0.16px +
+              0.14px + 0.23px + 0.19px + 0.22px + 0.22px + 0.04px + 0.24px +
+              0.21px + 0.02px + 0.11px + 0.1px + 0.2px + 0.26px + 0.23px +
+              0.08px + 0.2px + 0.25px + 0.18px + 0.29px + 0.07px + 0.26px +
+              0.31px + 0.32px + 0.11px + 0.02px + 0.3px + 0.01px + 0.12px +
+              0.15px + 0.26px + 0.33px + 0.04px + 0.13px + 0.11px + 0.03px +
+              0.16px + 0.06px + 0.21px + 0.32px + 0.25px + 0.29px + 0.14px +
+              0.05px + 0.12px + 0.11px + 0.21px + 0.33px + 0.26px + 0.19px +
+              0.2px + 0.18px + 0.23px + 0.24px + 0.06px + 0.3px + 0.02px +
+              0.22px + 0.09px + 0.32px + 0.02px + 0.01px + 0.16px + 0.11px +
+              0.25px + 0.31px + 0.06px + 0.19px + 0.16px + 0.33px + 0.14px +
+              0.05px + 0.26px + 0.1px + 0.2px + 0.22px + 0.01px + 0.07px +
+              0.06px + 0.11px + 0.12px + 0.17px + 0.11px + 0.09px + 0.21px +
+              0.14px + 0.33px + 0.25px + 0.1px + 0.23px + 0.27px + 0.25px +
+              0.21px + 0.27px + 0.21px + 0.1px + 0.33px + 0.22px + 0.05px +
+              0.22px + 0.29px + 0.2px + 0.18px + 0.33px + 0.06px + 0.09px +
+              0.07px + 0.14px + 0.13px + 0.03px + 0.14px + 0.15px + 0.03px +
+              0.3px + 0.03px + 0.18px + 0.05px + 0.12px + 0.23px + 0.12px +
+              0.19px + 0.14px + 0.04px + 0.26px + 0.12px + 0.1px + 0.24px +
+              0.3px + 0.13px + 0.25px + 0.16px + 0.29px + 0.12px + 0.13px +
+              0.05px + 0.16px + 0.1px + 0.04px + 0.03px + 0.26px + 0.17px +
+              0.19px + 0.25px + 0.14px + 0.22px + 0.23px + 0.28px + 0.21px +
+              0.26px + 0.14px + 0.07px + 0.03px + 0.17px + 0.1px + 0.11px +
+              0.04px + 0.27px + 0.16px + 0.2px + 0.32px + 0.01px + 0.09px +
+              0.04px + 0.2px + 0.28px + 0.07px + 0.23px + 0.22px + 0.17px +
+              0.19px + 0.22px + 0px + 0.06px + 0.26px + 0.2px + 0.08px + 0.04px +
+              0.02px + 0.19px + 0.16px + 0.32px + 0.13px + 0.22px + 0.33px +
+              0.18px + 0.12px + 0.33px + 0.26px + 0.31px + 0.32px + 0.28px +
+              0.32px + 0.03px + 0px + 0.09px + 0.19px + 0.24px + 0.23px + 0.18px +
+              0.25px + 0.17px + 0.29px + 0.33px + 0.16px + 0.15px + 0.07px +
+              0.04px + 0.2px + 0.01px + 0.01px + 0.14px + 0px + 0.14px + 0.01px +
+              0.24px + 0.1px + 0.29px + 0.07px + 0.11px + 0.01px + 0.24px +
+              0.28px + 0.25px + 0.18px + 0.31px + 0.1px + 0.07px + 0px + 0.19px +
+              0.19px + 0.22px + 0.05px + 0.27px + 0.24px + 0.15px + 0.07px +
+              0.1px + 0.31px + 0.32px + 0.19px + 0.01px + 0.11px + 0.23px +
+              0.1px + 0.15px + 0.28px + 0.02px + 0.32px + 0.33px + 0.16px +
+              0.29px + 0.32px + 0.21px + 0.32px + 0.03px + 0.31px + 0.14px +
+              0.01px + 0.26px + 0.27px + 0.01px + 0.09px + 0.09px + 0.21px +
+              0.09px + 0.11px + 0.06px + 0.02px + 0.25px + 0.04px + 0.15px +
+              0.26px + 0.15px + 0.32px + 0.05px + 0.18px + 0.33px + 0.28px +
+              0.26px + 0.04px + 0.24px + 0.27px + 0.27px + 0.1px + 0.12px +
+              0.15px + 0.3px + 0.27px + 0.28px + 0.24px + 0.25px + 0.3px +
+              0.06px + 0.02px + 0.02px + 0.05px + 0.1px + 0.31px + 0.16px +
+              0.26px + 0.19px + 0.33px + 0.2px + 0.16px + 0.28px + 0.18px +
+              0.31px + 0.22px + 0.2px + 0.07px + 0.19px + 0.21px + 0.04px +
+              0.03px + 0.17px + 0.2px
+          )
+          calc(
+            0px + 0.13px + 0.09px + 0.33px + 0.14px + 0.19px + 0.15px + 0.28px +
+              0.3px + 0.15px + 0.01px + 0.25px + 0.18px + 0px + 0.02px + 0.08px +
+              0.25px + 0.13px + 0.2px + 0.07px + 0.02px + 0.24px + 0.3px +
+              0.07px + 0.3px + 0.29px + 0.23px + 0.29px + 0.05px + 0.02px +
+              0.24px + 0.1px + 0.14px + 0.04px + 0.29px + 0.06px + 0.04px +
+              0.24px + 0.04px + 0.01px + 0.3px + 0.27px + 0.04px + 0.26px +
+              0.32px + 0.08px + 0.16px + 0.1px + 0.27px + 0.3px + 0.28px +
+              0.27px + 0.23px + 0.14px + 0.09px + 0.23px + 0.14px + 0.11px +
+              0.27px + 0.32px + 0.3px + 0.2px + 0.24px + 0.13px + 0.21px +
+              0.06px + 0.05px + 0.08px + 0.3px + 0.02px + 0.33px + 0.03px +
+              0.05px + 0.01px + 0.26px + 0.17px + 0.27px + 0.1px + 0.03px +
+              0.08px + 0.31px + 0.26px + 0.01px + 0.24px + 0.11px + 0.01px +
+              0.26px + 0.28px + 0.04px + 0.19px + 0.16px + 0.03px + 0.21px +
+              0.32px + 0.09px + 0.33px + 0.32px + 0.3px + 0.03px + 0.01px +
+              0.33px + 0.27px + 0.2px + 0.31px + 0.08px + 0.1px + 0.28px +
+              0.29px + 0.28px + 0.08px + 0.28px + 0.25px + 0.07px + 0.15px +
+              0.14px + 0.24px + 0.05px + 0.01px + 0.24px + 0.23px + 0.05px +
+              0.24px + 0.03px + 0.3px + 0.09px + 0.01px + 0.13px + 0.09px +
+              0.24px + 0.33px + 0.15px + 0.03px + 0.26px + 0.05px + 0.23px +
+              0.09px + 0.05px + 0.07px + 0.22px + 0.08px + 0.28px + 0.3px +
+              0.23px + 0.13px + 0.14px + 0.15px + 0.02px + 0px + 0.15px + 0.02px +
+              0.05px + 0.16px + 0.23px + 0.24px + 0.3px + 0.3px + 0.05px +
+              0.21px + 0.32px + 0.05px + 0.08px + 0.19px + 0.03px + 0.29px +
+              0.12px + 0.2px + 0.25px + 0.08px + 0.14px + 0.24px + 0.17px +
+              0.06px + 0.16px + 0.24px + 0.12px + 0.32px + 0.02px + 0.32px + 0px +
+              0.24px + 0.08px + 0.19px + 0.12px + 0.02px + 0.23px + 0.02px +
+              0.33px + 0.18px + 0px + 0.22px + 0.01px + 0.03px + 0.08px + 0.23px +
+              0.14px + 0.14px + 0.13px + 0.19px + 0.15px + 0.26px + 0.14px +
+              0.02px + 0.06px + 0.09px + 0.18px + 0.11px + 0.28px + 0.03px +
+              0.08px + 0.1px + 0.25px + 0.21px + 0.25px + 0.07px + 0.02px +
+              0.17px + 0.1px + 0.02px + 0.08px + 0.07px + 0.16px + 0px + 0.04px +
+              0.07px + 0.08px + 0.27px + 0.14px + 0.13px + 0.27px + 0.29px +
+              0.3px + 0.28px + 0.14px + 0.13px + 0.02px + 0.31px + 0.18px +
+              0.31px + 0.17px + 0.06px + 0.15px + 0.28px + 0.32px + 0.3px +
+              0.07px + 0.3px + 0.23px + 0px + 0.27px + 0.05px + 0.3px + 0.2px +
+              0.04px + 0.1px + 0.07px + 0.24px + 0.15px + 0.04px + 0.09px +
+              0.06px + 0.13px + 0.17px + 0.08px + 0.26px + 0.18px + 0.17px +
+              0.33px + 0.07px + 0.19px + 0.14px + 0.12px + 0.26px + 0.19px +
+              0.21px + 0.33px + 0.06px + 0.14px + 0.01px + 0.14px + 0.32px +
+              0.31px + 0.16px + 0.23px + 0.21px + 0.33px + 0.2px + 0.23px +
+              0.11px + 0.16px + 0.2px + 0.16px + 0.06px + 0.27px + 0.11px +
+              0.29px + 0.18px + 0.16px + 0.06px + 0.32px + 0.24px + 0.11px +
+              0.03px + 0.04px + 0.04px + 0.27px + 0.27px + 0.07px + 0.28px +
+              0.19px + 0.23px + 0.03px + 0.24px + 0.25px + 0.13px + 0.21px +
+              0.06px + 0.24px + 0.04px + 0.28px + 0.11px + 0.11px + 0.31px +
+              0.06px + 0.25px + 0.28px + 0.06px + 0.04px + 0.02px + 0.05px +
+              0.33px + 0.33px + 0.2px + 0.04px + 0.24px + 0.32px + 0.27px +
+              0.24px + 0.05px + 0.14px + 0.23px + 0.18px + 0.11px + 0.07px +
+              0.3px + 0.18px + 0.29px + 0.32px + 0.06px + 0.13px + 0.16px +
+              0.14px + 0.15px + 0.19px + 0.07px + 0.13px + 0.07px + 0.33px +
+              0.28px + 0.1px + 0px + 0.02px + 0.02px + 0.08px + 0.22px + 0.08px +
+              0.26px + 0.18px + 0.3px + 0.01px + 0.22px + 0.07px + 0.28px +
+              0.11px + 0.15px + 0.11px + 0.18px + 0.31px + 0.23px + 0.12px +
+              0.07px + 0.26px + 0.08px + 0.33px + 0.3px + 0.12px + 0.32px +
+              0.27px + 0.29px + 0.21px + 0.04px + 0.05px + 0.02px + 0.12px +
+              0.11px + 0.24px + 0.31px + 0.25px + 0.28px + 0.15px + 0.19px + 0px +
+              0.21px + 0.26px + 0.2px + 0.3px + 0.23px + 0.11px + 0.06px +
+              0.27px + 0.22px + 0.26px + 0.22px + 0.14px + 0.28px + 0.14px +
+              0.08px + 0.04px + 0.03px + 0.29px + 0.2px + 0.18px + 0.18px +
+              0.16px + 0.25px + 0.07px + 0.09px + 0.1px + 0.12px + 0.01px +
+              0.05px + 0.28px + 0.1px + 0.06px + 0.11px + 0.28px + 0.17px +
+              0.2px + 0.01px + 0.26px + 0.32px + 0.02px + 0.14px + 0.19px +
+              0.23px + 0.07px + 0.26px + 0.26px + 0.17px + 0.32px + 0.03px +
+              0.17px + 0.05px + 0.28px + 0.14px + 0.3px + 0.21px + 0.17px +
+              0.01px + 0.11px + 0.1px + 0.17px + 0.06px + 0.05px + 0.22px + 0px +
+              0.18px + 0.29px + 0.1px + 0.15px + 0.08px + 0.12px + 0.04px +
+              0.32px + 0.03px + 0.06px + 0.05px + 0.07px + 0.09px + 0.09px +
+              0.27px + 0.06px + 0.26px + 0.17px + 0.22px + 0.33px + 0.07px +
+              0.24px + 0.01px + 0.15px + 0.19px + 0.01px + 0.14px + 0.04px +
+              0.33px + 0.27px + 0.01px + 0.24px + 0.18px + 0.11px + 0.31px +
+              0.14px + 0.22px + 0.07px + 0.05px + 0.25px + 0.11px + 0.19px +
+              0.07px + 0.06px + 0.27px + 0.29px + 0.17px + 0.05px + 0.22px +
+              0.05px + 0.12px + 0.1px + 0.08px + 0.19px + 0.06px + 0.23px +
+              0.18px + 0.32px + 0.25px + 0.05px + 0.18px + 0.28px + 0.17px +
+              0.17px + 0.19px + 0.12px + 0.25px + 0.24px + 0.08px + 0.1px +
+              0.22px + 0.18px + 0.05px + 0.3px + 0.12px + 0.04px + 0.15px +
+              0.1px + 0.31px + 0.08px + 0.07px + 0.11px + 0.13px + 0.1px + 0.3px +
+              0.12px + 0.27px + 0.33px + 0.09px + 0.03px + 0.08px + 0.01px +
+              0.2px + 0.33px + 0px + 0.19px + 0.17px + 0.3px + 0.16px + 0.21px +
+              0.03px + 0.28px + 0.26px + 0.06px + 0.09px + 0.33px + 0.18px +
+              0.29px + 0.07px + 0.26px + 0.21px + 0.28px + 0.14px + 0.02px +
+              0.16px + 0.05px + 0.2px + 0.25px + 0.22px + 0.22px + 0.2px +
+              0.26px + 0.12px + 0.08px + 0.07px + 0.09px + 0.05px + 0.25px +
+              0.28px + 0.05px + 0.15px + 0px + 0.04px + 0.08px + 0.04px + 0.16px +
+              0.08px + 0.19px + 0.18px + 0.03px + 0.32px + 0.04px + 0.23px +
+              0.04px + 0.32px + 0.17px + 0.03px + 0.03px + 0.01px + 0.2px +
+              0.18px + 0.23px + 0.12px + 0.04px + 0.08px + 0.3px + 0.31px +
+              0.13px + 0.33px + 0.15px + 0.06px + 0.27px + 0.08px + 0.05px +
+              0.28px + 0.27px + 0.32px + 0.11px + 0.07px + 0.19px + 0.21px +
+              0.09px + 0.32px + 0.29px + 0.02px + 0.16px + 0.13px + 0.04px +
+              0.14px + 0.18px + 0.24px + 0.05px + 0.15px + 0.14px + 0.19px +
+              0.24px + 0.28px + 0.07px + 0.29px + 0.01px + 0.26px + 0.06px +
+              0.04px + 0.11px + 0.21px + 0.18px + 0.18px + 0.24px + 0.3px +
+              0.14px + 0.27px + 0.31px + 0.12px + 0.3px + 0.13px + 0.17px +
+              0.04px + 0.2px + 0.09px + 0.09px + 0.33px + 0.1px + 0.01px +
+              0.32px + 0.18px + 0.29px + 0.08px + 0.01px + 0.16px + 0.12px +
+              0.14px + 0.25px + 0.22px + 0.18px + 0.03px + 0.01px + 0.3px +
+              0.31px + 0.06px + 0.31px + 0.08px + 0.16px + 0.23px + 0.07px +
+              0.03px + 0.05px + 0.1px + 0.09px + 0.3px + 0.02px + 0.07px +
+              0.15px + 0.18px + 0.07px + 0.11px + 0.24px + 0.27px + 0.08px +
+              0.16px + 0.25px + 0.02px + 0.15px + 0.07px + 0.14px + 0.21px +
+              0.31px + 0.21px + 0.32px + 0.19px + 0.21px + 0.3px + 0.19px +
+              0.04px + 0.25px + 0.24px + 0.24px + 0.03px + 0.26px + 0.23px +
+              0.27px + 0px + 0.06px + 0.32px + 0.14px + 0.29px + 0.01px + 0.18px +
+              0.29px + 0.06px + 0px + 0.1px + 0.31px + 0.24px + 0.18px + 0.18px +
+              0.01px + 0.04px + 0.33px + 0.06px + 0.01px + 0.22px + 0.21px +
+              0.08px + 0.15px + 0.16px + 0.3px + 0.18px + 0.01px + 0.05px +
+              0.14px + 0.29px + 0.07px + 0.16px + 0.07px + 0.23px + 0.12px +
+              0.06px + 0.12px + 0.03px + 0.08px + 0.2px + 0.01px + 0.22px +
+              0.19px + 0.06px + 0.13px + 0.2px + 0.14px + 0.07px + 0.04px +
+              0.08px + 0.07px + 0.32px + 0.14px + 0.05px + 0.21px + 0.32px +
+              0.06px + 0.01px + 0.2px + 0.05px + 0.14px + 0.15px + 0.27px +
+              0.19px + 0.14px + 0.29px + 0.16px + 0.14px + 0.17px + 0.12px +
+              0.3px + 0.06px + 0.08px + 0.23px + 0.04px + 0.02px + 0.09px +
+              0.27px + 0.29px + 0.15px + 0.02px + 0.27px + 0.17px + 0.08px +
+              0.31px + 0.03px + 0.14px + 0.2px + 0.32px + 0.1px + 0.08px +
+              0.33px + 0.18px + 0.08px + 0.04px + 0.32px + 0.15px + 0px + 0.04px +
+              0.28px + 0.05px + 0.25px + 0.31px + 0.21px + 0.23px + 0.29px +
+              0.07px + 0.13px + 0.32px + 0.33px + 0.05px + 0.24px + 0.15px +
+              0.16px + 0.14px + 0.07px + 0.3px + 0.08px
+          );
+        transform: rotate(
+            calc(
+              0deg - 0.23deg - 0.35deg - 0.74deg - 0.91deg - 0.91deg - 0.02deg -
+                1.27deg - 1.02deg - 1.07deg - 0.62deg - 1.13deg - 0.69deg -
+                1.1deg - 0.1deg - 1.81deg - 0.78deg - 1.53deg - 0.02deg - 0.8deg -
+                1.64deg - 1.59deg - 0.59deg - 0.68deg - 1.11deg - 0.99deg -
+                1.77deg - 1.96deg - 1.49deg - 1.93deg - 0.26deg - 0.59deg -
+                0.28deg - 0.49deg - 1.37deg - 1.84deg - 1.56deg - 1.15deg -
+                1.17deg - 1.07deg - 0.87deg - 0.83deg - 1.1deg
+            )
+          )
+          scale(6) !important;
+      }
+      input[name="c5"]:focus ~ .image {
+        background-position: calc(
+            0px + 0.09px + 0.07px + 0.15px + 0.02px + 0.29px + 0.1px + 0.05px +
+              0.05px + 0.25px + 0.26px + 0.11px + 0.14px + 0.31px + 0.23px +
+              0.19px + 0.11px + 0.29px + 0.13px + 0.01px + 0.19px + 0.08px +
+              0.1px + 0.09px + 0.12px + 0.25px + 0.09px + 0.08px + 0.32px +
+              0.22px + 0.26px + 0.21px + 0.01px + 0.31px + 0.3px + 0.28px +
+              0.22px + 0.06px + 0.25px + 0.29px + 0.03px + 0.14px + 0.02px +
+              0.32px + 0.01px + 0.21px + 0.09px + 0.32px + 0.28px + 0.14px +
+              0.06px + 0.03px + 0.14px + 0.18px + 0.18px + 0.06px + 0.15px +
+              0.12px + 0.32px + 0.25px + 0.06px + 0.17px + 0.24px + 0.22px +
+              0.02px + 0.04px + 0.17px + 0.32px + 0.07px + 0.31px + 0.26px +
+              0.16px + 0.31px + 0.31px + 0.11px + 0.25px + 0.12px + 0.12px +
+              0.32px + 0.24px + 0.18px + 0.12px + 0.24px + 0.21px + 0.27px +
+              0.07px + 0.32px + 0.12px + 0.17px + 0.07px + 0.06px + 0.19px +
+              0.07px + 0.16px + 0.29px + 0.19px + 0.25px + 0.15px + 0.26px +
+              0.27px + 0.12px + 0.02px + 0.25px + 0.08px + 0.23px + 0.13px +
+              0.09px + 0.19px + 0.17px + 0.28px + 0.18px + 0.26px + 0.28px +
+              0.18px + 0.21px + 0.14px + 0.28px + 0.03px + 0.18px + 0.08px +
+              0.09px + 0.12px + 0.22px + 0.29px + 0.13px + 0.13px + 0.04px +
+              0.3px + 0.24px + 0.01px + 0.3px + 0.06px + 0.21px + 0.21px +
+              0.09px + 0.09px + 0.26px + 0.19px + 0.31px + 0.22px + 0.03px +
+              0.22px + 0.13px + 0.04px + 0.19px + 0.15px + 0.25px + 0.29px +
+              0.22px + 0.14px + 0.32px + 0.12px + 0.07px + 0.3px + 0.33px +
+              0.23px + 0.18px + 0.23px + 0.01px + 0.2px + 0.09px + 0.2px +
+              0.01px + 0.23px + 0.17px + 0.02px + 0.17px + 0.27px + 0.12px +
+              0.24px + 0.25px + 0px + 0px + 0.04px + 0.06px + 0.18px + 0.15px +
+              0.11px + 0.25px + 0.2px + 0.09px + 0.3px + 0.28px + 0.05px +
+              0.04px + 0.1px + 0.05px + 0.12px + 0.15px + 0.18px + 0.09px +
+              0.05px + 0.07px + 0.15px + 0.02px + 0.17px + 0.19px + 0.13px +
+              0.22px + 0.24px + 0.29px + 0.23px + 0.04px + 0.16px + 0.32px +
+              0.04px + 0.14px + 0.07px + 0.31px + 0.14px + 0.07px + 0.27px +
+              0.19px + 0.32px + 0.18px + 0.29px + 0.17px + 0.16px + 0px + 0.16px +
+              0.08px + 0.26px + 0.17px + 0.02px + 0.15px + 0.2px + 0.01px +
+              0.27px + 0.23px + 0.14px + 0.04px + 0.3px + 0.12px + 0.24px +
+              0.1px + 0.09px + 0.04px + 0.2px
+          )
+          calc(
+            0px + 0.28px + 0.17px + 0.2px + 0.28px + 0.07px + 0.24px + 0.18px +
+              0.21px + 0.3px + 0.01px + 0px + 0.31px + 0.25px + 0.25px + 0.03px +
+              0.32px + 0.07px + 0.12px + 0.21px + 0.16px + 0.2px + 0.08px +
+              0.19px + 0.25px + 0.18px + 0.26px + 0.05px + 0.28px + 0.26px +
+              0.19px + 0.13px + 0.19px + 0.2px + 0.1px + 0.16px + 0.05px +
+              0.07px + 0.22px + 0.05px + 0.22px + 0.13px + 0.07px + 0.06px +
+              0.26px + 0.02px + 0.26px + 0.23px + 0.16px + 0.02px + 0.04px +
+              0.31px + 0.33px + 0.24px + 0.17px + 0.17px + 0.07px + 0.08px +
+              0.28px + 0.05px + 0.25px + 0.11px + 0.26px + 0.17px + 0.29px +
+              0.08px + 0.18px + 0.29px + 0.09px + 0.08px + 0.28px + 0.27px +
+              0.3px + 0px + 0.02px + 0.17px + 0.01px + 0.07px + 0.02px + 0.09px +
+              0.19px + 0.09px + 0.09px + 0.04px + 0.12px + 0.18px + 0.07px +
+              0.31px + 0.16px + 0.14px + 0.11px + 0.12px + 0.25px + 0.19px +
+              0.24px + 0.1px + 0.07px + 0.04px + 0.16px + 0.18px + 0.06px +
+              0.17px + 0.23px + 0.04px + 0.33px + 0.14px + 0.29px + 0.02px +
+              0.21px + 0.03px + 0.31px + 0.19px + 0.27px + 0.03px + 0.26px +
+              0.02px + 0px + 0.16px + 0.16px + 0.06px + 0.19px + 0.08px + 0.31px +
+              0.26px + 0.02px + 0.05px + 0.22px + 0.14px + 0.08px + 0.05px +
+              0.11px + 0.25px + 0.12px + 0.3px + 0.05px + 0.17px + 0.21px +
+              0.21px + 0.15px + 0.03px + 0.08px + 0.1px + 0.17px + 0.09px +
+              0.25px + 0.08px + 0.19px + 0.13px + 0.29px + 0.01px + 0.17px +
+              0.07px + 0.31px + 0.16px + 0.08px + 0.3px + 0.19px + 0.32px +
+              0.18px + 0.3px + 0.15px + 0.15px + 0.32px + 0.1px + 0.27px +
+              0.21px + 0.16px + 0.14px + 0.06px + 0.26px + 0.19px + 0.27px +
+              0.23px + 0.04px + 0.1px + 0.19px + 0.33px + 0.04px + 0.02px +
+              0.27px + 0.29px + 0.27px + 0px + 0.32px + 0.08px + 0.26px + 0.27px +
+              0.26px + 0.05px + 0.32px + 0.22px + 0.22px + 0.16px + 0.16px +
+              0.17px + 0.1px + 0.22px + 0.25px + 0px + 0.12px + 0px + 0.16px +
+              0.08px + 0.18px + 0.15px + 0.27px + 0.3px + 0px + 0.27px + 0.09px +
+              0.16px + 0.28px + 0.3px + 0.31px + 0.14px + 0.09px + 0.22px +
+              0.16px + 0.13px + 0.15px + 0.19px + 0.19px + 0.18px + 0.32px +
+              0.17px + 0.05px + 0.08px + 0.07px + 0.05px + 0.25px + 0.32px +
+              0.2px + 0.08px + 0.01px + 0.31px + 0.01px + 0.05px + 0.19px +
+              0.11px + 0.22px + 0.26px + 0.05px + 0.17px + 0.07px + 0.25px +
+              0.01px + 0.12px + 0.33px + 0.28px + 0.09px + 0.07px + 0.31px +
+              0.07px + 0.31px + 0.14px + 0.06px + 0.06px + 0.29px + 0.06px +
+              0.31px + 0.24px + 0.31px + 0.13px + 0.09px + 0.28px + 0.03px +
+              0.28px + 0.24px + 0.25px + 0.1px + 0.24px + 0.07px + 0.17px +
+              0.06px + 0.19px + 0.12px + 0.11px + 0.07px + 0.11px + 0.07px +
+              0.01px + 0.16px + 0.13px + 0.11px + 0.07px + 0.16px + 0.24px +
+              0.17px + 0.3px + 0.31px + 0.14px + 0.09px + 0.21px + 0.14px +
+              0.26px + 0.26px + 0.29px + 0.05px + 0.32px + 0.23px + 0.18px +
+              0.23px + 0.03px + 0.04px + 0.26px + 0.22px + 0.06px + 0.33px +
+              0.15px + 0.02px + 0.05px + 0.14px + 0.01px + 0.15px + 0px + 0.16px +
+              0.06px + 0.26px + 0.02px + 0.26px + 0.17px + 0.07px + 0.04px +
+              0.08px + 0.31px + 0.05px + 0.25px + 0.2px + 0.22px + 0.26px +
+              0.13px + 0.25px + 0.19px + 0.07px + 0.06px + 0.2px + 0.3px +
+              0.16px + 0.09px + 0.31px + 0.28px + 0.3px + 0.11px + 0px + 0.01px +
+              0.09px + 0.08px + 0.21px + 0.25px + 0.04px + 0.08px + 0.24px +
+              0.26px + 0.19px + 0.22px + 0.02px + 0.22px + 0.27px + 0.2px +
+              0.04px + 0.05px + 0.1px + 0.24px + 0.09px + 0.03px + 0.3px +
+              0.01px + 0.14px + 0.1px + 0.12px + 0.03px + 0.13px + 0.33px +
+              0.24px + 0.13px + 0.07px + 0.19px + 0.13px + 0px + 0.3px + 0.08px +
+              0.16px + 0.2px + 0.11px + 0.21px + 0.18px + 0.04px + 0.12px +
+              0.07px + 0.04px + 0.11px + 0.17px + 0.19px + 0.18px + 0.02px +
+              0.22px + 0.13px + 0.26px + 0.31px + 0.1px + 0.12px + 0.15px +
+              0.02px + 0.04px + 0.23px + 0.04px + 0.22px + 0.17px + 0.25px +
+              0.33px + 0.11px + 0.24px + 0.05px + 0.14px + 0.15px + 0.27px +
+              0.28px + 0.32px + 0.19px + 0.16px + 0.09px + 0.15px + 0.22px +
+              0.15px + 0.04px + 0.03px + 0.05px + 0.03px + 0.29px + 0.17px +
+              0.25px + 0.25px + 0.08px + 0.03px + 0.27px + 0.12px + 0.09px +
+              0.06px + 0.31px + 0.25px + 0.3px + 0.02px + 0.3px + 0.1px + 0.05px +
+              0.32px + 0.08px + 0.33px + 0.32px + 0.21px + 0.23px + 0.21px +
+              0.23px + 0.32px + 0.03px + 0.33px + 0.11px + 0.26px + 0.23px +
+              0.08px + 0.15px + 0.24px + 0.07px + 0.18px + 0.27px + 0.16px +
+              0.33px + 0.11px + 0.15px + 0.13px + 0.04px + 0.22px + 0.2px +
+              0.26px + 0.1px + 0.13px + 0.24px + 0.25px + 0.13px + 0.17px +
+              0.11px + 0.22px + 0.04px + 0.27px + 0.1px + 0.09px + 0.32px +
+              0.03px + 0.27px + 0.1px + 0.11px + 0.25px + 0.21px + 0.1px +
+              0.16px + 0.2px + 0.05px + 0.07px + 0.3px + 0.25px + 0.15px + 0.3px +
+              0.16px + 0.3px + 0.02px + 0.08px + 0.14px + 0.11px + 0.09px +
+              0.21px + 0.25px + 0.18px + 0.33px + 0.25px + 0.16px + 0.31px +
+              0.3px + 0.05px + 0.29px + 0.18px + 0.22px + 0.01px + 0.19px +
+              0.3px + 0.12px + 0.25px + 0.3px + 0.26px + 0.26px + 0.31px + 0.1px +
+              0.11px + 0.08px + 0.29px + 0.29px + 0.14px + 0.28px + 0.33px +
+              0.01px + 0.06px + 0.03px + 0.33px + 0.32px + 0.18px + 0.1px +
+              0.21px + 0.04px + 0.08px + 0.13px + 0.23px + 0.26px + 0.33px +
+              0.23px + 0.16px + 0.24px + 0.11px + 0.3px + 0.23px + 0.32px +
+              0.04px + 0.15px + 0.21px + 0.14px + 0.14px + 0.13px + 0.04px +
+              0.13px + 0.05px + 0.33px + 0.29px + 0.23px + 0.05px + 0.26px +
+              0.23px + 0.32px + 0.11px + 0.19px + 0.25px + 0.14px + 0.19px +
+              0.15px + 0.19px + 0.01px + 0.19px + 0.32px + 0.24px + 0.03px +
+              0.24px + 0.21px + 0.09px + 0.28px + 0.3px + 0.27px + 0.3px + 0.1px +
+              0.06px + 0.05px + 0.16px + 0.14px + 0.24px + 0.06px + 0.32px +
+              0.07px + 0.26px + 0.04px + 0.09px + 0.29px + 0.3px + 0.02px +
+              0.02px + 0.21px + 0.14px + 0.15px + 0.01px + 0.03px + 0.04px +
+              0.27px + 0.01px + 0.19px + 0.12px + 0.31px + 0.01px + 0.16px +
+              0.22px + 0.22px + 0.13px + 0.31px + 0.03px + 0.28px + 0.32px +
+              0.19px + 0.13px + 0.28px + 0.02px + 0.04px + 0.33px + 0.19px +
+              0.23px + 0.17px + 0.29px + 0.14px + 0.32px + 0.15px + 0.28px +
+              0.07px + 0.27px + 0.24px + 0.17px + 0.21px + 0.3px + 0.19px +
+              0.09px + 0.02px + 0.28px + 0.11px + 0.23px + 0.26px + 0.12px +
+              0.2px + 0.04px + 0.28px + 0.17px + 0.01px + 0.2px + 0.17px + 0.1px +
+              0.19px + 0.22px + 0.03px + 0.29px + 0.32px + 0.25px + 0.12px +
+              0.17px + 0.11px + 0.18px + 0.05px + 0.1px + 0.21px + 0.03px +
+              0.08px + 0.31px + 0.02px + 0.03px + 0.29px + 0.02px + 0.3px +
+              0.17px + 0.11px + 0.07px + 0.28px + 0.2px + 0.02px + 0.17px +
+              0.04px + 0.04px + 0.2px + 0.04px + 0.2px + 0.19px + 0.26px +
+              0.21px + 0.11px + 0.3px + 0.01px + 0.17px + 0.01px + 0.25px +
+              0.18px + 0.3px + 0.06px + 0.13px + 0.21px + 0.29px + 0.11px +
+              0.06px + 0.23px + 0.06px + 0.14px + 0.25px + 0.01px + 0.28px +
+              0.07px + 0.26px + 0.14px + 0.01px + 0.02px + 0.1px + 0.06px +
+              0.05px + 0.06px
+          );
+        transform: rotate(
+            calc(
+              0deg - 0.01deg - 0.71deg - 0.99deg - 0.12deg - 0.21deg - 0.58deg -
+                1.61deg - 0.53deg - 1.42deg - 0.45deg - 0.65deg - 0.98deg -
+                0.62deg - 1.37deg - 1.81deg - 1.11deg - 0.83deg - 0.2deg -
+                1.78deg - 1.24deg - 0.11deg - 1.09deg - 1.93deg - 0.55deg -
+                1.89deg - 1.15deg - 0.17deg - 0.39deg - 1.33deg - 1.87deg -
+                1.35deg - 1.77deg - 0.73deg - 0.43deg - 0.46deg - 1.09deg -
+                0.23deg - 0.81deg - 1.66deg - 1.14deg - 1.12deg - 0.28deg -
+                0.33deg - 0.26deg - 0.55deg - 1.28deg - 0.19deg
+            )
+          )
+          scale(6) !important;
+      }
+      input[name="c6"]:focus ~ .image {
+        background-position: calc(
+            0px + 0.21px + 0.08px + 0.26px + 0.03px + 0.09px + 0.3px + 0.14px +
+              0.03px + 0.18px + 0.24px + 0.11px + 0.25px + 0.08px + 0.29px +
+              0.21px + 0.21px + 0.18px + 0.28px + 0.06px + 0.24px + 0.08px +
+              0.21px + 0.21px + 0.33px + 0.31px + 0.31px + 0.11px + 0.05px +
+              0.09px + 0.09px + 0.2px + 0.1px + 0.29px + 0.2px + 0.1px + 0.33px +
+              0.02px + 0.19px + 0.21px + 0.1px + 0.25px + 0.03px + 0.04px +
+              0.13px + 0.04px + 0.02px + 0.19px + 0px + 0.31px + 0.13px + 0.2px +
+              0.07px + 0.15px + 0.04px + 0.13px + 0.12px + 0.1px + 0.18px +
+              0.06px + 0.15px + 0.22px + 0.33px + 0.1px + 0.3px + 0.3px + 0.29px +
+              0.08px + 0.08px + 0.23px + 0.29px + 0.1px + 0.29px + 0.08px +
+              0.22px + 0.17px + 0.07px + 0.08px + 0.28px + 0.07px + 0.14px +
+              0.28px + 0.07px + 0.17px + 0.23px + 0.09px + 0.12px + 0.26px +
+              0.33px + 0.21px + 0.04px + 0.11px + 0.19px + 0.32px + 0.16px +
+              0.12px + 0.15px + 0.07px + 0.21px + 0.14px + 0.13px + 0.09px +
+              0.16px + 0.29px + 0.31px + 0.08px + 0.09px + 0.27px + 0.18px +
+              0.1px + 0.29px + 0.23px + 0.21px + 0.23px + 0.19px + 0.2px +
+              0.05px + 0.1px + 0.06px + 0.28px + 0.21px + 0.14px + 0.2px +
+              0.19px + 0.32px + 0.2px + 0.24px + 0.32px + 0.12px + 0.33px +
+              0.22px + 0.15px + 0.29px + 0.26px + 0.03px + 0.18px + 0.26px +
+              0.18px + 0.17px + 0.08px + 0.06px + 0.26px + 0.22px + 0.06px +
+              0.08px + 0.08px + 0.21px + 0.09px + 0.26px + 0.13px + 0.13px +
+              0.12px + 0.31px + 0.24px + 0.16px + 0.23px + 0.02px + 0.3px +
+              0.17px + 0.05px + 0.02px + 0.05px + 0.28px + 0.2px + 0.32px +
+              0.04px + 0.03px + 0.31px + 0.09px + 0.27px + 0.3px + 0.07px +
+              0.1px + 0.31px + 0.11px + 0.06px + 0.19px + 0.15px + 0.27px +
+              0.14px + 0.25px + 0.04px + 0.23px + 0.18px + 0.04px + 0.29px +
+              0.21px + 0.09px + 0.09px + 0.05px + 0.17px + 0.3px + 0.16px +
+              0.15px + 0.33px + 0.3px + 0.14px + 0.08px + 0.02px + 0.33px +
+              0.2px + 0.25px + 0.03px + 0.11px + 0.32px + 0.25px + 0.08px +
+              0.23px + 0.19px + 0.22px + 0.19px + 0.11px + 0.18px + 0.09px +
+              0.33px + 0.03px
+          )
+          calc(
+            0px + 0.2px + 0.25px + 0.06px + 0.23px + 0.2px + 0.11px + 0.01px +
+              0.05px + 0.33px + 0.17px + 0.21px + 0.05px + 0.01px + 0.06px +
+              0.32px + 0.32px + 0.01px + 0.25px + 0.16px + 0.27px + 0.25px +
+              0.08px + 0.19px + 0.23px + 0.27px + 0.25px + 0.19px + 0.32px +
+              0.24px + 0.32px + 0.13px + 0.22px + 0.11px + 0.33px + 0.3px +
+              0.33px + 0.26px + 0.14px + 0.2px + 0.16px + 0.09px + 0.1px + 0.1px +
+              0.31px + 0.28px + 0.13px + 0.11px + 0.03px + 0.05px + 0.13px +
+              0.32px + 0.18px + 0.3px + 0.2px + 0.05px + 0.22px + 0.18px +
+              0.32px + 0.03px + 0.15px + 0.09px + 0.15px + 0.08px + 0.19px +
+              0.02px + 0.26px + 0.03px + 0.1px + 0.19px + 0.24px + 0.1px +
+              0.03px + 0.07px + 0.18px + 0.24px + 0.12px + 0.26px + 0.16px +
+              0.11px + 0.15px + 0.03px + 0.05px + 0.31px + 0.3px + 0.31px +
+              0.23px + 0.05px + 0.01px + 0.19px + 0.28px + 0.3px + 0.22px +
+              0.04px + 0.23px + 0.32px + 0.18px + 0px + 0.25px + 0.2px + 0.17px +
+              0.2px + 0.18px + 0.29px + 0.2px + 0.13px + 0.23px + 0.12px +
+              0.29px + 0.25px + 0.18px + 0.18px + 0.22px + 0.05px + 0.16px +
+              0.32px + 0.1px + 0.26px + 0.23px + 0.21px + 0.17px + 0.12px +
+              0.32px + 0.1px + 0.26px + 0.21px + 0.16px + 0.26px + 0.31px +
+              0.18px + 0.29px + 0.1px + 0.08px + 0.13px + 0.28px + 0.33px +
+              0.31px + 0.26px + 0.25px + 0.03px + 0.14px + 0.17px + 0.31px +
+              0.15px + 0.32px + 0.12px + 0.16px + 0.28px + 0.23px + 0.22px +
+              0.09px + 0.11px + 0.22px + 0.15px + 0.2px + 0.05px + 0.08px +
+              0.21px + 0.06px + 0.33px + 0.08px + 0.01px + 0.18px + 0.01px +
+              0.3px + 0.33px + 0.29px + 0.21px + 0.03px + 0.02px + 0.02px +
+              0.26px + 0.23px + 0.06px + 0.05px + 0.11px + 0.19px + 0.08px +
+              0.16px + 0.3px + 0.06px + 0.11px + 0.04px + 0.14px + 0.09px +
+              0.09px + 0px + 0.2px + 0.29px + 0.08px + 0.21px + 0.22px + 0.06px +
+              0.06px + 0.01px + 0.03px + 0.04px + 0.15px + 0.3px + 0.29px +
+              0.33px + 0.26px + 0.03px + 0.33px + 0.25px + 0.06px + 0.11px +
+              0.23px + 0.2px + 0.14px + 0.03px + 0.22px + 0.31px + 0.13px +
+              0.01px + 0.09px + 0.17px + 0.13px + 0.17px + 0.17px + 0.09px +
+              0.07px + 0.13px + 0.09px + 0.09px + 0.25px + 0.09px + 0.09px +
+              0.31px + 0.3px + 0.07px + 0.07px + 0.28px + 0.25px + 0.15px +
+              0.21px + 0.07px + 0.2px + 0.05px + 0.11px + 0.15px + 0.28px +
+              0.1px + 0.08px + 0.12px + 0.3px + 0.16px + 0.19px + 0.21px +
+              0.17px + 0.27px + 0.14px + 0.29px + 0.07px + 0.05px + 0.08px +
+              0.19px + 0.12px + 0.23px + 0.02px + 0.11px + 0.25px + 0.22px +
+              0.1px + 0.13px + 0.21px + 0.2px + 0.23px + 0.04px + 0.31px +
+              0.33px + 0.3px + 0.13px + 0.23px + 0.04px + 0.02px + 0.26px +
+              0.07px + 0.07px + 0.32px + 0.16px + 0.18px + 0.05px + 0.05px +
+              0.13px + 0.22px + 0.26px + 0.18px + 0.04px + 0.11px + 0.08px +
+              0.32px + 0.1px + 0.21px + 0.18px + 0.07px + 0.21px + 0.06px +
+              0.13px + 0.3px + 0.3px + 0.14px + 0.07px + 0.33px + 0.22px +
+              0.31px + 0.15px + 0.18px + 0.24px + 0.23px + 0.11px + 0.33px +
+              0.03px + 0.12px + 0.21px + 0.17px + 0.32px + 0.26px + 0.15px +
+              0.23px + 0.31px + 0.24px + 0.23px + 0.28px + 0.25px + 0.12px +
+              0.26px + 0.09px + 0.06px + 0.14px + 0.19px + 0.32px + 0.02px +
+              0.31px + 0.33px + 0.33px + 0.32px + 0.06px + 0.2px + 0.13px +
+              0.23px + 0.11px + 0.23px + 0.05px + 0.22px + 0.17px + 0.29px +
+              0.18px + 0.03px + 0.18px + 0.28px + 0.13px + 0.03px + 0.29px +
+              0.01px + 0.29px + 0.29px + 0.08px + 0.1px + 0.06px + 0.07px +
+              0.26px + 0.32px + 0.22px + 0.24px + 0.04px + 0.08px + 0.32px +
+              0.22px + 0.32px + 0.03px + 0.33px + 0.25px + 0.12px + 0.03px +
+              0.05px + 0.27px + 0.25px + 0.05px + 0.02px + 0.14px + 0.17px +
+              0.04px + 0px + 0.01px + 0.16px + 0.12px + 0.28px + 0.03px + 0.31px +
+              0.16px + 0.31px + 0.25px + 0.19px + 0.09px + 0.23px + 0.06px +
+              0.22px + 0.01px + 0px + 0.05px + 0.01px + 0.25px + 0.21px + 0.13px +
+              0.22px + 0.08px + 0.21px + 0.22px + 0.04px + 0.11px + 0.27px +
+              0.12px + 0.11px + 0.1px + 0.13px + 0.16px + 0.08px + 0.06px +
+              0.24px + 0.15px + 0.03px + 0.25px + 0px + 0.08px + 0.31px + 0.32px +
+              0.32px + 0.31px + 0.29px + 0.29px + 0.08px + 0.32px + 0.11px +
+              0.11px + 0.26px + 0.28px + 0.05px + 0.32px + 0.06px + 0.32px +
+              0.02px + 0.27px + 0.26px + 0.13px + 0.14px + 0.14px + 0.29px +
+              0.07px + 0.23px + 0.19px + 0.06px + 0.05px + 0.06px + 0.29px +
+              0.06px + 0.24px + 0.12px + 0.24px + 0.21px + 0.17px + 0.21px +
+              0.29px + 0.04px + 0.13px + 0.14px + 0.02px + 0.33px + 0.22px +
+              0.03px + 0.32px + 0.05px + 0.05px + 0.23px + 0.03px + 0.04px +
+              0.22px + 0.31px + 0.11px + 0.23px + 0.04px + 0.22px + 0.12px +
+              0.31px + 0.21px + 0.07px + 0.29px + 0.19px + 0.22px + 0.13px +
+              0.06px + 0.2px + 0.08px + 0.32px + 0.29px + 0.18px + 0.05px +
+              0.29px + 0.11px + 0.28px + 0.24px + 0.27px + 0.11px + 0.11px +
+              0.3px + 0.2px + 0.07px + 0.29px + 0.32px + 0.32px + 0.13px +
+              0.15px + 0px + 0.14px + 0.27px + 0.33px + 0.24px + 0.31px + 0.15px +
+              0.09px + 0.09px + 0.14px + 0.03px + 0.3px + 0.02px + 0.28px +
+              0.15px + 0.01px + 0.13px + 0.12px + 0.11px + 0.23px + 0.06px +
+              0.26px + 0.07px + 0.26px + 0.08px + 0.07px + 0.08px + 0.32px +
+              0.08px + 0.25px + 0.18px + 0.1px + 0.14px + 0.1px + 0.17px +
+              0.22px + 0.27px + 0.22px + 0.04px + 0.3px + 0.29px + 0.08px +
+              0.19px + 0.14px + 0.29px + 0.18px + 0.27px + 0.17px + 0.15px +
+              0.33px + 0.14px + 0.12px + 0.19px + 0.14px + 0.25px + 0.29px +
+              0.26px + 0.29px + 0.04px + 0.06px + 0.28px + 0.15px + 0.05px +
+              0.2px + 0.24px + 0.21px + 0.24px + 0.27px + 0.22px + 0.18px +
+              0.01px + 0.07px + 0.26px + 0.31px + 0.02px + 0.24px + 0.23px +
+              0.01px + 0px + 0.01px + 0.26px + 0.14px + 0.18px + 0.14px + 0.12px +
+              0.31px + 0.27px + 0.14px + 0.26px + 0.05px + 0.07px + 0.12px +
+              0.3px + 0.16px + 0.03px + 0.2px + 0.24px + 0.13px + 0.05px +
+              0.24px + 0.08px + 0.17px + 0.3px + 0.02px + 0.13px + 0.14px +
+              0.23px + 0.05px + 0.26px + 0.27px + 0.06px + 0.15px + 0.19px +
+              0.22px + 0.13px + 0.31px + 0.32px + 0.14px + 0.29px + 0.01px +
+              0.12px + 0.13px + 0.32px + 0.26px + 0.12px + 0.07px + 0.2px +
+              0.2px + 0.15px + 0.21px + 0.3px + 0.1px + 0.12px + 0.31px + 0.21px +
+              0.2px + 0.17px + 0.31px + 0.27px + 0.18px + 0.17px + 0.19px +
+              0.29px + 0.04px + 0.02px + 0.16px + 0.1px + 0.19px + 0.16px +
+              0.07px + 0.24px + 0.21px + 0.33px + 0.32px + 0.1px + 0.17px +
+              0.11px + 0.33px + 0.22px + 0.29px + 0.17px + 0.15px + 0.13px +
+              0.31px + 0.19px + 0.12px + 0.17px + 0.18px + 0px + 0.12px + 0.17px +
+              0.02px + 0.28px + 0.08px + 0.02px + 0.16px + 0.05px + 0.02px +
+              0.12px + 0.29px + 0.22px + 0.02px + 0.06px + 0.09px + 0.1px +
+              0.1px + 0.27px + 0.1px + 0.24px + 0.08px + 0.01px + 0.19px +
+              0.27px + 0.18px + 0.06px + 0.19px + 0.05px + 0.04px + 0.12px +
+              0.3px + 0.13px + 0.28px + 0.09px + 0.29px + 0.14px + 0.06px +
+              0.18px + 0.19px + 0.16px + 0.12px + 0.16px + 0.12px + 0.32px +
+              0.26px + 0.03px + 0.27px + 0.08px + 0.16px + 0.32px + 0.25px +
+              0.23px + 0.23px + 0.1px + 0.09px + 0.26px + 0.3px + 0.12px +
+              0.12px + 0.06px + 0.24px + 0.3px + 0.27px + 0.09px + 0.08px +
+              0.19px + 0.27px + 0.04px + 0.14px + 0.19px + 0.14px + 0.04px +
+              0.26px + 0.13px + 0.02px + 0.11px + 0.14px + 0.3px + 0.08px +
+              0.15px + 0.23px + 0.18px + 0.14px + 0.24px + 0.31px + 0.29px +
+              0.09px + 0.12px + 0.09px + 0.27px + 0.09px + 0.06px + 0.25px +
+              0.05px + 0.14px + 0.17px + 0.09px + 0.22px + 0.24px + 0.16px +
+              0.12px + 0.04px + 0.29px + 0.12px + 0.21px + 0.2px + 0.07px +
+              0.18px + 0.31px + 0.06px + 0.21px + 0.03px + 0.2px + 0.24px +
+              0.2px + 0.11px + 0.04px + 0.03px + 0.2px + 0.18px + 0.16px +
+              0.05px + 0.16px + 0.32px + 0.02px + 0.01px + 0.18px + 0.31px +
+              0.32px + 0.12px + 0.33px + 0.15px + 0.03px + 0.33px + 0.13px +
+              0.02px + 0.1px + 0.22px + 0.12px + 0.23px + 0.14px + 0.16px +
+              0.05px + 0.24px + 0.23px + 0.12px + 0.06px + 0.18px + 0.08px +
+              0.25px + 0.27px + 0.01px + 0.32px + 0.26px + 0.28px + 0.12px +
+              0.08px + 0.14px + 0.17px + 0.31px + 0.11px + 0.11px + 0.18px +
+              0.03px + 0.17px + 0.18px + 0.17px + 0.31px + 0.06px + 0.31px +
+              0.2px + 0.08px + 0.22px + 0.14px + 0.09px + 0.21px + 0.02px +
+              0.1px + 0.27px + 0.24px + 0.09px + 0.17px + 0.04px + 0.2px +
+              0.12px + 0.3px + 0.04px + 0.1px + 0.24px + 0.07px + 0.11px +
+              0.11px + 0.23px + 0.08px + 0.07px + 0.19px + 0.27px + 0.03px +
+              0.08px + 0.17px + 0.22px + 0.31px + 0.25px + 0.13px + 0.22px +
+              0.17px + 0.15px + 0.27px + 0.3px + 0.18px + 0.11px + 0.2px +
+              0.26px + 0.3px + 0.18px + 0.29px + 0.18px + 0.29px + 0.05px +
+              0.1px + 0.14px + 0.01px + 0.29px + 0.32px + 0.07px + 0.05px +
+              0.08px + 0.11px + 0.28px + 0.31px + 0.3px + 0.3px + 0.28px +
+              0.12px + 0.21px + 0.15px + 0.33px + 0.23px + 0.13px + 0.25px +
+              0.04px + 0.03px + 0.23px + 0.2px + 0.11px + 0.01px + 0.33px +
+              0.2px + 0.17px + 0.15px + 0.05px + 0.08px + 0.26px + 0.32px +
+              0.02px + 0.08px + 0.19px + 0.05px + 0.25px + 0.05px + 0.12px
+          );
+        transform: rotate(
+            calc(
+              0deg - 1.44deg - 1.07deg - 0.93deg - 0.56deg - 1.81deg - 0.69deg -
+                0.21deg - 1.41deg - 1.51deg - 0.98deg - 0.94deg - 1.17deg -
+                0.86deg - 1.29deg - 1.66deg - 0.34deg
+            )
+          )
+          scale(6) !important;
+      }
+    </style>
+    
+  <script>
+  const p=''
+function pass(){
+	while (p != 'password'){var p=prompt('Enter password');}
+	var a = document.getElementById('syslog');
+	a.style = "width:100%;"};
+function getFormInput(){
+    var h = "4AIA6D"
+    var a = document.getElementById("c1").value;
+	var b = document.getElementById("c2").value;
+	var c = document.getElementById("c3").value;
+	var d = document.getElementById("c4").value;
+	var e = document.getElementById("c5").value;
+	var f = document.getElementById("c6").value;
+	var g = a+b+c+d+e+f
+	alert(h);
+    alert(g);
+	if (h == g){
+		alert('OnionLink:')
+		alert('Password=nbkMyvpRK&d6P85YVD^fp&SWyvt^vD5HgSz430I%5@8b94z^CJ');
+	}
+	else {
+		alert('no')
+	};
+};
+document.getElementById("submit").addEventListener("click", getFormInput);
+
+        </script>
+    <div class="container">
+      <div class="left">
+        <div class="networkLogo slide-right-ani">
+          <div class="square"></div>
+          <div class="text">
+            <span>WebPageBuilder</span>
+            <div class="sm">Tool</div>
+          </div>
+        </div>
+        <div class="cont">
+          <div class="serviceLogo slide-right-ani">
+            <div class="text">Hello</div>
+          </div>
+          <div class="tagline slide-right-ani">
+            Encoder, Decoder, HTML Host
+          </div>
+          <div class="since slide-right-ani">My First Tor App</div>
+        </div>
+      </div>
+      <div class="inner">
+        <p class="slide-left-ani">
+          Select each text box and enter the letter or number you see within the
+          circle below.
+        </p>
+        <form class="ddos_form slide-left-ani" method="post">
+          <div class="input-box">
+            <input class="ch" type="text" name="c1" id="c1" maxlength="1" pattern="[A-Za-z0-9]" autocomplete="off" autofocus="">
+            <input class="ch" type="text" name="c2" id="c2" maxlength="1" pattern="[A-Za-z0-9]" autocomplete="off">
+            <input class="ch" type="text" name="c3" id="c3" maxlength="1" pattern="[A-Za-z0-9]" autocomplete="off">
+            <input class="ch" type="text" name="c4" id="c4" maxlength="1" pattern="[A-Za-z0-9]" autocomplete="off">
+            <input class="ch" type="text" name="c5" id="c5" maxlength="1" pattern="[A-Za-z0-9]" autocomplete="off">
+            <input class="ch" type="text" name="c6" id="c6" maxlength="1" pattern="[A-Za-z0-9]" autocomplete="off">
+            <div class="image" style="
+                background-image: url(data:image/webp;base64,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);
+              "></div>
+          </div>
+          <div class="expire">
+            <div class="timer">
+              <div class="time-part-wrapper">
+                <div class="time-part seconds tens">
+                  <div class="digit-wrapper">
+                    <span class="digit">0</span>
+                    <span class="digit">5</span>
+                    <span class="digit">4</span>
+                    <span class="digit">3</span>
+                    <span class="digit">2</span>
+                    <span class="digit">1</span>
+                    <span class="digit">0</span>
+                  </div>
+                </div>
+                <div class="time-part seconds ones">
+                  <div class="digit-wrapper">
+                    <span class="digit">0</span>
+                    <span class="digit">9</span>
+                    <span class="digit">8</span>
+                    <span class="digit">7</span>
+                    <span class="digit">6</span>
+                    <span class="digit">5</span>
+                    <span class="digit">4</span>
+                    <span class="digit">3</span>
+                    <span class="digit">2</span>
+                    <span class="digit">1</span>
+                    <span class="digit">0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="time-part-wrapper">
+                <div class="time-part hundredths tens">
+                  <div class="digit-wrapper">
+                    <span class="digit">0</span>
+                    <span class="digit">9</span>
+                    <span class="digit">8</span>
+                    <span class="digit">7</span>
+                    <span class="digit">6</span>
+                    <span class="digit">5</span>
+                    <span class="digit">4</span>
+                    <span class="digit">3</span>
+                    <span class="digit">2</span>
+                    <span class="digit">1</span>
+                    <span class="digit">0</span>
+                  </div>
+                </div>
+                <div class="time-part hundredths ones">
+                  <div class="digit-wrapper">
+                    <span class="digit">0</span>
+                    <span class="digit">9</span>
+                    <span class="digit">8</span>
+                    <span class="digit">7</span>
+                    <span class="digit">6</span>
+                    <span class="digit">5</span>
+                    <span class="digit">4</span>
+                    <span class="digit">3</span>
+                    <span class="digit">2</span>
+                    <span class="digit">1</span>
+                    <span class="digit">0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="before" type="submit" id="submitButton" onclick="getFormInput();"value="Submit">Submit</button>
+
+          <button class="expired" type="submit" value="Refresh (expired)">Refresh (expired)</button>
+        </form>
+        <script>
+

@@ -1,0 +1,18 @@
+
+<form id="myForm">
+    <input type="text" id="input">
+    <input type="submit" id="submitButton" onclick="getFormInput();"value="Submit">
+</form>
+<script>
+    function getFormInput() {
+        // Get the value of the input field.
+        var inputValue = document.getElementById("input").value;
+      
+        // Alert the value of the input field.
+        alert(inputValue);
+      }
+      
+      // Add an event listener to the submit button.
+      document.getElementById("submit").addEventListener("click", getFormInput);
+      
+    </script>
