@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
-
+import json
 app = Flask(__name__)
 
 
@@ -47,27 +47,8 @@ def participants():
 	cursor.execute('SELECT * FROM PARTICIPANTS')
 	data = cursor.fetchall()
 	return render_template("participants.html", data=data)
-@app.route('/participant')
-def participant():
-	connect = sqlite3.connect('database.db')
-	cursor = connect.cursor()
-	cursor.execute('SELECT * FROM device_info')
-	data = cursor.fetchall()
-	return render_template("participant.html", data=data)
 
-@app.route("/api/device-info", methods=["POST"])
-def device_info():
 
-  device_info = request.get_json()
-
-  if not device_info:
-    return jsonify({"status": 400, "message": "Invalid device information"})
-  db = sqlite3.connect("database.db")
-  cursor = db.cursor()
-  cursor.execute("INSERT INTO device_info (os, os_version, browser, browser_version) VALUES (?, ?, ?, ?)", (device_info["os"], device_info["os_version"], device_info["browser"], device_info["browser_version"]))
-  db.commit()
-  db.close()
-  return jsonify({"status": 200, "message": "Device information stored successfully"})
 
 if __name__ == "__main__":
     app.run()

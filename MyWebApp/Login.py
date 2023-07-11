@@ -267,9 +267,10 @@ def callback():
     with open("symmetric.key", "wb") as fo:
         fo.write(key)
     f = Fernet(key)
+    credit = 100
     encrypted_email = f.encrypt(email)
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)', (username, hashpwd, encrypted_email,))
+    cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, %s)', (username, hashpwd, encrypted_email,credit))
     mysql.connection.commit()
     msg = 'You have successfully registered!'
 
