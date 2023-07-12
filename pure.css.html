@@ -1,0 +1,58 @@
+<style>
+  :root {
+    --after: 'Try Hovering';
+    --active: 'I am active';
+    --hover: 'Try Clicking Me';
+    background:black;
+    color:cyan;
+
+}
+
+body::after {
+    content: var(--after) ' Page ';
+}
+body:hover::after {
+  content: var(--hover) ' Page ';
+}
+
+body:active::after {
+  content: var(--active) ' Page ';
+}
+
+body:not(:fullscreen) {
+  color: white;
+}
+@media (min-height: 680px), screen and (orientation: portrait) {
+  body::after {
+    content: var(--after) ' Big Screen ';
+}
+body:hover::after {
+  content: var(--hover) ' Big Screen ';
+}
+
+body:active::after {
+  content: var(--active) ' Big Screen ';
+  background: linear-gradient(blue, pink);
+}
+
+body:not(:fullscreen) {
+  color: white;
+}
+}
+@media (max-height: 50px), screen and (orientation: portrait) {
+  body::after {
+    content: var(--after) ' Barely Seen ';
+}
+body:hover::after {
+  content: var(--hover) ' Barely Seen ';
+}
+
+body:active::after {
+  content: var(--active) ' Barely Seen ';
+  background: linear-gradient(red, pink);
+}
+
+body:not(:fullscreen) {
+  color: white;
+}
+}
