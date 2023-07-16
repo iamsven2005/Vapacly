@@ -1,11 +1,7 @@
-<style>
-  :root {
-    --after: 'Try Hovering';
-    --active: 'I am active';
+<style>:root {--after: 'This is a pure css website written with no html, try hoving on the page to see more.';--active: 'I am active';
     --hover: 'Try Clicking Me';
     background:black;
     color:cyan;
-
 }
 
 body::after {
@@ -24,7 +20,7 @@ body:not(:fullscreen) {
 }
 @media (min-height: 680px), screen and (orientation: portrait) {
   body::after {
-    content: var(--after) ' Big Screen ';
+    content: var(--after) 'You are seeing this on a Big Screen ';
 }
 body:hover::after {
   content: var(--hover) ' Big Screen ';
