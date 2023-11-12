@@ -1,0 +1,499 @@
+<link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<html data-theme="dark"><!--light, cupcake, bumblebee, emerald, corporate, synthwave, cyberpunk, valentine
+winter, lemonade, night, coffee, acid, business, autumn, cmyk, dracula, luxury, black, wireframe, fantasy
+pastel, lofi, aqua, forest, garden, halloween-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    tr {
+        height: 10vh;
+    }
+
+    .swap {
+        z-index: 2;
+        position: fixed;
+
+    }
+
+    .svg:hover {
+        transform: rotate(180deg);
+        animation-direction: reverse;
+    }
+
+    .svg {
+        transform: rotate(0deg);
+        transition: transform 0.5s ease-in-out;
+    }
+</style>
+<!--Navbar-->
+
+<div class="navbar bg-base-200">
+
+    <div class="navbar-start">
+        <label for="my-drawer" class="svg btn btn-circle swap">
+            <svg class="swap-off fill-current" fill="#fff" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <path d="m589 616v14h-368v-14z" />
+                <path d="m589 180v13h-368v-13z" />
+                <path d="m630 211v368h-14v-368z" />
+                <path d="m193 211v368h-13v-368z" />
+                <path d="m617 616h-28v14h41v-41h-14z" />
+                <path d="m617 193v28h14v-41h-41v13z" />
+                <path d="m193 616v-28h-13v41h41v-14z" />
+                <path d="m193 193h28v-13h-41v41h13z" />
+            </svg>
+
+            <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                viewBox="0 0 800 800" fill="#fff"></svg>
+        </label>
+
+    </div>
+    <div class="navbar-center">
+        <div class="stat text-center font-bold">
+            <svg fill="#fff" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m160 400c0-130 110-240 240-240 140 0 250 110 250 240 0 140-110 250-250 250-130 0-240-110-240-250zm480 0c0-120-110-230-240-230-120 0-230 110-230 230 0 130 110 230 230 230 130 0 230-100 230-230zm-10 0m-430-230v-10h400v10m-400 0m0 480v-10h400v10m-400 0m-40-50v-400h10v400m-10 0m480 0v-400h10v400m-10 0m-470-430h30v-10h-40v40h10m0-30m0 470v-40h-10v50h40v-10m-30 0m470-470v30h10v-40h-50v10m40 0m0 470h-40v10h50v-50h-10m0 40m-440-340h400l-200 320m170-320h-340l170 300" />
+            </svg>SHAPER
+        </div>
+    </div>
+    <!--search-->
+    <div class="navbar-end">
+
+        <button class="btn btn-ghost btn-circle">
+            <div class="indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <span class="badge badge-xs badge-primary indicator-item"></span>
+            </div>
+        </button>
+        <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class="badge badge-sm indicator-item">8</span>
+                </div>
+            </label>
+            <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
+                <div class="card-body">
+                    <span class="font-bold text-lg">8 Items</span>
+                    <span class="text-info">Subtotal: $999</span>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-block">View cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                    <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li>
+                    <a class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                    </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Drawer-->
+
+<div class="drawer">
+    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content">
+        <!-- Page content here -->
+        <div class="grid">
+            <div class="overflow-x-auto bg-base-300 rounded-b-box rounded-tr-box relative">
+                <table class="table">
+                    <!-- head -->
+                    <thead>
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Favorite Color</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- row 1 -->
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png"
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Hart Hagerty</div>
+                                        <div class="text-sm opacity-50">United States</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                Zemlak, Daniel and Leannon
+                                <br>
+                                <span class="badge badge-ghost badge-sm">Technician</span>
+                            </td>
+                            <td>Purple</td>
+                            <th>
+                                <button class="btn btn-ghost btn-xs">details</button>
+                            </th>
+                        </tr>
+                        <!-- row 2 -->
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/tailwind-css-component-profile-3@56w.png"
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Brice Swyre</div>
+                                        <div class="text-sm opacity-50">China</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                Carroll Group
+                                <br>
+                                <span class="badge badge-ghost badge-sm">Accountant</span>
+                            </td>
+                            <td>Red</td>
+                            <th>
+                                <button class="btn btn-ghost btn-xs">details</button>
+                            </th>
+                        </tr>
+                        <!-- row 3 -->
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/tailwind-css-component-profile-4@56w.png"
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Marjy Ferencz</div>
+                                        <div class="text-sm opacity-50">Russia</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                Rowe-Schoen
+                                <br>
+                                <span class="badge badge-ghost badge-sm">Assistant I</span>
+                            </td>
+                            <td>Crimson</td>
+                            <th>
+                                <button class="btn btn-ghost btn-xs">details</button>
+                            </th>
+                        </tr>
+                        <!-- row 4 -->
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/tailwind-css-component-profile-5@56w.png"
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Yancy Tear</div>
+                                        <div class="text-sm opacity-50">Brazil</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                Wyman-Ledner
+                                <br>
+                                <span class="badge badge-ghost badge-sm">Specialist</span>
+                            </td>
+                            <td>Indigo</td>
+                            <th>
+                                <button class="btn btn-ghost btn-xs">details</button>
+                            </th>
+                        </tr>
+                        <!-- row 5 -->
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/tailwind-css-component-profile-5@56w.png"
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Yancy Tear</div>
+                                        <div class="text-sm opacity-50">Brazil</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                Wyman-Ledner
+                                <br>
+                                <span class="badge badge-ghost badge-sm">Specialist</span>
+                            </td>
+                            <td>Indigo</td>
+                            <th>
+                                <button class="btn btn-ghost btn-xs">details</button>
+                            </th>
+                        </tr>
+                        <!-- row 6 -->
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" class="checkbox" />
+                                </label>
+                            </th>
+                            <td>
+                                <div class="flex items-center space-x-3">
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src="https://daisyui.com/tailwind-css-component-profile-5@56w.png"
+                                                alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Yancy Tear</div>
+                                        <div class="text-sm opacity-50">Brazil</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                Wyman-Ledner
+                                <br>
+                                <span class="badge badge-ghost badge-sm">Specialist</span>
+                            </td>
+                            <td>Indigo</td>
+                            <th>
+                                <button class="btn btn-ghost btn-xs">details</button>
+                            </th>
+                        </tr>
+                    </tbody>
+                    <!-- foot -->
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Favorite Color</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="drawer-side">
+        <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+        <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <!-- Sidebar content here -->
+            <br><br><br><br>
+            <input type="text" placeholder="Search" class="input w-full" />
+            <br>
+            <li><a>View Shop</a></li>
+            <li><a>About Us </a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="btm-nav">
+    <a class="" id="myButton" href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        Home
+    </a>
+    <a class="" id="myButton1" href="./shop">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+            </path>
+        </svg>
+        Shop
+    </a>
+    <a class="" id="myButton2" href="./add">
+        <div class="card-title">+</div>
+        Add New
+    </a>
+    <a class="" id="myButton3" href="./explore">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        Explore
+    </a>
+    <a class="" id="myButton4" href="./stats">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        Stats
+    </a>
+</div>
+
+<script>
+    // Get the button element
+    var button = document.getElementById('myButton');
+
+    // Add event listener for mouseover (hover) event
+    button.addEventListener('mouseover', function () {
+        // Add the 'active' class on mouseover
+        button.classList.add('active');
+    });
+
+    // Add event listener for mouseout (hover out) event
+    button.addEventListener('mouseout', function () {
+        // Remove the 'active' class on mouseout
+        button.classList.remove('active');
+    });
+    var button1 = document.getElementById('myButton1');
+
+    // Add event listener for mouseover (hover) event
+    button1.addEventListener('mouseover', function () {
+        // Add the 'active' class on mouseover
+        button1.classList.add('active');
+    });
+
+    // Add event listener for mouseout (hover out) event
+    button1.addEventListener('mouseout', function () {
+        // Remove the 'active' class on mouseout
+        button1.classList.remove('active');
+    });
+    var button2 = document.getElementById('myButton2');
+
+    // Add event listener for mouseover (hover) event
+    button2.addEventListener('mouseover', function () {
+        // Add the 'active' class on mouseover
+        button2.classList.add('active');
+    });
+
+    // Add event listener for mouseout (hover out) event
+    button2.addEventListener('mouseout', function () {
+        // Remove the 'active' class on mouseout
+        button2.classList.remove('active');
+    });
+    var button3 = document.getElementById('myButton3');
+
+    // Add event listener for mouseover (hover) event
+    button3.addEventListener('mouseover', function () {
+        // Add the 'active' class on mouseover
+        button3.classList.add('active');
+    });
+
+    // Add event listener for mouseout (hover out) event
+    button3.addEventListener('mouseout', function () {
+        // Remove the 'active' class on mouseout
+        button3.classList.remove('active');
+    });
+    var button4 = document.getElementById('myButton4');
+
+    // Add event listener for mouseover (hover) event
+    button4.addEventListener('mouseover', function () {
+        // Add the 'active' class on mouseover
+        button4.classList.add('active');
+    });
+
+    // Add event listener for mouseout (hover out) event
+    button4.addEventListener('mouseout', function () {
+        // Remove the 'active' class on mouseout
+        button4.classList.remove('active');
+    });
+</script>
+
+<footer class="footer footer-center p-10 bg-base-200 text-base-content rounded">
+    <nav class="grid grid-flow-col gap-4">
+        <a class="link link-hover">About us</a>
+        <a class="link link-hover">Contact</a>
+        <a class="link link-hover">Jobs</a>
+        <a class="link link-hover">Press kit</a>
+    </nav>
+    <nav>
+        <div class="grid grid-flow-col gap-4">
+            <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+                    <path
+                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                    </path>
+                </svg></a>
+            <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+                    <path
+                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                    </path>
+                </svg></a>
+            <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+                    <path
+                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                    </path>
+                </svg></a>
+        </div>
+    </nav>
+    <aside>
+        <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+    </aside>
+</footer>
+
+<!--The square add <svg class="svg" fill="#fff" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+        <path d="m254 555c-83-83-82-218 0-300s217-83 300 0 83 217 0 300-218 82-300 0zm291-291c-78-78-204-78-282 0-78 78-78 204 0 282 78 78 204 78 282 0s77-204 0-282z"/>
+        <path d="m140 386-9-9 245-245 9 9z"/>
+        <path d="m432 678-9-9 245-245 9 9z"/>
+        <path d="m377 678-245-245 9-9 245 245z"/>
+        <path d="m669 386-245-245 9-9 245 245z"/>
+        <path d="m122 405 19-19-9-9-28 28 28 28 9-9z"/>
+        <path d="m405 687-18-19-9 9 27 27 28-27-9-9z"/>
+        <path d="m405 122 19 18 9-9-28-28-27 28 9 9z"/>
+        <path d="m687 405-19 19 9 9 28-28-28-28-9 9z"/>
+        <path d="m562 516h-315l157-273zm-300-8h286l-143-248z" fill="#f00"/>
+        </svg>-->

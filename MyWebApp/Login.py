@@ -7,7 +7,7 @@ from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
 
-from flask import Flask, render_template, request, redirect, url_for, session, abort
+from flask import Flask, render_template, request, redirect, url_for, session, abort, Response
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
@@ -19,6 +19,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
 from datetime import datetime
+import subprocess
+import os
 class csrfform(FlaskForm):
     country_name = StringField('country_name')   
 #end csrf
@@ -96,7 +98,11 @@ def login_is_required(function):
             return function()
 
     return wrapper
-
+@app.route('/backup', methods=['GET'])
+def backup():
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(' SCHEMA `pythonlogin`;')
+        cursor.execute('DROP SCHEMA `pythonlogin`;')
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     #csrf
@@ -260,9 +266,13 @@ def callback():
     session["password"] = password
     email = email.encode()
     hashpwd = bcrypt.generate_password_hash(password)
-    key = Fernet.generate_key()
-    with open("symmetric.key", "wb") as fo:
-        fo.write(key)
+    #key = Fernet.generate_key()
+    #with open("symmetric.key", "wb") as fo:
+    #    fo.write(key)
+    #f = Fernet(key)
+    file = open('symmetric.key', 'rb')
+    key = file.read()
+    file.close()
     f = Fernet(key)
     credit = 100
     encrypted_email = f.encrypt(email)
