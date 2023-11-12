@@ -113,9 +113,6 @@ def register():
         key = Fernet.generate_key()
         with open("symmetric.key", "wb") as fo:
             fo.write(key)
-        #file = open('symmetric.key', 'rb')
-        #key = file.read()
-        #file.close()
         f = Fernet(key)
         encrypted_email = f.encrypt(email)
         
