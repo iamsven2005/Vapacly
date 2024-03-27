@@ -8,9 +8,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script></head>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.8.0/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .toast{
+        display: none;
+      }
+    </style>
 <body>
+  <div class="navbar bg-base-100">
+    <div class="navbar-start">
+      <a class="btn btn-ghost text-xl">Color</a>
+    </div>
+    <div class="navbar-center hidden lg:flex">
+      <ul class="menu menu-horizontal px-1">
+        <li><a class="btn btn-primary" href="index.html">HOME</a></li>
+        <li><a class="btn btn-primary" href="response.html">QR-PAGE</a></li>
+        <li><a class="btn btn-primary" href="error.html">ERROR-PAGE</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end">
+      .
+    </div>
+  </div>
     <div id="qr-code"></div>
     <input name="url-input" type="text" id="url-input">
+    <button class="btn btn-warning" id="copy">Copy</button>
+    <div class="toast">
+      <div class="alert alert-info">
+        <span>Copied to clipboard.</span>
+      </div>
+    </div>
     <script>
         const params = new URLSearchParams(window.location.search);
         const qrUrl = decodeURIComponent(params.get('qr'));
@@ -18,42 +44,57 @@
         var e = document.getElementById("url-input").value, n = document.getElementById("qr-code"); 
         n.innerHTML = "", new QRCode(n, { text: e, width: 256, height: 256, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H });
     </script>
-    <a class="btn"href="index.html">Back</a>
-    <a class="btn"href="response.html">QR-PAGE</a>
+    <script>
+      document.getElementById('copy').addEventListener('click', function() {
+        const urlInput = document.getElementById('url-input');
+        urlInput.select();
+        document.execCommand('copy');
+        
+        // Show toast message
+        const toast = document.querySelector('.toast');
+        toast.style.display = 'block';
+        
+        // Hide toast after 2 seconds
+        setTimeout(function() {
+          toast.style.display = 'none';
+        }, 2000);
+      });
+      
+    </script>
     <br>
-    Sample Table
+    Requirements
     <div class="overflow-x-auto">
         <table class="table">
           <!-- head -->
           <thead>
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>At least</th>
+              <th>NYP Y1S1</th>
             </tr>
           </thead>
           <tbody>
             <!-- row 1 -->
             <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
+              <th>3</th>
+              <td>WebPages</td>
             </tr>
             <!-- row 2 -->
             <tr>
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
+              <th>1</th>
+              <td>Table</td>
             </tr>
             <!-- row 3 -->
             <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
+              <th>1</th>
+              <td>Form</td>
+            </tr>
+            <tr>
+              <th>1</th>
+              <td>Navbar that can access all pages</td>
+            </tr>
+            <tr>
+              <th>A few</th>
+              <td>Media elements, hyperlinks</td>
             </tr>
           </tbody>
         </table>

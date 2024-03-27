@@ -105,7 +105,9 @@
         cursor: pointer;
         background-color: var(--c);
       }
-      
+      .btn{
+        color: var(--aa)
+      }
       .face {
         position: absolute;
       }
@@ -3612,7 +3614,21 @@
       /***********************/
 </style>
 
-
+<div class="navbar bg-base-200">
+  <div class="navbar-start">
+    <a class="btn btn-ghost text-xl">Color</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><a class="btn btn-primary" href="index.html">HOME</a></li>
+      <li><a class="btn btn-primary" href="response.html">QR-PAGE</a></li>
+      <li><a class="btn btn-primary" href="error.html">ERROR-PAGE</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    .
+  </div>
+</div>
 <div class="body">
 <audio id="a1">
     <source src="https://rawcdn.githack.com/ricardoolivaalonso/Codepen/0283d2e98cec2eb2be3911bece095000272bb1ca/Kitchen/audio/door.mp3" type="audio/mpeg"/>
@@ -4449,7 +4465,7 @@
     <div class="pic">
       <div class="pic__front face"> </div>
       <div class="pic__back face"> </div>
-      <div class="pic__right face"> <span class="pic__text face">i<br>luv<br>ccs</span>
+      <div class="pic__right face"> <span class="pic__text face">I<br>Love<br>NYP</span>
       </div>
       <div class="pic__left face"> </div>
       <div class="pic__top face"> </div>
@@ -4552,10 +4568,11 @@
   <dialog id="my_modal_1" class="modal">
     <div class="modal-box">
       <h3 class="font-bold text-lg">Hello!</h3>
+
       <ul class="menu bg-base-200 w-56 rounded-box">
         <li>  
           <a class="A-preview btn">
-          Floor
+          Floor Shadow
           <span id="valueA">10</span>
           <input type="range" min="0" max="100" value="10" class="A range range-primary" id="rangeA" />
         </a>
@@ -4567,8 +4584,15 @@
             <input type="range" min="0" max="100" value="10" class="B range range-primary" id="rangeB" />
           </a>
         </li>
+        <li>
+          <a class="C-preview btn">
+            Heart (Tablet)
+            <span id="valueC">10</span>
+            <input type="range" min="0" max="100" value="10" class="C range range-primary" id="rangeC" />
+          </a>
+        </li>
       </ul>
-      <button id="generateQR">Share Design</button>
+      <button class="btn" id="generateQR">Share Design</button>
 
       <div class="modal-action">
         <form method="dialog">
@@ -4578,8 +4602,7 @@
       </div>
     </div>
   </dialog>
-  <a class="btn"href="index.html">Back</a>
-  <a class="btn"href="response.html">QR-PAGE</a>
+
 </div>
 
 
@@ -4603,6 +4626,14 @@
     document.documentElement.style.setProperty('--by', BColor);
     document.documentElement.style.setProperty('--bg', BColor);
   });
+  const rangeC = document.querySelector('.C');
+  const CPreview = document.querySelector('.C-preview');
+  rangeC.addEventListener('input', () => {
+    const Cvalue = rangeC.value / 100;
+    const CColor = getColor(Cvalue);
+    CPreview.style.backgroundColor = CColor;
+    document.documentElement.style.setProperty('--bb', CColor);
+  });
   function getColor(value) {
     const hue = (1 - value) * 240; 
     return `hsl(${hue}, 100%, 50%)`;
@@ -4611,6 +4642,7 @@
     const params = new URLSearchParams(window.location.search);
     params.set('A', rangeA.value);
     params.set('B', rangeB.value);
+    params.set('C', rangeC.value);
     window.history.replaceState({}, '', `${location.pathname}?${params}`);
   }
   
@@ -4623,24 +4655,32 @@
       valueB.textContent = rangeB.value;
       updateURLParams();
     });
-
+    rangeC.addEventListener('input', () => {
+      valueC.textContent = rangeC.value;
+      updateURLParams();
+    });
     // Initialize display values
     valueA.textContent = rangeA.value;
     valueB.textContent = rangeB.value;
+    valueC.textContent = rangeC.value;
         // Function to parse URL parameters and update range sliders
         function updateRangeSlidersFromURL() {
           const params = new URLSearchParams(window.location.search);
           const aValue = params.get('A');
           const bValue = params.get('B');
-    
-          if (aValue !== null && bValue !== null) {
+          const cValue = params.get('C');
+          if (aValue !== null && bValue !== null && cValue !== null) {
             rangeA.value = aValue;
             rangeB.value = bValue;
+            rangeC.value = cValue;
+
             valueA.textContent = aValue;
             document.documentElement.style.setProperty('--a', aValue);
             valueB.textContent = bValue;
             document.documentElement.style.setProperty('--by', bValue);
             document.documentElement.style.setProperty('--bg', bValue);
+            valueC.textContent = cValue;
+            document.documentElement.style.setProperty('--bb', cValue);
           }
         }
         window.addEventListener('load', updateRangeSlidersFromURL);
