@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compress Blob Further</title>
-</head>
-<body>
+
     <input type="file" id="imageInput" accept="image/*" />
     <button onclick="compressImage()">Compress Image</button>
 
@@ -22,38 +15,23 @@
     <script>
         function compressImage() {
             const inputElement = document.getElementById('imageInput');
-
             if (inputElement.files.length > 0) {
                 const file = inputElement.files[0];
-
                 const reader = new FileReader();
-
                 reader.onload = function (e) {
                     const originalImageData = e.target.result;
                     displayImage('originalImage', originalImageData);
-
-                    // Create a canvas element
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
-
-                    // Create an image element
                     const img = new Image();
                     img.onload = function () {
-                        // Set the canvas size to the image size
                         canvas.width = img.width;
                         canvas.height = img.height;
-
-                        // Draw the image onto the canvas
                         context.drawImage(img, 0, 0);
-
-                        // Convert canvas to Blob with compression
                         canvas.toBlob(function (blob) {
-                            // Display the compressed image
                             displayBlobImage('compressedImage', blob);
                         }, 'image/jpeg', 0.8); // Adjust the quality (0 to 1) for compression
                     };
-
-                    // Set the image source
                     img.src = originalImageData;
                 };
 
@@ -73,5 +51,4 @@
             imgElement.src = URL.createObjectURL(blob);
         }
     </script>
-</body>
-</html>
+

@@ -1,18 +1,77 @@
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
 
-<form id="myForm">
-    <input type="text" id="input">
-    <input type="submit" id="submitButton" onclick="getFormInput();"value="Submit">
-</form>
-<script>
-    function getFormInput() {
-        // Get the value of the input field.
-        var inputValue = document.getElementById("input").value;
-      
-        // Alert the value of the input field.
-        alert(inputValue);
-      }
-      
-      // Add an event listener to the submit button.
-      document.getElementById("submit").addEventListener("click", getFormInput);
-      
-    </script>
+<h1 class="stat-title">Design<h1>
+  <details><summary>External Css vs Vanila Css</summary>
+  External Css has pre-built components that increases the general productivity of development. These prebuilt components are built to be responsive by nature, allowing lesser tests on the frontend. The consistency provided by external files requires less design thinking in terms of color scheme and layouts. Using a minified CSS, allows for faster load times
+  </details>
+  <details><summary>Bootstrap vs Tailwind</summary>
+  Although boostrap is the industry standard as a design library, it still has the compexity of having large amounts of styles at different areas. This would significantly increase complexity over time, thus making abstractions of CSS. Tailwind uses more inline styling allowing a more targetted approach to styling
+  </details>
+  <details><summary>So Why DaisyUI?</summary>
+  Although I am not using a node based framework, the cdn version of DaisyUI is still significantly fast. It shortens class names significantly reducing text send over network and more building on the client-side. It supports for color theming almost instantly and has most basic animation components cleanly built-in.
+  </details>
+  <details><summary>Why SPA approach?</summary>
+  SPA is Single Paged Application of which is one design concern of this application. This would allow users to view the app even if there is low network connectivity. It has lesser vectors of attacks and feels more "interactive" for end-users. Only data needs to be sent and not the whole file. As seen in this page section, all of these pages are in a text file, so only the text file needs to be sent and not the full application per every data update.
+  </details>
+  <details><summary>Why Base64</summary>
+  <div class="mockup-window border bg-base-300">
+    <div class="flex justify-center px-4 py-16 bg-base-200">
+      So as per stated, images cant be accessed from app_data, only test files can be written or read from. Here is a simple test for
+      <input  class="btn" type="file" id="imageInput" accept="image/*" />
+      <button class="btn" onclick="compressImage()">Compress Image</button>
+      <div>
+          <h2>Base64 Image</h2>
+          <img id="originalImage" alt="Original Image" />
+      </div>
+  
+      <div>
+          <h2>Compressed Image</h2>
+          <img id="compressedImage" alt="Compressed Image" />
+      </div>
+  
+      <script>
+          function compressImage() {
+              const inputElement = document.getElementById('imageInput');
+              if (inputElement.files.length > 0) {
+                  const file = inputElement.files[0];
+                  const reader = new FileReader();
+                  reader.onload = function (e) {
+                      const originalImageData = e.target.result;
+                      displayImage('originalImage', originalImageData);
+                      const canvas = document.createElement('canvas');
+                      const context = canvas.getContext('2d');
+                      const img = new Image();
+                      img.onload = function () {
+                          canvas.width = img.width;
+                          canvas.height = img.height;
+                          context.drawImage(img, 0, 0);
+                          canvas.toBlob(function (blob) {
+                              displayBlobImage('compressedImage', blob);
+                          }, 'image/jpeg', 0.8); 
+                      };
+                      img.src = originalImageData;
+                  };
+  
+                  reader.readAsDataURL(file);
+              } else {
+                  alert('Please select an image file.');
+              }
+          }
+  
+          function displayImage(imgId, imageData) {
+              const imgElement = document.getElementById(imgId);
+              imgElement.src = imageData;
+          }
+  
+          function displayBlobImage(imgId, blob) {
+              const imgElement = document.getElementById(imgId);
+              imgElement.src = URL.createObjectURL(blob);
+          }
+      </script>
+  
+  
+    </div>
+  </div>
+  </details>
+  
