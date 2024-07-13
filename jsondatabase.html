@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our list of amazing products, including cool water bottles, food containers, and more.">
+    <title>Product List Example</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem; /* 20px */
+        }
+        .product-card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 calc(33.333% - 2.5rem); /* Three cards per row */
+            box-sizing: border-box;
+            transition: transform 0.2s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product, .product-desc {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.25em;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>List of Products</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for products...">
+        </div>
+        <div class="grid" id="product-grid">
+            <!-- Product cards will be dynamically generated here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const products = [
+                { "id": "product1", "name": "Cool Water Bottle", "description": "This is a cool water bottle" },
+                { "id": "product2", "name": "Food Container", "description": "This stores food" },
+                { "id": "product3", "name": "Smartphone Stand", "description": "A stand for holding your smartphone" },
+                { "id": "product4", "name": "Wireless Mouse", "description": "A convenient wireless mouse" },
+                { "id": "product5", "name": "Bluetooth Speaker", "description": "Portable speaker with Bluetooth connectivity" },
+                { "id": "product6", "name": "Fitness Tracker", "description": "Track your fitness activities" },
+                { "id": "product7", "name": "LED Desk Lamp", "description": "A bright LED lamp for your desk" },
+                { "id": "product8", "name": "Noise Cancelling Headphones", "description": "Headphones with noise cancelling feature" },
+                { "id": "product9", "name": "Laptop Sleeve", "description": "Protective sleeve for your laptop" },
+                { "id": "product10", "name": "USB-C Hub", "description": "Expand your device's connectivity" },
+                { "id": "product11", "name": "Portable Charger", "description": "A portable charger for on-the-go" },
+                { "id": "product12", "name": "Ergonomic Keyboard", "description": "Comfortable keyboard for typing" },
+                { "id": "product13", "name": "Travel Backpack", "description": "A backpack for all your travel needs" },
+                { "id": "product14", "name": "Digital Camera", "description": "Capture moments with a digital camera" },
+                { "id": "product15", "name": "Electric Toothbrush", "description": "Maintain oral hygiene with an electric toothbrush" }
+            ];
+
+            const productGrid = document.getElementById('product-grid');
+
+            // Function to create product cards
+            function createProductCard(product) {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.dataset.product = product.id;
+
+                const productName = document.createElement('h2');
+                productName.className = 'product';
+                productName.textContent = product.name;
+
+                const productDesc = document.createElement('div');
+                productDesc.className = 'product-desc';
+                productDesc.textContent = product.description;
+
+                card.appendChild(productName);
+                card.appendChild(productDesc);
+
+                return card;
+            }
+
+            // Populate product grid with product cards
+            products.forEach(product => {
+                const card = createProductCard(product);
+                productGrid.appendChild(card);
+            });
+
+            const searchInput = document.getElementById('search');
+            const productCards = document.querySelectorAll('.product-card');
+
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.product').textContent.toLowerCase();
+                    const productDescription = card.querySelector('.product-desc').textContent.toLowerCase();
+                    if (productName.includes(searchValue) || productDescription.includes(searchValue)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
