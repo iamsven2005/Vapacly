@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List Example</title>
+    <style>
+        :root {
+            --product1: "Cool Water Bottle";
+            --product1d: "This is a cool water bottle";
+            --product2: "Food Container";
+            --product2d: "This stores food";
+            --product3: "Smartphone Stand";
+            --product3d: "A stand for holding your smartphone";
+            --product4: "Wireless Mouse";
+            --product4d: "A convenient wireless mouse";
+            --product5: "Bluetooth Speaker";
+            --product5d: "Portable speaker with Bluetooth connectivity";
+            --product6: "Fitness Tracker";
+            --product6d: "Track your fitness activities";
+            --product7: "LED Desk Lamp";
+            --product7d: "A bright LED lamp for your desk";
+            --product8: "Noise Cancelling Headphones";
+            --product8d: "Headphones with noise cancelling feature";
+            --product9: "Laptop Sleeve";
+            --product9d: "Protective sleeve for your laptop";
+            --product10: "USB-C Hub";
+            --product10d: "Expand your device's connectivity";
+            --product11: "Portable Charger";
+            --product11d: "A portable charger for on-the-go";
+            --product12: "Ergonomic Keyboard";
+            --product12d: "Comfortable keyboard for typing";
+            --product13: "Travel Backpack";
+            --product13d: "A backpack for all your travel needs";
+            --product14: "Digital Camera";
+            --product14d: "Capture moments with a digital camera";
+            --product15: "Electric Toothbrush";
+            --product15d: "Maintain oral hygiene with an electric toothbrush";
+        }
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem; /* 20px */
+        }
+        .product-card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 calc(33.333% - 2.5rem); /* Three cards per row */
+            box-sizing: border-box;
+            transition: transform 0.2s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product, .product-desc {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.25em;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>List of Products</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search for products...">
+        </div>
+        <div class="grid" id="product-grid">
+            <div class="product-card" data-product="product1">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product2">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product3">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product4">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product5">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product6">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product7">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product8">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product9">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product10">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product11">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product12">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product13">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product14">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+            <div class="product-card" data-product="product15">
+                <h3 class="product"></h3>
+                <div class="product-desc"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const products = document.querySelectorAll('.product');
+            const descriptions = document.querySelectorAll('.product-desc');
+
+            products.forEach(product => {
+                const productKey = product.parentElement.getAttribute('data-product');
+                const productName = getComputedStyle(document.documentElement).getPropertyValue(`--${productKey}`).replace(/["']/g, "");
+                product.textContent = productName;
+            });
+
+            descriptions.forEach(description => {
+                const descriptionKey = description.parentElement.getAttribute('data-product') + 'd';
+                const productDescription = getComputedStyle(document.documentElement).getPropertyValue(`--${descriptionKey}`).replace(/["']/g, "");
+                description.textContent = productDescription;
+            });
+
+            const searchInput = document.getElementById('search');
+            const productCards = document.querySelectorAll('.product-card');
+
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.product').textContent.toLowerCase();
+                    const productDescription = card.querySelector('.product-desc').textContent.toLowerCase();
+                    if (productName.includes(searchValue) || productDescription.includes(searchValue)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
